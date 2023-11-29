@@ -1,21 +1,15 @@
 const express = require("express");
+require("dotenv").config();
 
-const { sql } = require("./config/pgDb");
+const authRoutes = require("./routes/authRoutes");
+
 const PORT = process.env.PORT;
 const app = express();
+const { router } = require("./routes/authRoutes");
 
-app.use("express.json", userRouter);
+app.use(express.json());
 
-app.get("/", async (req, res) => {
-  try {
-    const result = await sql`SELECT * FROM employee`;
-    console.log("answer", result);
-    res.send("Welcome Expence Tracker Rest API");
-  } catch (error) {
-    res.status(console.log("aldaa garlaa dahin otoldonuu"));
-  }
-});
-
+app.use("/auth", authRoutes);
 app.listen(PORT, () => {
   console.log(`run ${PORT} at the http.`);
 });
