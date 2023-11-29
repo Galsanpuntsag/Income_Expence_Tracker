@@ -1,5 +1,5 @@
 import React from "react";
-import RecordRange from "./RecordRange";
+import ExpenceList from "./ExpenceList";
 
 import BarChart from "../Barchart";
 import {
@@ -14,21 +14,21 @@ import DoughnutChart from "../DoughnutChart";
 
 Chart.register(CategoryScale, LinearScale, BarElement, ArcElement);
 
-const ExpenseCard = () => {
+const Charts = () => {
   return (
     <>
       <div className="flex justify-center  flex-col items-center">
-        <div className="flex justify-center  items-center w-full">
+        <div className="flex justify-center items-center w-full">
           <BarChart />
 
           <DoughnutChart />
         </div>
-        <div className="w-full">
-          <RecordRange />
+        <div className="w-full flex justify-center">
+          <ExpenceList />
         </div>
       </div>
     </>
   );
 };
 
-export default ExpenseCard;
+export default Charts;

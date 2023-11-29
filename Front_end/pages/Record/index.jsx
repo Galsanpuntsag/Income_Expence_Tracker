@@ -1,5 +1,5 @@
 import React from "react";
-import Records from "@/components/Category/Records";
+import Records from "@/components/Category";
 
 const Record = () => {
   return (
