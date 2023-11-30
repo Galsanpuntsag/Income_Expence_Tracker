@@ -1,5 +1,7 @@
-import { Select } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
 import { IoIosFitness } from "react-icons/io";
 import { IoFitness } from "react-icons/io5";
@@ -10,8 +12,38 @@ import { FaBus } from "react-icons/fa6";
 import { FaCarCrash } from "react-icons/fa";
 import { GiClothes } from "react-icons/gi";
 import { GrYoga } from "react-icons/gr";
+import { FaHome } from "react-icons/fa";
+import { IoIosArrowDown } from "react-icons/io";
 
 const AddCtgry = () => {
+  const icons = [
+    <IoFitness />,
+    <FcShop />,
+    <GrGallery />,
+    <GiCigarette />,
+    <FaBus />,
+    <FaBus />,
+    <GiClothes />,
+    <GrYoga />,
+    <IoIosFitness />,
+    <FaCarCrash />,
+  ];
+
+  const colors = [
+    { color: "bg-primary" },
+    { color: "bg-secondary" },
+    { color: "bg-warning" },
+    { color: "bg-success" },
+    { color: "bg-info" },
+    { color: "bg-accent" },
+  ];
+
+  const [chooseIcon, setChooseIcon] = useState("");
+
+  const handleChange = (event) => {
+    setChooseIcon(event.target.value);
+  };
+
   return (
     <dialog id="my_modal_3" className="modal">
       <div className="modal-box">
@@ -24,37 +56,41 @@ const AddCtgry = () => {
           Add Category
         </h3>
         <div className="flex justify-between mt-5">
-          <select className="select select-bordered select-sm w-20">
-            <option disabled selected></option>
-
-            <IoIosFitness />
-
-            {/* <option>
-              <IoFitness />
-            </option>
-            <option>
-              <FcShop />
-            </option>
-            <option>
-              <GrGallery />
-            </option>
-            <option>
-              <GiCigarette />
-            </option>
-            <option>
-              <FaBus />
-            </option>
-            <option>
-              <FaCarCrash />
-            </option>
-            <option>
-              <GiClothes />
-            </option>
-            <option>
-              <GrYoga />
-            </option> */}
-          </select>
-          <div className="w-3/4 flex gap-10 justify-center border-gray-400 h-10 bg-slate-50 items-center rounded-2xl ">
+          <div className="dropdown w-30  ">
+            <label
+              tabIndex={0}
+              className="btn m-1 rounded-xl w-full h-[10px] flex justify-between text-3xl bg-slate-50"
+            >
+              {setChooseIcon ? setChooseIcon : icons[0]}
+              <FaHome />
+              <IoIosArrowDown className="w-5" />
+            </label>
+            <div className="dropdown-content menu shadow-2xl bg-base-100 rounded-box w-72 flex-row ">
+              {icons.map((icon) => {
+                return (
+                  <div
+                    onClick={() => {
+                      setChooseIcon(icon);
+                    }}
+                    className=" p-3 text-2xl inline "
+                  >
+                    {icon}
+                  </div>
+                );
+              })}
+              <div className="border-b-2 border-slate-600 mt-2 w-full"></div>
+              <div className="grid grid-cols-6 gap-5 flex-row mx-auto mt-3 ">
+                {colors.map((color) => {
+                  return (
+                    <div
+                      className={` w-5 h-5 rounded-full ${color.color}`}
+                    ></div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+          <div className="w-3/4 flex gap-10 justify-center border-gray-400 h-12 mt-1 bg-slate-50 items-center rounded-2xl ">
             <input
               placeholder="Name"
               className="w-2/3  h-7 rounded-xl pl-2 border-gray-500"

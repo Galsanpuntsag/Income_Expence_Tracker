@@ -7,7 +7,7 @@ const Expence = (showExpense, setShowExpence, setShowIncome) => {
 
   return (
     <dialog id="my_modal_4" className="modal">
-      <div className="modal-box w-11/12 max-w-5xl">
+      <div className="modal-box w-11/12 max-w-5xl ">
         <form method="dialog">
           <div className=""></div>
           <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 ">
