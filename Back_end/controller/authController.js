@@ -39,6 +39,18 @@ const login = async (req, res) => {
     res.status(500).json({ message: "failed" });
   }
 };
-module.exports = { signup, login };
+
+const insertIcon = async (req, res) => {
+  try {
+    const { iconName, category_img, category_color } = req.body;
+
+    await sql`INSERT INTO categoryIcon(iconName, color, iconImg) VALUES(${iconName}, ${category_img}, ${category_color})`;
+    res.status(201).json({ message: "success" });
+  } catch (error) {
+    res.status(500).json({ message: "failed" });
+  }
+};
+
+module.exports = { signup, login, insertIcon };
 
 //MVC
