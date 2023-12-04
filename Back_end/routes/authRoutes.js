@@ -1,9 +1,9 @@
 const { Router } = require("express");
-const { signup, login, insertIcon } = require("../controller/authController");
+const { signup, login, categoryIcon } = require("../controller/authController");
 
 const router = Router();
 
-router.route("/categoryIcon").post(insertIcon);
+router.route("/categoryIcon").post(categoryIcon);
 router.route("/signup").post(signup);
 router.route("/login").post(login);
 

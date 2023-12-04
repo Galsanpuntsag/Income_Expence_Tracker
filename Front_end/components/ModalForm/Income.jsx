@@ -12,9 +12,10 @@ const Income = (setShowExpence, setShowIncome, showIncome) => {
           <div className="bg-slate-50 2xl:mt-5 p-1 mt-3 w-full max-w-xs lg:max-w-[280px] rounded-xl 2xl:max-w-sm">
             <button
               className="btn btn-sm btn-primary w-1/2"
-              onClick={() => {
+              onClick={(event) => {
                 setShowExpence("");
                 setShowIncome("hidden");
+                console.log("aa", event.target.value);
               }}
             >
               Expence

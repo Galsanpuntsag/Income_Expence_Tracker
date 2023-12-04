@@ -14,14 +14,25 @@ import { GiClothes } from "react-icons/gi";
 import { GrYoga } from "react-icons/gr";
 import { FaHome } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
+import { AiFillBank } from "react-icons/ai";
+import { FaApple } from "react-icons/fa";
+import { SiNetflix } from "react-icons/si";
+import { FaBitcoin } from "react-icons/fa6";
+import { FaBicycle } from "react-icons/fa6";
+import { FaDribbble } from "react-icons/fa6";
 
 const AddCtgry = () => {
   const icons = [
+    <FaDribbble />,
+    <FaBicycle />,
+    <FaBitcoin />,
+    <SiNetflix />,
+    <FaApple />,
+    <AiFillBank />,
     <IoFitness />,
     <FcShop />,
     <GrGallery />,
     <GiCigarette />,
-    <FaBus />,
     <FaBus />,
     <GiClothes />,
     <GrYoga />,
@@ -38,10 +49,10 @@ const AddCtgry = () => {
     { color: "bg-accent" },
   ];
 
-  const [chooseIcon, setChooseIcon] = useState("");
+  const [displayIcon, setDisplayIcon] = useState("");
 
   const handleChange = (event) => {
-    setChooseIcon(event.target.value);
+    setDisplayIcon(event.target.value);
   };
 
   return (
@@ -61,18 +72,18 @@ const AddCtgry = () => {
               tabIndex={0}
               className="btn m-1 rounded-xl w-full h-[10px] flex justify-between text-3xl bg-slate-50"
             >
-              {setChooseIcon ? setChooseIcon : icons[0]}
+              {setDisplayIcon ? setDisplayIcon : icons[0]}
               <FaHome />
               <IoIosArrowDown className="w-5" />
             </label>
-            <div className="dropdown-content menu shadow-2xl bg-base-100 rounded-box w-72 flex-row ">
+            <div className="dropdown-content menu shadow-2xl bg-base-100 rounded-box w-72 flex-row">
               {icons.map((icon) => {
                 return (
                   <div
-                    onClick={() => {
-                      setChooseIcon(icon);
+                    onChange={() => {
+                      setDisplayIcon(icon);
                     }}
-                    className=" p-3 text-2xl inline "
+                    className=" p-3 text-2xl inline flex ml-1 "
                   >
                     {icon}
                   </div>

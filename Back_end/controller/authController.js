@@ -40,11 +40,11 @@ const login = async (req, res) => {
   }
 };
 
-const insertIcon = async (req, res) => {
+const categoryIcon = async (req, res) => {
   try {
     const { iconName, category_img, category_color } = req.body;
 
-    await sql`INSERT INTO categoryIcon(iconName, color, iconImg) VALUES(${iconName}, ${category_img}, ${category_color})`;
+    await sql`INSERT INTO categoryIcon(iconName, category_img, category_color) VALUES(${iconName}, ${category_img}, ${category_color})`;
     res.status(201).json({ message: "success" });
   } catch (error) {
     res.status(500).json({ message: "failed" });
