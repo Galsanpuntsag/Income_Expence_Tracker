@@ -4,41 +4,29 @@ import Expence from "./Expence";
 import Income from "./Income";
 
 const Modal = () => {
-  const [showExpense, setShowExpence] = useState();
+  const [showExpense, setShowExpence] = useState("");
   const [showIncome, setShowIncome] = useState("hidden");
-  const [open, setOpen] = useState(true);
   return (
     <div>
-      <dialog id="my_modal_4" open={open} className="modal">
+      <dialog id="my_modal_4" className="modal">
         <div className="modal-box max-w-3xl ">
-          <div className="">
+          <div className="flex justify-between border-b-2 border-slate-800">
+            <h className="font-bold text-2xl">Add Record </h>
             <form method="dialog">
-              {/* if there is a button in form, it will close the modal */}
-              <button
-                className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-                onClick={() => {
-                  setOpen(false);
-                }}
-              >
-                ✕
-              </button>
-            </form>
-            <Expence
-              setShowExpence={setShowExpence}
-              showIncome={showIncome}
-              setShowIncome={setShowIncome}
-            />
-
-            <form method="dialog" className="modal-backdrop">
-              <button
-                onClick={() => {
-                  setOpen(false);
-                }}
-              >
-                close
-              </button>
+              <button className="btn mb-1">✕</button>
             </form>
           </div>
+          <Expence
+            setShowExpence={setShowExpence}
+            showIncome={showIncome}
+            showExpense={showExpense}
+            setShowIncome={setShowIncome}
+          />
+          <Income
+            setShowExpence={setShowExpence}
+            showIncome={showIncome}
+            setShowIncome={setShowIncome}
+          />
         </div>
       </dialog>
     </div>

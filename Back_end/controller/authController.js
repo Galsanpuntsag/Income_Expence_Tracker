@@ -51,6 +51,25 @@ const categoryIcon = async (req, res) => {
   }
 };
 
-module.exports = { signup, login, insertIcon };
+const transaction = async (req, res) => {
+  try {
+    const {
+      userId,
+      name,
+      amount,
+      transaction_type,
+      description,
+      currency_type,
+      category_id,
+    } = req.body;
+
+    await sql`INSERT INTO categoryIcon(userId, name, amount, transaction_type, description, currency_type, category_id ) VALUES(${userId}, ${name}, ${amount}, ${transaction_type}, ${description}, ${currency_type}, ${category_id}  )`;
+    res.status(201).json({ message: "success" });
+  } catch (error) {
+    res.status(500).json({ message: "failed" });
+  }
+};
+
+module.exports = { signup, login, categoryIcon, transaction };
 
 //MVC

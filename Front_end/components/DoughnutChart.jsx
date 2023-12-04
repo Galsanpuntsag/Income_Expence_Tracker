@@ -39,9 +39,9 @@ const DoughnutChart = () => {
   };
 
   return (
-    <div className="flex justify-center gap-20  w-full mr-10">
-      <div className="flex-1 p-3 bg-white ml-5 lg:h-[315px] rounded-lg">
-        <h1 className="border-b-2 mb-2 lg:mb-5  border-slate-950 font-semibold mb-1">
+    <div className="flex justify-center gap-20  w-full">
+      <div className="flex-1 p-3 bg-white ml-5 lg:h-[315px] rounded-lg 2xl:h-[500px] 2xl:w-1/2">
+        <h1 className="border-b-2 lg:mb-5  border-slate-950 font-semibold mb-1">
           Income - Expense
         </h1>
         <div className="lg:w-[200px] ml-10 2xl:w-[270px]  ">

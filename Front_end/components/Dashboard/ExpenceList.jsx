@@ -2,7 +2,7 @@ import React from "react";
 
 const ExpenceList = () => {
   return (
-    <div className="flex flex-col gap-5 w-11/12 rounded-xl bg-white">
+    <div className="flex flex-col gap-5 w-10/12 rounded-xl bg-white 2xl:mx-20">
       <div className="flex justify-center">
         <div className="flex flex-col justify-center w-full ">
           <div className="">

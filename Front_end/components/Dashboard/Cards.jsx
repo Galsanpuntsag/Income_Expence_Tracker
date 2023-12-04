@@ -4,8 +4,8 @@ import { FaDotCircle } from "react-icons/fa";
 
 const Cards = () => {
   return (
-    <div className="mx-auto 2xl:full">
-      <div className="flex justify-center gap-3 lg:gap-20 2xl:gap-10 mt-5 p-5">
+    <div className="mx-auto 2xl:w-11/12">
+      <div className="flex justify-center 2xl:justify-around gap-3 lg:gap-20 2xl:gap-10 mt-5 p-5">
         <div className="w-[300px] bg-transparent h-[150px] 2xl:w-[450px] 2xl:h-[200px]">
           <img src="Card.png"></img>
         </div>

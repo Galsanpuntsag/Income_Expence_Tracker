@@ -21,7 +21,10 @@ const Navbar = () => {
           </div>
         </div>
         <div className="flex gap-5 items-center mr-20">
-          <button className="btn btn-active btn-primary">
+          <button
+            className="btn btn-active btn-primary"
+            onClick={() => document.getElementById("my_modal_4").showModal()}
+          >
             <IoMdAdd />
             Add Record
           </button>

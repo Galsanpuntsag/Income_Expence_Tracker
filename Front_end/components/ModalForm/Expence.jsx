@@ -10,16 +10,15 @@ const Expence = ({ showExpense, setShowExpence, setShowIncome }) => {
     <div className={`flex ${showExpense}`}>
       <div>
         <div className="flex flex-col">
-          <div className="bg-slate-50 2xl:mt-5 p-1 mt-3 w-1/2 max-w-xs lg:max-w-[280px] rounded-xl 2xl:max-w-sm">
+          <div className="bg-slate-50 2xl:mt-5 p-1 mt-3 max-w-xs lg:max-w-[280px] rounded-xl 2xl:max-w-sm">
             <button className="btn btn-sm btn-primary w-1/2">Expence</button>
             <button
-              className="btn btn-sm hover:btn-primary w-1/2"
+              className="btn btn-sm w-1/2"
               onClick={(event) => {
                 setShowExpence("hidden");
                 setShowIncome("");
                 console.log("eee", event.target.value);
               }}
-              onChange={<Income />}
             >
               Income
             </button>
