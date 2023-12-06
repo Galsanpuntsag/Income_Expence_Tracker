@@ -50,26 +50,91 @@ const categoryIcon = async (req, res) => {
     res.status(500).json({ message: "failed" });
   }
 };
-
+//--------------
 const transaction = async (req, res) => {
   try {
     const {
-      userId,
+      user_id,
       name,
       amount,
       transaction_type,
       description,
-      currency_type,
       category_id,
     } = req.body;
 
-    await sql`INSERT INTO categoryIcon(userId, name, amount, transaction_type, description, currency_type, category_id ) VALUES(${userId}, ${name}, ${amount}, ${transaction_type}, ${description}, ${currency_type}, ${category_id}  )`;
+    await sql`INSERT INTO transaction(user_id, name, amount, transaction_type, description, category_id ) VALUES(${user_id}, ${name}, ${amount}, ${transaction_type}, ${description}, ${category_id})`;
     res.status(201).json({ message: "success" });
   } catch (error) {
-    res.status(500).json({ message: "failed" });
+    console.log("ERROR: ", error);
+    res.status(500).json({ message: "failed here" });
   }
 };
 
-module.exports = { signup, login, categoryIcon, transaction };
+const getTransaction = async (req, res) => {
+  try {
+    const { id } = req.body;
+    console.log("ID: ", id);
+
+    const response = await sql`SELECT * FROM transaction WHERE user_id=${id}`;
+    res.status(201).json({ message: "success", response });
+
+    // console.log("find transaction: ", response);
+
+    if (response.length === 0) {
+      return res.status(400).json({ message: "User not foung" });
+    }
+  } catch (error) {
+    console.log("ERROR", error);
+    res.status(500).json({ message: "Failed" });
+  }
+};
+
+const putTransaction = async (req, res) => {
+  try {
+    const { id } = req.body;
+    console.log("ID: ", id);
+
+    const putTransaction =
+      await sql`UPDATE transaction SET name='Drink' WHERE user_id=${id}`;
+    res.status(201).json({ message: "Success", putTransaction });
+
+    if (putTransaction.length === 0) {
+      return res.status(400).json({ message: "Transaction Not Found" });
+    }
+  } catch (error) {
+    console.log("ERR:", error);
+    res.status(500).json({ message: "Failed" });
+  }
+};
+
+const deleteTransaction = async (req, res) => {
+  try {
+    const { id } = req.body;
+    console.log("ID: ", id);
+
+    const deleteTransaction =
+      await sql`DELETE FROM transaction WHERE user_id=${id}`;
+    res.status(201).json({ message: "Success", deleteTransaction });
+
+    if (deleteTransaction.length === 0) {
+      return res.status(400).json({ message: "Transaction Not Found" });
+    }
+  } catch (error) {
+    console.log("ERR:", error);
+    res.status(500).json({ message: "Failed" });
+  }
+};
+
+//---------------
+
+module.exports = {
+  signup,
+  login,
+  categoryIcon,
+  transaction,
+  getTransaction,
+  putTransaction,
+  deleteTransaction,
+};
 
 //MVC
