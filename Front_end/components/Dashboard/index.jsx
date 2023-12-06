@@ -4,7 +4,7 @@ import Charts from "./Charts";
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className="flex flex-col gap-2">
       <Cards />
       <Charts />
     </div>

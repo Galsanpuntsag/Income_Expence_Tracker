@@ -43,9 +43,9 @@ const BarChart = () => {
     },
   };
   return (
-    <div className="flex justify-center gap-20 my-7 w-full">
-      <div className="flex-1 2xl:mr-10 2xl:h-[500px] bg-white lg:ml-10 p-3 rounded-lg">
-        <h1 className="border-b-2 border-slate-950 2xl:pb-3 lg:mb-5 mb-2 font-semibold">
+    <div className="flex justify-center gap-20 w-1/2  ">
+      <div className="flex-1 2xl:mr-10 2xl:h-[500px] lg:h-[360px] lg:[] bg-white p-3 rounded-lg">
+        <h1 className="border-b-2 border-slate-950 2xl:pb-3 font-semibold">
           Income - Expense
         </h1>
 

@@ -18,7 +18,7 @@ const Charts = () => {
   return (
     <>
       <div className="flex justify-center  flex-col items-center">
-        <div className="flex justify-center items-center w-full 2xl:w-10/12 ">
+        <div className="flex justify-center items-center w-full lg:w-5/6 2xl:w-10/12 mb-5">
           <BarChart />
 
           <DoughnutChart />

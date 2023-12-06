@@ -10,13 +10,17 @@ const Navbar = () => {
       <div className="flex justify-between bg-slate-50">
         <div className="flex ml-20 p-2">
           <img src="Vector.png"></img>
-          <div className="text-center items-center flex gap-10 ml-10">
+          <div className="text-center items-center  flex gap-10 ml-10">
             <Link href={"/"}>
-              <h className="">Dashboard</h>
+              <h className="hover:text-primary">Dashboard</h>
             </Link>
             <Link href={"../Record"}>
               {" "}
-              <h1 className="">Records</h1>
+              <h1 className="hover:text-primary">Records</h1>
+            </Link>
+            <Link href={"../Portfolio"}>
+              {" "}
+              <h1 className="hover:text-primary">Portfolio</h1>
             </Link>
           </div>
         </div>

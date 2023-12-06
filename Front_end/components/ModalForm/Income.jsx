@@ -11,11 +11,10 @@ const Income = ({ setShowExpence, setShowIncome, showIncome }) => {
         <div className="flex flex-col">
           <div className="bg-slate-50 2xl:mt-5 p-1 mt-3 w-full max-w-xs lg:max-w-[280px] rounded-xl 2xl:max-w-sm">
             <button
-              className="btn  w-1/2"
+              className="btn btn-sm w-1/2"
               onClick={() => {
                 setShowExpence("");
                 setShowIncome("hidden");
-                console.log("aa");
               }}
             >
               Expence

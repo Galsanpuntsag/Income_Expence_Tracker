@@ -6,10 +6,10 @@ const Cards = () => {
   return (
     <div className="mx-auto 2xl:w-11/12">
       <div className="flex justify-center 2xl:justify-around gap-3 lg:gap-20 2xl:gap-10 mt-5 p-5">
-        <div className="w-[300px] bg-transparent h-[150px] 2xl:w-[450px] 2xl:h-[200px]">
+        <div className="lg:w-[330px] bg-transparent h-[100px] 2xl:w-[450px] 2xl:h-[200px]">
           <img src="Card.png"></img>
         </div>
-        <div className=" w-[300px] rounded-xl bg-slate-50 lg:p-5 2xl:w-[550px] 2xl:h-[280px]">
+        <div className=" lg:w-[350px] rounded-xl bg-slate-50 lg:p-5 2xl:w-[550px] 2xl:h-[280px]">
           <div className="flex flex-col ">
             <div className="flex gap-3 ">
               <div className=" mt-1">
@@ -42,7 +42,7 @@ const Cards = () => {
             </div>
           </div>
         </div>
-        <div className=" w-[300px] rounded-xl bg-slate-50 lg:p-5 2xl:w-[550px] 2xl:h-[280px]">
+        <div className=" lg:w-[350px] rounded-xl bg-slate-50 lg:p-5 2xl:w-[550px] 2xl:h-[280px]">
           <div className="flex flex-col ">
             <div className="flex gap-3 ">
               <div className=" mt-1">
