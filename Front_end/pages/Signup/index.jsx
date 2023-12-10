@@ -43,7 +43,9 @@ const Signup = () => {
             </div>
             <div className="">
               <button className="btn btn-accent w-full max-w-xs px-10">
-                <Link href={"../Louding"}>Login</Link>
+                <Link set href={"../Login"}>
+                  Login
+                </Link>
               </button>
             </div>
             <div className="flex gap-4">

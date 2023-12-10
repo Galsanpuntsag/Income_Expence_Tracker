@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 const Login = () => {
-  setTimeout(() => {
-    router.push("/");
-  }, 5000);
+  const [change, setChange] = useState("");
+
+  const handleChange = () => {
+    setTimeout(() => {
+      router.push("../Steps");
+    }, 4000);
+
+    router.push("./Louding");
+  };
+
   const router = useRouter();
   return (
     <div className="flex ">
@@ -34,15 +41,20 @@ const Login = () => {
             />
           </div>
           <div className="">
-            <button className="btn btn-accent w-full max-w-xs px-10">
-              <Link href={"../Louding"}>Login</Link>
+            <button
+              onClick={handleChange}
+              className="btn btn-accent w-full max-w-xs px-10"
+            >
+              <Link onClick={handleChange} href={"./Login"}>
+                Login
+              </Link>
             </button>
           </div>
           <div className="flex gap-4">
             <h3>Don't have account?</h3>
-            <h4 className="text-blue-600">
+            <button className="text-blue-600">
               <Link href={"../Signup"}>Sign Up</Link>
-            </h4>
+            </button>
           </div>
         </div>
       </div>

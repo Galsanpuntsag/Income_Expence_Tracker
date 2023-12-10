@@ -19,10 +19,6 @@ const Navbar = () => {
               {" "}
               <h1 className="hover:text-primary">Records</h1>
             </Link>
-            <Link href={"../Portfolio"}>
-              {" "}
-              <h1 className="hover:text-primary">Portfolio</h1>
-            </Link>
           </div>
         </div>
         <div className="flex gap-5 items-center mr-20">
