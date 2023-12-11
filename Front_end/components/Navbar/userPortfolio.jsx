@@ -72,8 +72,8 @@ export default function NestedModal() {
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
-        <Box sx={{ ...style, width: 1000 }}>
-          <div className="flex">
+        <Box sx={{ ...style, width: 1000, height: 400 }}>
+          <div className="flex justify-around items-center ">
             <div className="flex flex-col">
               <div className="avatar">
                 <div className="w-24 ml-10 mt-5 mb-5 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
@@ -87,16 +87,17 @@ export default function NestedModal() {
 
                 <button className="">Edit Profile Picture</button>
               </button>
+              <ChildModal />
             </div>
             <div className="">
-              <h className="text-2xl font-bold ">My Profile</h>
-              <div className="flex">
-                <div className="flex flex-col">
+              <h className="text-2xl font-bold mt-5">My Profile</h>
+              <div className="flex mt-5 ">
+                <div className="flex flex-col  ">
                   <h>First Name</h>
                   <input
                     type="text"
                     placeholder="Your first name"
-                    className="border-slate-500 border rounded-sm pl-2"
+                    className="border-slate-500 border rounded-sm pl-2 mr-10"
                   ></input>
                 </div>
                 <div className="flex flex-col">
@@ -110,17 +111,34 @@ export default function NestedModal() {
               </div>
               <div className="flex">
                 <div className="flex flex-col">
-                  <h>First Name</h>
+                  <div className="flex flex-col">
+                    <h className="mt-5">Address</h>
+                    <input
+                      type="text"
+                      placeholder="Your address"
+                      className="border-slate-500 border rounded-sm pl-2 mr-10"
+                    ></input>
+                  </div>
+                </div>
+                <div className="flex flex-col">
+                  <h className="mt-5">Phone</h>
                   <input
                     type="text"
-                    placeholder="Your first name"
+                    placeholder="Your numder"
                     className="border-slate-500 border rounded-sm pl-2"
                   ></input>
                 </div>
               </div>
+              <div className="mt-5">
+                <h className="">Your email confirm</h>
+                <input
+                  type="text"
+                  className="max-w-2xl w-full mt-1 border-slate-500 border rounded-sm pl-2"
+                  placeholder="Your email"
+                ></input>
+              </div>
             </div>
           </div>
-          <ChildModal />
         </Box>
       </Modal>
     </div>

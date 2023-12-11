@@ -1,9 +1,10 @@
 import "@/styles/globals.css";
+import { UserProvider } from "@/components/Context/UserPtovider";
 
 export default function App({ Component, pageProps }) {
   return (
-    <div className="">
+    <UserProvider>
       <Component {...pageProps} />
-    </div>
+    </UserProvider>
   );
 }
