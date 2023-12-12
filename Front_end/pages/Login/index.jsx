@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { Context } from "react";
+import { UserContext } from "@/components/Context/UserPtovider";
 
 const Login = () => {
-  const [change, setChange] = useState("");
+  const { loginUserData, changeLoginUserData, login } = useContext(UserContext);
 
-  const handleChange = () => {
-    setTimeout(() => {
-      router.push("../Steps");
-    }, 4000);
+  // const handleChange = () => {
+  //   setTimeout(() => {
+  //     router.push("../Steps");
+  //   }, 4000);
 
-    router.push("./Louding");
-  };
+  //   router.push("./Louding");
+  // };
 
   const router = useRouter();
   return (
@@ -32,29 +32,40 @@ const Login = () => {
           <div className="flex flex-col gap-3">
             <input
               type="text"
+              name="email"
               placeholder="Email"
+              value={loginUserData.email}
+              onChange={(e) => {
+                changeLoginUserData(e.target.name, e.target.value);
+              }}
               className="input input-bordered input-accent w-full max-w-xs"
             />
             <input
-              type="text"
+              type="password"
+              name="password"
               placeholder="Password"
+              value={loginUserData.data}
+              onChange={(e) => {
+                changeLoginUserData(e.target.name, e.target.value);
+              }}
               className="input input-bordered input-warning w-full max-w-xs"
             />
           </div>
           <div className="">
             <button
-              onClick={handleChange}
+              onClick={login}
               className="btn btn-accent w-full max-w-xs px-10"
             >
-              <Link onClick={handleChange} href={"./Login"}>
-                Login
-              </Link>
+              Login
             </button>
           </div>
           <div className="flex gap-4">
             <h3>Don't have account?</h3>
-            <button className="text-blue-600">
-              <Link href={"../Signup"}>Sign Up</Link>
+            <button
+              onClick={() => router.push("/Signup")}
+              className="text-blue-600"
+            >
+              Sign Up
             </button>
           </div>
         </div>

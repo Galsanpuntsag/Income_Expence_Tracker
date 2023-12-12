@@ -31,12 +31,12 @@ const Signup = () => {
                 className="input input-bordered input-success w-full max-w-xs"
               />
               <input
-                type="text"
+                type="password"
                 placeholder="Password"
                 className="input input-bordered input-success w-full max-w-xs"
               />
               <input
-                type="text"
+                type="password"
                 placeholder="Re-password"
                 className="input input-bordered input-success w-full max-w-xs"
               />
