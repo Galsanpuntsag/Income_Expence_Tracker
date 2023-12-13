@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { UserContext } from "@/components/Context/UserPtovider";
 
 const Login = () => {
-  const { loginUserData, changeLoginUserData, login } = useContext(UserContext);
+  const { changeLoginUserData, login } = useContext(UserContext);
 
   // const handleChange = () => {
   //   setTimeout(() => {
@@ -34,7 +34,7 @@ const Login = () => {
               type="text"
               name="email"
               placeholder="Email"
-              value={loginUserData.email}
+              value={changeLoginUserData.email}
               onChange={(e) => {
                 changeLoginUserData(e.target.name, e.target.value);
               }}
@@ -44,7 +44,7 @@ const Login = () => {
               type="password"
               name="password"
               placeholder="Password"
-              value={loginUserData.data}
+              value={changeLoginUserData.password}
               onChange={(e) => {
                 changeLoginUserData(e.target.name, e.target.value);
               }}

@@ -4,6 +4,7 @@ import { FaArrowAltCircleUp } from "react-icons/fa";
 import { FaDotCircle } from "react-icons/fa";
 import Link from "next/link";
 import NestedModal from "./userPortfolio";
+import LeftCategory from "../Category/LeftCategory";
 
 const Navbar = () => {
   return (

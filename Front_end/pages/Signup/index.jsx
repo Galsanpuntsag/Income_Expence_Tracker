@@ -1,7 +1,10 @@
 import Link from "next/link";
-import React from "react";
+import React, { useContext, useState } from "react";
+import { UserContext } from "@/components/Context/UserPtovider";
 
 const Signup = () => {
+  const { changeSignupUserData, signup } = useContext(UserContext);
+
   return (
     <div>
       <div className="flex ">
@@ -23,16 +26,30 @@ const Signup = () => {
               <input
                 type="text"
                 placeholder="Name"
+                name="name"
+                onChange={(e) => {
+                  changeSignupUserData(e.target.name, e.target.value);
+                }}
                 className="input input-bordered input-success w-full max-w-xs"
               />
               <input
                 type="text"
                 placeholder="Email"
+                name="email"
+                value={changeSignupUserData.name}
+                onChange={(e) => {
+                  changeSignupUserData(e.target.email, e.target.value);
+                }}
                 className="input input-bordered input-success w-full max-w-xs"
               />
               <input
                 type="password"
                 placeholder="Password"
+                name="password"
+                value={changeSignupUserData.name}
+                onChange={(e) => {
+                  changeSignupUserData(e.target.password, e.target.value);
+                }}
                 className="input input-bordered input-success w-full max-w-xs"
               />
               <input
@@ -43,9 +60,7 @@ const Signup = () => {
             </div>
             <div className="">
               <button className="btn btn-accent w-full max-w-xs px-10">
-                <Link set href={"../Login"}>
-                  Login
-                </Link>
+                <Link href={"../Login"}> Login</Link>
               </button>
             </div>
             <div className="flex gap-4">

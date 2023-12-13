@@ -2,8 +2,10 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
-
+import { FaHome } from "react-icons/fa";
+import { FaCommentDots } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
+import { GiProgression } from "react-icons/gi";
 
 const style = {
   position: "absolute",
@@ -87,10 +89,26 @@ export default function NestedModal() {
 
                 <button className="">Edit Profile Picture</button>
               </button>
+
+              <div className="flex justify-center items-center gap-10 ">
+                <button>
+                  <FaHome />
+                </button>
+                <button>
+                  <FaCommentDots />
+                </button>
+                <button>
+                  <GiProgression />
+                </button>
+              </div>
+              <h className="font-mono text-sm mt-5">Description:</h>
+              <h1 className="font-thin text-[15px] mb-5">
+                Your profil page and description
+              </h1>
               <ChildModal />
             </div>
-            <div className="">
-              <h className="text-2xl font-bold mt-5">My Profile</h>
+            <div className="mt-10 ">
+              <h className="text-2xl font-bold mt-10">My Profile</h>
               <div className="flex mt-5 ">
                 <div className="flex flex-col  ">
                   <h>First Name</h>
@@ -139,6 +157,9 @@ export default function NestedModal() {
               </div>
             </div>
           </div>
+          <h className="font-extralight text-center flex justify-center">
+            @2023.12.31
+          </h>
         </Box>
       </Modal>
     </div>
