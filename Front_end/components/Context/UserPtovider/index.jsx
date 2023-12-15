@@ -2,47 +2,68 @@ import React, { createContext, useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { loading } from "react-loading";
 
 export const UserContext = createContext();
-console.log(axios.isCancel("something"));
 
 export const UserProvider = ({ children }) => {
   const router = useRouter();
   const [user, setUser] = useState(null);
-  const [loginUserData, setLoginUserData] = useState({
-    userEmail: `${user}`,
-    userPassword: "",
+  // const bigLoading = () => {
+  //   return (
+  //     <div className="">
+  //       <span className="loading loading-ring loading-xs"></span>
+  //       <span className="loading loading-ring loading-sm"></span>
+  //       <span className="loading loading-ring loading-md"></span>
+  //       <span className="loading loading-ring loading-lg"></span>
+  //     </div>
+  //   );
+  // };
+
+  const [loading, setLoading] = useState(false);
+  const [formUserData, setLoginUserData] = useState({
+    email: "",
+    password: "",
+    rePassword: "",
+    currency_type: "",
+    balance: 0,
   });
 
   const changeLoginUserData = (key, value) => {
-    setLoginUserData({ ...loginUserData, [key]: value });
+    setLoginUserData({ ...formUserData, [key]: value });
     // console.log("VAL", value);
     // console.log("VAL", key);
   };
 
   const login = async () => {
-    console.log("Email", loginUserData.userEmail);
-    console.log("Password", loginUserData.userPassword);
-    if (!loginUserData.userEmail || !loginUserData.userPassword) {
-      alert("Email эсвэл Password заавал бөглөх ёстой");
+    console.log("Email", formUserData.email);
+    console.log("Password", formUserData.password);
+    if (!formUserData.email || !formUserData.password) {
+      alert("Email эсвэл Password хоосон байна. Та бөглөнө үү!");
       return;
+    }
+    if (!formUserData.email.includes("@")) {
+      alert("Таний оруулсан имэйл буруу байна! ");
+    }
+    if (formUserData.password !== formUserData.password) {
+      alert("Your password wrong");
     }
 
     try {
+      // setLoading(true);
+
       const { data } = await axios.post("http://localhost:8008/auth/login", {
-        userEmail: loginUserData.userEmail,
-        userPassword: loginUserData.userPassword,
+        userEmail: formUserData.email,
+        userPassword: formUserData.password,
       });
       console.log("DDD++++++>", data.user);
       setUser(data.user);
       router.push("/");
     } catch (error) {
       console.log("Error", error);
-      if (error.res && error.res.data && error.res.data.message) {
-        toast.error(`${error.res.data.message}`, { autoClose: 3000 });
-      } else {
-        console.error("Unexpected error format:", error);
-      }
+      toast.error(`${error.response.data.message}`, { autoClose: 3000 });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -50,50 +71,39 @@ export const UserProvider = ({ children }) => {
     setUser(null);
   };
   //signup_________________=>
-  const [newUser, setNewUser] = useState(null);
-  const [signupUserData, setSignupUserData] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
-
-  const changeSignupUserData = (key, value) => {
-    setSignupUserData({ ...signupUserData, [key]: value });
-    console.log("VAL", value);
-    console.log("VAL", key);
-  };
-
   const signup = async () => {
-    console.log("Name", signupUserData.name);
-    console.log("Email", signupUserData.email);
-    console.log("Password", signupUserData.password);
+    console.log("Name", formUserData.name);
+    console.log("Email", formUserData.email);
+    console.log("Password", formUserData.password);
     if (
-      !signupUserData.name ||
-      !signupUserData.email ||
-      !signupUserData.password
+      !formUserData.name ||
+      !formUserData.email ||
+      !formUserData.password ||
+      !formUserData.rePassword
     ) {
-      alert("Name, Email эсвэл Password -уудыг заавал бөглөх ёстой");
+      alert("Талбарууд хоосон байж болохгүй!");
+      return;
+    }
+    if (formUserData.password !== formUserData.rePassword) {
+      alert("Таний Password-ууд зөрүүтэй байна");
       return;
     }
     try {
-      const { signupData } = await axios.get(
-        "http://localhost:8008/auth/signup",
-        {
-          name: signupUserData.name,
-          email: signupUserData.email,
-          password: signupUserData.password,
-        }
-      );
-      console.log("USERDATAAA=>", signupData);
-      setNewUser(signupData);
-      router.push("/login");
+      setLoading(true);
+      const { data } = await axios.post("http://localhost:8008/auth/signup", {
+        email: formUserData.email,
+        password: formUserData.password,
+        name: formUserData.name,
+      });
+      console.log("UserSignUPData=>", data);
+      setUser(data);
+      loading;
+      router.push("/Login");
     } catch (error) {
       console.log("Error", error);
-      if (error.res && error.res.data && error.res.data.message) {
-        toast.error(`${error.res.data.message}`, { autoClose: 3000 });
-      } else {
-        console.error("Unexpected error format:", error);
-      }
+      toast.error(`${error.response.data.message}`, { autoClose: 3000 });
+    } finally {
+      setLoading(false);
     }
   };
   //signup_________________=>
@@ -102,13 +112,13 @@ export const UserProvider = ({ children }) => {
     <UserContext.Provider
       value={{
         user,
-        loginUserData,
+        setUser,
+        loading,
+        formUserData,
         changeLoginUserData,
         login,
         logOut,
         signup,
-        newUser,
-        changeSignupUserData,
       }}
     >
       {children}

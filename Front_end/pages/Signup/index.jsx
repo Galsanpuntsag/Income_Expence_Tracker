@@ -1,21 +1,20 @@
 import Link from "next/link";
 import React, { useContext, useState } from "react";
 import { UserContext } from "@/components/Context/UserPtovider";
+import Logo from "@/components/Logo";
+import { useRouter } from "next/router";
 
 const Signup = () => {
-  const { changeSignupUserData, signup } = useContext(UserContext);
+  const { formUserData, signup, loading, changeLoginUserData } =
+    useContext(UserContext);
+  const router = useRouter();
 
   return (
     <div>
       <div className="flex ">
         <div className="bg-slate-100 w-full h-screen flex justify-center items-center ">
           <div className="flex flex-col justify-center items-center gap-5">
-            <div className="">
-              <div className="flex gap-2">
-                <img src="Vector.png"></img>
-                <h className="text-5xl"> Geld</h>
-              </div>
-            </div>
+            <Logo />
             <div className="text-center">
               <h1 className="text-[24px]">Create Geld Account</h1>
               <h2 className="16px">
@@ -27,8 +26,9 @@ const Signup = () => {
                 type="text"
                 placeholder="Name"
                 name="name"
+                value={formUserData.name}
                 onChange={(e) => {
-                  changeSignupUserData(e.target.name, e.target.value);
+                  changeLoginUserData(e.target.name, e.target.value);
                 }}
                 className="input input-bordered input-success w-full max-w-xs"
               />
@@ -36,9 +36,9 @@ const Signup = () => {
                 type="text"
                 placeholder="Email"
                 name="email"
-                value={changeSignupUserData.name}
+                value={formUserData.email}
                 onChange={(e) => {
-                  changeSignupUserData(e.target.email, e.target.value);
+                  changeLoginUserData(e.target.name, e.target.value);
                 }}
                 className="input input-bordered input-success w-full max-w-xs"
               />
@@ -46,28 +46,42 @@ const Signup = () => {
                 type="password"
                 placeholder="Password"
                 name="password"
-                value={changeSignupUserData.name}
+                value={formUserData.password}
                 onChange={(e) => {
-                  changeSignupUserData(e.target.password, e.target.value);
+                  changeLoginUserData(e.target.name, e.target.value);
                 }}
                 className="input input-bordered input-success w-full max-w-xs"
               />
               <input
                 type="password"
-                placeholder="Re-password"
+                placeholder="rePassword"
+                name="rePassword"
+                value={formUserData.rePassword}
+                onChange={(e) => {
+                  changeLoginUserData(e.target.name, e.target.value);
+                }}
                 className="input input-bordered input-success w-full max-w-xs"
               />
             </div>
-            <div className="">
-              <button className="btn btn-accent w-full max-w-xs px-10">
-                <Link href={"../Login"}> Login</Link>
+            <div className="flex flex-col">
+              <button
+                onClick={signup}
+                disabled={loading}
+                className="btn btn-accent w-full max-w-xs px-10"
+              >
+                Sign up
               </button>
-            </div>
-            <div className="flex gap-4">
-              <h3>Don't have account?</h3>
-              <h4 className="text-blue-600">
-                <Link href={"../Login"}>Sign up</Link>
-              </h4>
+
+              <div className="flex gap-4">
+                <h3 className="text-[#334155]">Already have account?</h3>
+                <button
+                  onClick={() => router.push("/Login")}
+                  className="text-blue-400 hover:text-blue-600"
+                >
+                  {" "}
+                  Log in
+                </button>
+              </div>
             </div>
           </div>
         </div>
