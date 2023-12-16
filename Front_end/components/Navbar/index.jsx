@@ -16,7 +16,6 @@ const Navbar = () => {
             <Link href={"/"}>
               <h className="hover:text-primary">Dashboard</h>
             </Link>
-            x
             <Link href={"../Record"}>
               {" "}
               <h1 className="hover:text-primary">Records</h1>

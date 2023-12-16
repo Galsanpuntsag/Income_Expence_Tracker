@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { loading } from "react-loading";
+// import { loading } from "react-loading";
 
 export const UserContext = createContext();
 
@@ -21,7 +21,7 @@ export const UserProvider = ({ children }) => {
   // };
 
   const [loading, setLoading] = useState(false);
-  const [formUserData, setLoginUserData] = useState({
+  const [formUserData, setFormUserData] = useState({
     email: "",
     password: "",
     rePassword: "",
@@ -50,7 +50,7 @@ export const UserProvider = ({ children }) => {
     }
 
     try {
-      // setLoading(true);
+      setLoading(true);
 
       const { data } = await axios.post("http://localhost:8008/auth/login", {
         userEmail: formUserData.email,
@@ -58,10 +58,10 @@ export const UserProvider = ({ children }) => {
       });
       console.log("DDD++++++>", data.user);
       setUser(data.user);
-      router.push("/");
+      router.push("../Steps");
     } catch (error) {
       console.log("Error", error);
-      toast.error(`${error.response.data.message}`, { autoClose: 3000 });
+      toast.error(`${error.message}`, { autoClose: 3000 });
     } finally {
       setLoading(false);
     }
@@ -96,12 +96,11 @@ export const UserProvider = ({ children }) => {
         name: formUserData.name,
       });
       console.log("UserSignUPData=>", data);
-      setUser(data);
-      loading;
-      router.push("/Login");
+      setUser(data.user);
+      router.push("/Steps");
     } catch (error) {
       console.log("Error", error);
-      toast.error(`${error.response.data.message}`, { autoClose: 3000 });
+      toast.error(`${error.message}`, { autoClose: 3000 });
     } finally {
       setLoading(false);
     }
@@ -115,7 +114,7 @@ export const UserProvider = ({ children }) => {
         setUser,
         loading,
         formUserData,
-        changeLoginUserData,
+        setFormUserData,
         login,
         logOut,
         signup,

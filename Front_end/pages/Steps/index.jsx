@@ -1,14 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Currency from "@/components/Setups/Currency";
 import Balance from "@/components/Setups/Balance";
 import Success from "@/components/Setups/Success";
+import { StepContext } from "@/Context/StepContext";
 
 const Steps = () => {
-  const [step, setStep] = React.useState(1);
+  const { step } = useContext(StepContext);
+  console.log(step);
 
-  const nextStep = () => {
-    setStep(step + 1);
-  };
   return (
     <div className="  ">
       <div className="flex flex-col justify-center items-center w-screen h-screen bg-slate-100 gap-10">
@@ -28,9 +27,9 @@ const Steps = () => {
             </li>
             <li className={`step ${step === 3 && "step-primary"}`}>Finish</li>
           </ul>
-          {step === 1 && <Currency nextStep={nextStep} />}
-          {step === 2 && <Balance nextStep={nextStep} />}
-          {step === 3 && <Success nextStep={nextStep} />}
+          {step === 1 && <Currency />}
+          {step === 2 && <Balance />}
+          {step === 3 && <Success />}
         </div>
       </div>
     </div>

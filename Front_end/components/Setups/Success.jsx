@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "@mui/material/Button";
-import Link from "next/link";
+import { StepContext } from "@/Context/StepContext";
+// import { useRouter } from "next/router";
 
-const Success = ({ nextStep }) => {
+const Success = () => {
+  const { goToDashboard } = useContext(StepContext);
+
   return (
     <div className="flex flex-col justify-center items-center">
       <div className="form-control justify-center gap-5 mt-20">
@@ -25,9 +28,9 @@ const Success = ({ nextStep }) => {
           variant="contained"
           color="primary"
           className="bg-blue-700 mt-5"
-          onClick={nextStep}
+          onClick={goToDashboard}
         >
-          <Link href={"/"}>Go to Dashboard</Link>
+          Go to Dashboard
         </Button>
       </div>
     </div>

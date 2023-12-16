@@ -1,7 +1,9 @@
-import React from "react";
-import Link from "next/link";
+import React, { useContext } from "react";
+import { StepContext } from "@/Context/StepContext";
 
-const Balance = ({ nextStep }) => {
+const Balance = () => {
+  const { changeStepData, stepData, changeStep } = useContext(StepContext);
+
   return (
     <div>
       <div className=" flex flex-col justify-center items-center">
@@ -16,7 +18,12 @@ const Balance = ({ nextStep }) => {
             <input
               type="text"
               placeholder="Email"
+              name="balance"
               className="input input-bordered input-primary w-full max-w-2xl px-10"
+              value={stepData.balance}
+              onChange={(e) => {
+                changeStepData(e.target.name, e.target.value);
+              }}
             />
           </div>
           <div className="">
@@ -25,7 +32,7 @@ const Balance = ({ nextStep }) => {
           <div className="">
             <button
               className="btn bg-blue-700 w-full text-slate-100 max-w-xs"
-              onClick={nextStep}
+              onClick={changeStep}
             >
               Confirm
             </button>

@@ -1,7 +1,12 @@
-import React from "react";
-import Link from "next/link";
+import React, { useContext } from "react";
+import { StepContext } from "../../Context/StepContext";
 
-const Currency = ({ nextStep }) => {
+// import Logo from "../Logo";
+
+const Currency = () => {
+  const { changeStepData, stepData, changeStep } = useContext(StepContext);
+  console.log;
+
   return (
     <div className=" flex flex-col justify-center items-center">
       <div className="mt-10 gap-5 flex flex-col justify-center items-center">
@@ -12,13 +17,20 @@ const Currency = ({ nextStep }) => {
           <h>Select base currency</h>
         </div>
         <div className="">
-          <select className="select select-accent w-full max-w-xs">
+          <select
+            name="currency_type"
+            className="select select-accent w-full max-w-xs"
+            value={stepData.currency_type}
+            onChange={(e) => {
+              changeStepData(e.target.name, e.target.value);
+            }}
+          >
             <option disabled selected>
-              Could you choose your base currency?
+              Select currency?
             </option>
-            <option>MNT-Mongolian Tugrik</option>
-            <option>Dark mode</option>
-            <option>Light mode</option>
+            <option value="MNT">MNT - ongolian Tugrik</option>
+            <option value="USD">USD - US Dollar</option>
+            <option value="CNY">CNY - China Yuan</option>
           </select>
         </div>
         <div className="max-w-lg text-center">
@@ -30,7 +42,7 @@ const Currency = ({ nextStep }) => {
         <div className="">
           <button
             className="btn btn-success w-full max-w-xs"
-            onClick={nextStep}
+            onClick={changeStep}
           >
             Confirm
           </button>

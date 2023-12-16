@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { UserContext } from "@/components/Context/UserPtovider";
+import { UserContext } from "@/Context/UserProvider";
 
 const Login = () => {
-  const { changeLoginUserData, login } = useContext(UserContext);
+  const { setFormUserData, login } = useContext(UserContext);
 
   // const handleChange = () => {
   //   setTimeout(() => {
@@ -34,9 +34,9 @@ const Login = () => {
               type="text"
               name="email"
               placeholder="Email"
-              value={changeLoginUserData.email}
+              value={setFormUserData.email}
               onChange={(e) => {
-                changeLoginUserData(e.target.name, e.target.value);
+                setFormUserData(e.target.name, e.target.value);
               }}
               className="input input-bordered input-accent w-full max-w-xs"
             />
@@ -44,9 +44,9 @@ const Login = () => {
               type="password"
               name="password"
               placeholder="Password"
-              value={changeLoginUserData.password}
+              value={setFormUserData.password}
               onChange={(e) => {
-                changeLoginUserData(e.target.name, e.target.value);
+                setFormUserData(e.target.name, e.target.value);
               }}
               className="input input-bordered input-warning w-full max-w-xs"
             />
