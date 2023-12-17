@@ -22,6 +22,8 @@ const Balance = () => {
               className="input input-bordered input-primary w-full max-w-2xl px-10"
               value={stepData.balance}
               onChange={(e) => {
+                console.log("BALname:", e.target.name);
+                console.log("BALvalue:", e.target.value);
                 changeStepData(e.target.name, e.target.value);
               }}
             />

@@ -22,6 +22,8 @@ const Currency = () => {
             className="select select-accent w-full max-w-xs"
             value={stepData.currency_type}
             onChange={(e) => {
+              console.log("NAME:", e.target.name);
+              console.log("VALUE: ", e.target.value);
               changeStepData(e.target.name, e.target.value);
             }}
           >

@@ -18,7 +18,7 @@ export const StepProvider = ({ children }) => {
   });
 
   const changeStep = () => {
-    console.log("CTX", step);
+    console.log("STEP+1=change:", setStep);
     setStep((prevStep) => prevStep + 1);
   };
 
@@ -30,10 +30,10 @@ export const StepProvider = ({ children }) => {
   };
 
   const goToDashboard = async () => {
-    console.log("USERID: ", id);
+    // console.log("USERID: ", data.user.id);
     try {
       const { data } = await axios.put(
-        "http://localhost:8008/users" + user.id,
+        "http://localhost:8008/users/" + user.id,
         {
           currency_type: stepData.currency_type,
           balance: stepData.balance,

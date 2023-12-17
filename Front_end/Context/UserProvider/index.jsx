@@ -30,7 +30,7 @@ export const UserProvider = ({ children }) => {
   });
 
   const changeLoginUserData = (key, value) => {
-    setLoginUserData({ ...formUserData, [key]: value });
+    setFormUserData({ ...formUserData, [key]: value });
     // console.log("VAL", value);
     // console.log("VAL", key);
   };
@@ -56,7 +56,7 @@ export const UserProvider = ({ children }) => {
         userEmail: formUserData.email,
         userPassword: formUserData.password,
       });
-      console.log("DDD++++++>", data.user);
+      console.log("DDD++++++>", data);
       setUser(data.user);
       router.push("../Steps");
     } catch (error) {
@@ -114,7 +114,7 @@ export const UserProvider = ({ children }) => {
         setUser,
         loading,
         formUserData,
-        setFormUserData,
+        changeLoginUserData,
         login,
         logOut,
         signup,

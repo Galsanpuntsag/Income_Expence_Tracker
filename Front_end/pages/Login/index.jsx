@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { UserContext } from "@/Context/UserProvider";
 
 const Login = () => {
-  const { setFormUserData, login } = useContext(UserContext);
+  const { setFormUserData, login, formUserData } = useContext(UserContext);
 
   // const handleChange = () => {
   //   setTimeout(() => {
@@ -34,7 +34,7 @@ const Login = () => {
               type="text"
               name="email"
               placeholder="Email"
-              value={setFormUserData.email}
+              value={formUserData.email}
               onChange={(e) => {
                 setFormUserData(e.target.name, e.target.value);
               }}
@@ -44,7 +44,7 @@ const Login = () => {
               type="password"
               name="password"
               placeholder="Password"
-              value={setFormUserData.password}
+              value={formUserData.password}
               onChange={(e) => {
                 setFormUserData(e.target.name, e.target.value);
               }}

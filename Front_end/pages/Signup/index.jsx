@@ -5,7 +5,7 @@ import Logo from "@/components/Logo";
 import { useRouter } from "next/router";
 
 const Signup = () => {
-  const { formUserData, signup, loading, setFormUserData } =
+  const { formUserData, signup, loading, changeLoginUserData } =
     useContext(UserContext);
   const router = useRouter();
 
@@ -28,7 +28,7 @@ const Signup = () => {
                 name="name"
                 value={formUserData.name}
                 onChange={(e) => {
-                  setFormUserData(e.target.name, e.target.value);
+                  changeLoginUserData(e.target.name, e.target.value);
                 }}
                 className="input input-bordered input-success w-full max-w-xs"
               />
@@ -38,7 +38,7 @@ const Signup = () => {
                 name="email"
                 value={formUserData.email}
                 onChange={(e) => {
-                  setFormUserData(e.target.name, e.target.value);
+                  changeLoginUserData(e.target.name, e.target.value);
                 }}
                 className="input input-bordered input-success w-full max-w-xs"
               />
@@ -48,7 +48,7 @@ const Signup = () => {
                 name="password"
                 value={formUserData.password}
                 onChange={(e) => {
-                  setFormUserData(e.target.name, e.target.value);
+                  changeLoginUserData(e.target.name, e.target.value);
                 }}
                 className="input input-bordered input-success w-full max-w-xs"
               />
@@ -58,7 +58,7 @@ const Signup = () => {
                 name="rePassword"
                 value={formUserData.rePassword}
                 onChange={(e) => {
-                  setFormUserData(e.target.name, e.target.value);
+                  changeLoginUserData(e.target.name, e.target.value);
                 }}
                 className="input input-bordered input-success w-full max-w-xs"
               />
