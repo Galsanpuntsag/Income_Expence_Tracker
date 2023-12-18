@@ -42,14 +42,6 @@ const Expence = ({ showExpense, setShowExpence, setShowIncome }) => {
                 Choose
               </option>
               <option>Food&Drinks</option>
-              <option>Shopping</option>
-              <option>Housing</option>
-              <option>Transportation</option>
-              <option>Vechile</option>
-              <option>Life&Entertiament</option>
-              <option>Income</option>
-              <option>Communication, PC</option>
-              <option>Others</option>
             </select>
           </button>
         </div>

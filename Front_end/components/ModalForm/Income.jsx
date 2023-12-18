@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import PayNote from "./PayNote";
 
 const Income = ({ setShowExpence, setShowIncome, showIncome }) => {
-  const [open, setOpen] = useState("true");
-  const [closeForm, setCloseForm] = useState("");
   const handleChange = (e) => {};
   return (
     <div className={`flex ${showIncome}`}>
@@ -44,6 +42,7 @@ const Income = ({ setShowExpence, setShowIncome, showIncome }) => {
                 id="menu-button"
                 aria-expanded="true"
                 aria-haspopup="true"
+                // onChange={handleClose}
               >
                 Options
                 <svg
@@ -74,9 +73,7 @@ const Income = ({ setShowExpence, setShowIncome, showIncome }) => {
                   role="menuitem"
                   tabindex="-1"
                   id="menu-item-0"
-                  onClick={() =>
-                    document.getElementById("my_modal_3").showModal()
-                  }
+                  // onChange={open}
                 >
                   + Add Category
                 </button>

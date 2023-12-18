@@ -1,7 +1,7 @@
 const { sql } = require("../config/pgDb.js");
-
 const createTables = async () => {
   // console.log("CREATING TABLE...");
+
   // await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"; `;
   // console.log("Create Type...");
   // await sql`CREATE TYPE type AS ENUM('INC', 'EXP')`;

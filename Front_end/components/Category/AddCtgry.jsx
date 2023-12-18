@@ -21,7 +21,7 @@ import { FaBitcoin } from "react-icons/fa6";
 import { FaBicycle } from "react-icons/fa6";
 import { FaDribbble } from "react-icons/fa6";
 
-const AddCtgry = () => {
+const AddCtgry = ({ open, handleClose }) => {
   const icons = [
     <FaDribbble />,
     <FaBicycle />,
@@ -56,10 +56,13 @@ const AddCtgry = () => {
   };
 
   return (
-    <dialog id="my_modal_3" className="modal">
+    <dialog open={open} id="my_modal_3" className="modal">
       <div className="modal-box">
         <form method="dialog">
-          <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+          <button
+            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+            onClick={handleClose}
+          >
             ✕
           </button>
         </form>

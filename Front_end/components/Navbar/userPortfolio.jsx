@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
@@ -6,6 +6,7 @@ import { FaHome } from "react-icons/fa";
 import { FaCommentDots } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 import { GiProgression } from "react-icons/gi";
+import { UserContext } from "@/Context/UserProvider";
 
 const style = {
   position: "absolute",
@@ -57,6 +58,7 @@ function ChildModal() {
 }
 
 export default function NestedModal() {
+  const { user } = useContext(UserContext);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -67,7 +69,9 @@ export default function NestedModal() {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Profail</Button>
+      <Button className="text-slate-300 text-sm font-mono" onClick={handleOpen}>
+        Welcome! {user}
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}

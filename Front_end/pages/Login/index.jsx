@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { UserContext } from "@/Context/UserProvider";
 
 const Login = () => {
-  const { setFormUserData, login, formUserData } = useContext(UserContext);
+  const { changeLoginUserData, login, formUserData } = useContext(UserContext);
 
   // const handleChange = () => {
   //   setTimeout(() => {
@@ -36,7 +36,7 @@ const Login = () => {
               placeholder="Email"
               value={formUserData.email}
               onChange={(e) => {
-                setFormUserData(e.target.name, e.target.value);
+                changeLoginUserData(e.target.name, e.target.value);
               }}
               className="input input-bordered input-accent w-full max-w-xs"
             />
@@ -46,7 +46,7 @@ const Login = () => {
               placeholder="Password"
               value={formUserData.password}
               onChange={(e) => {
-                setFormUserData(e.target.name, e.target.value);
+                changeLoginUserData(e.target.name, e.target.value);
               }}
               className="input input-bordered input-warning w-full max-w-xs"
             />

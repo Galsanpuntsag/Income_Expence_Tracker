@@ -9,7 +9,7 @@ import AddCtgry from "./AddCtgry";
 import AmountRange from "./AmountRange";
 import Modal from "../ModalForm/Modal";
 
-const LeftCategory = () => {
+const LeftCategory = ({ open, handleClose, handleOpen }) => {
   return (
     <div className="">
       {" "}
@@ -20,9 +20,7 @@ const LeftCategory = () => {
               <h className="mt-5 text-2xl font-black">Records</h>
               <button
                 className="btn bg-primary  w-full lg:max-w-[283px] 2xl:max-w-xs"
-                onClick={() =>
-                  document.getElementById("my_modal_4").showModal()
-                }
+                onClick={handleOpen}
               >
                 + Add
               </button>
@@ -70,14 +68,13 @@ const LeftCategory = () => {
                 })}
               </div>
 
-              <button
-                className="btn mt-5"
-                onClick={() =>
-                  document.getElementById("my_modal_3").showModal()
-                }
-              >
+              <button className="btn mt-5" onClick={handleOpen}>
                 + Add Category
-                <AddCtgry />
+                <AddCtgry
+                  open={open}
+                  handleClose={handleClose}
+                  handleOpen={handleOpen}
+                />
               </button>
 
               <div className="">
@@ -86,7 +83,7 @@ const LeftCategory = () => {
             </div>
           </div>
         </div>
-        <Modal />
+        <Modal open={open} handleClose={handleClose} />
       </div>
     </div>
   );

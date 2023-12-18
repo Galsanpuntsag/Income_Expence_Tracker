@@ -58,7 +58,7 @@ export const UserProvider = ({ children }) => {
       });
       console.log("DDD++++++>", data);
       setUser(data.user);
-      router.push("../Steps");
+      router.push("/  ");
     } catch (error) {
       console.log("Error", error);
       toast.error(`${error.message}`, { autoClose: 3000 });
@@ -83,6 +83,9 @@ export const UserProvider = ({ children }) => {
     ) {
       alert("Талбарууд хоосон байж болохгүй!");
       return;
+    }
+    if (!formUserData.email.includes("@")) {
+      alert("Таний оруулсан имэйл буруу байна! ");
     }
     if (formUserData.password !== formUserData.rePassword) {
       alert("Таний Password-ууд зөрүүтэй байна");
