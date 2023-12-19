@@ -17,7 +17,7 @@ const PayNote = () => {
       <div className="flex-col mt-10">
         <h1 className="mb-5">Node</h1>
         <div className="card w-96 h-[200px] lg:h-[240px] bg-base-100 shadow-xl ">
-          <div className="card-body">
+          <div className="  card-body">
             <input
               type="text"
               placeholder="Type here"

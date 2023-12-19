@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PayNote from "./PayNote";
-import Income from "./Income";
+import SelectCtgry from "./SelectCtgry";
 
 const Expence = ({ showExpense, setShowExpence, setShowIncome }) => {
   const handleChange = (e) => {};
@@ -34,16 +34,9 @@ const Expence = ({ showExpense, setShowExpence, setShowIncome }) => {
             </button>
           </div>
         </div>
-        <div className="mt-3">
+        <div className=" mt-5">
           <h>Category</h>
-          <button className="btn btn-lg flex justify-start mt-3">
-            <select className="select select-bordered w-full ">
-              <option disabled selected>
-                Choose
-              </option>
-              <option>Food&Drinks</option>
-            </select>
-          </button>
+          <SelectCtgry />
         </div>
         <div className="flex gap-1 mt-3"> </div>
         <div className="flex gap-1 max-w-xs">
