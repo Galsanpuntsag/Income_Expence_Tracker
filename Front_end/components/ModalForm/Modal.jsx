@@ -23,6 +23,8 @@ const Modal = ({ open, handleClose }) => {
             showIncome={showIncome}
             showExpense={showExpense}
             setShowIncome={setShowIncome}
+            open={open}
+            handleClose={handleClose}
           />
           <Income
             setShowExpence={setShowExpence}

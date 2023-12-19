@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import AddCtgry from "../Category/AddCtgry";
 
 import { FaHome, FaGift, FaTaxi, FaWineGlassAlt } from "react-icons/fa";
 import { IoIosFitness } from "react-icons/io";
+import { FaPlusCircle } from "react-icons/fa";
 
 import { PiForkKnifeFill, PiTShirtFill } from "react-icons/pi";
 
-const SelectIcons = () => {
+const SelectIcons = ({ open, handleClose }) => {
+  // console.log("CLICK", onChange);
   const Icons = [
     {
       name: "Home",
@@ -43,24 +46,44 @@ const SelectIcons = () => {
       color: "text-green-500",
     },
   ];
+
   return (
-    <div>
-      <button className="w-full font-normal flex  items-center my-4  gap-3">
-        <div className="flex flex-col gap-3">
-          {Icons.map((el) => {
-            return (
-              <div className="flex gap-2">
-                <li></li>
-                <div className={`mt-1 rounded-full mr-1 ${el.color}`}>
-                  {el.icon}
-                </div>
-                <h>{el.name}</h>
-              </div>
-            );
-          })}
+    <details>
+      <summary className="border-slate-500 pl-3 rounded-md mt-2 border">
+        Choice your category
+      </summary>
+      <div className="flex gap-3 ml-1 mt-3 border-b-2 border-slate-500">
+        <div className="text-primary mt-1 ">
+          {" "}
+          <FaPlusCircle size={24} />
         </div>
-      </button>
-    </div>
+        <button
+          className="text-xl ml-1 mb-2"
+          onClick={() => {
+            return <AddCtgry />;
+          }}
+        >
+          Add category
+        </button>
+      </div>
+      <p className="flex">
+        <button className="w-full font-normal flex ml-3 items-center my-2 gap-3">
+          <div className="flex flex-col gap-3">
+            {Icons.map((el) => {
+              return (
+                <div className="flex gap-2">
+                  <li></li>
+                  <div className={`mt-1 rounded-full mr-1 ${el.color}`}>
+                    {el.icon}
+                  </div>
+                  <h>{el.name}</h>
+                </div>
+              );
+            })}
+          </div>
+        </button>
+      </p>
+    </details>
   );
 };
 

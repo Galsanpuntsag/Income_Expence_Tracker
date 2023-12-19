@@ -54,9 +54,8 @@ const AddCtgry = ({ open, handleClose }) => {
   const handleChange = (event) => {
     setDisplayIcon(event.target.value);
   };
-
   return (
-    <dialog open={open} id="my_modal_3" className="modal">
+    <dialog open={open} className="modal">
       <div className="modal-box">
         <form method="dialog">
           <button

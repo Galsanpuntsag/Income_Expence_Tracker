@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import PayNote from "./PayNote";
-import SelectCtgry from "./SelectCtgry";
+import SelectIcons from "./SelectIcons";
 
-const Expence = ({ showExpense, setShowExpence, setShowIncome }) => {
+const Expence = ({
+  showExpense,
+  setShowExpence,
+  setShowIncome,
+  open,
+  handleClose,
+}) => {
   const handleChange = (e) => {};
   const [change, setChange] = useState("");
 
@@ -10,7 +16,7 @@ const Expence = ({ showExpense, setShowExpence, setShowIncome }) => {
     <div className={`flex ${showExpense}`}>
       <div>
         <div className="flex flex-col">
-          <div className="bg-slate-50 2xl:mt-5 p-1 mt-3 max-w-xs lg:max-w-[280px] rounded-xl 2xl:max-w-sm">
+          <div className="bg-slate-50 2xl:mt-5 p-1 mt-7 max-w-xs lg:max-w-[280px] rounded-xl 2xl:max-w-sm">
             <button className="btn btn-sm btn-primary w-1/2">Expence</button>
             <button
               className="btn btn-sm w-1/2"
@@ -24,8 +30,8 @@ const Expence = ({ showExpense, setShowExpence, setShowIncome }) => {
             </button>
           </div>
           <div className="">
-            <button className="btn btn-lg flex justify-start max-w-xs mt-4">
-              <h className="ml-3 mt-1 text-sm">Amount</h>
+            <button className="btn btn-lg pb-2 flex justify-start max-w-sm mt-4">
+              <h className="text-md mt-1 font-semibold">Amount</h>
               <input
                 type="text"
                 placeholder="₮ 000.00"
@@ -35,14 +41,16 @@ const Expence = ({ showExpense, setShowExpence, setShowIncome }) => {
           </div>
         </div>
         <div className=" mt-5">
-          <h>Category</h>
-          <SelectCtgry />
+          <h className="text-lg font-semibold">Category</h>
+          <SelectIcons open={open} handleClose={handleClose} />
         </div>
         <div className="flex gap-1 mt-3"> </div>
         <div className="flex gap-1 max-w-xs">
           <div className="">
             <label className="label">
-              <span className="text-base label-text">date</span>
+              <span className="text-lg font-semibold text-base label-text">
+                Date
+              </span>
             </label>
             <input
               name="birthDate"
@@ -54,7 +62,9 @@ const Expence = ({ showExpense, setShowExpence, setShowIncome }) => {
           </div>
           <div className="">
             <label className="label">
-              <span className="text-base label-text">date</span>
+              <span className="text-lg font-semibold text-base label-text">
+                Date
+              </span>
             </label>
             <input
               name="birthDate"
@@ -65,8 +75,8 @@ const Expence = ({ showExpense, setShowExpence, setShowIncome }) => {
             />
           </div>
         </div>
-        <div className="mt-3">
-          <button className="btn bg-primary w-full lg:max-w-[283px] 2xl:max-w-xs ">
+        <div className="mt-5">
+          <button className="btn bg-primary w-full text-lg font-semibold lg:max-w-[283px] 2xl:max-w-xs ">
             Add
           </button>
         </div>
