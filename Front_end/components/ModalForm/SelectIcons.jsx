@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import AddCtgry from "../Category/AddCtgry";
 
 import { FaHome, FaGift, FaTaxi, FaWineGlassAlt } from "react-icons/fa";
@@ -7,7 +7,11 @@ import { FaPlusCircle } from "react-icons/fa";
 
 import { PiForkKnifeFill, PiTShirtFill } from "react-icons/pi";
 
-const SelectIcons = ({ open, handleClose }) => {
+import { TransactionContext } from "@/Context/TransactionProvider";
+
+const SelectIcons = ({ open, handleClose, handleOpen }) => {
+  const { addTransaction, TransactionData, changeTransactionData } =
+    useContext(TransactionContext);
   // console.log("CLICK", onChange);
   const Icons = [
     {
@@ -57,13 +61,9 @@ const SelectIcons = ({ open, handleClose }) => {
           {" "}
           <FaPlusCircle size={24} />
         </div>
-        <button
-          className="text-xl ml-1 mb-2"
-          onClick={() => {
-            return <AddCtgry />;
-          }}
-        >
+        <button className="text-xl ml-1 mb-2" onClick={handleOpen}>
           Add category
+          <AddCtgry />;
         </button>
       </div>
       <p className="flex">

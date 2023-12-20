@@ -3,7 +3,7 @@ import PayNote from "./PayNote";
 import Expence from "./Expence";
 import Income from "./Income";
 
-const Modal = ({ open, handleClose }) => {
+const Modal = ({ open, handleClose, handleOpen }) => {
   const [showExpense, setShowExpence] = useState("");
   const [showIncome, setShowIncome] = useState("hidden");
   return (
@@ -25,6 +25,7 @@ const Modal = ({ open, handleClose }) => {
             setShowIncome={setShowIncome}
             open={open}
             handleClose={handleClose}
+            handleOpen={handleOpen}
           />
           <Income
             setShowExpence={setShowExpence}

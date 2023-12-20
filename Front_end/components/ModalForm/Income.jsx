@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PayNote from "./PayNote";
 
-const Income = ({ setShowExpence, setShowIncome, showIncome }) => {
+const Income = ({ setShowExpence, setShowIncome, showIncome, open }) => {
   const handleChange = (e) => {};
   return (
     <div className={`flex ${showIncome}`}>
@@ -73,7 +73,6 @@ const Income = ({ setShowExpence, setShowIncome, showIncome }) => {
                   role="menuitem"
                   tabindex="-1"
                   id="menu-item-0"
-                  // onChange={open}
                 >
                   + Add Category
                 </button>

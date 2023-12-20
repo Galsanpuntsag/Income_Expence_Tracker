@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { TransactionContext } from "@/Context/TransactionProvider";
 
 const PayNote = () => {
+  const { transactionData, changeTransactionData } =
+    useContext(TransactionContext);
   return (
     <div className="lg:mt-3 lg:ml-10">
       <div className="flex flex-col">
@@ -21,7 +24,12 @@ const PayNote = () => {
             <input
               type="text"
               placeholder="Type here"
+              name="description"
+              value={transactionData.description}
               className="input w-full max-w-xs"
+              onChange={(e) => {
+                changeTransactionData(e.target.name, e.target.value);
+              }}
             />
           </div>
         </div>

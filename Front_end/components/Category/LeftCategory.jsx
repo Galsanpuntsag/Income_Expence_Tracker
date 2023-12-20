@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { TiEye } from "react-icons/ti";
 import { IoMdArrowDropright } from "react-icons/io";
@@ -11,8 +11,7 @@ import Modal from "../ModalForm/Modal";
 
 const LeftCategory = ({ open, handleClose, handleOpen }) => {
   return (
-    <div className="">
-      {" "}
+    <div open={open}>
       <div className="artboard phone-6 bg-white lg:mt-4 2xl:mt-8 rounded-xl 2xl:ml-40 flex flex-col justify-between ">
         <div className="mx-10">
           <div className="">
@@ -68,7 +67,7 @@ const LeftCategory = ({ open, handleClose, handleOpen }) => {
                 })}
               </div>
 
-              <button className="btn mt-5" onClick={handleOpen}>
+              <button className="btn mt-5">
                 + Add Category
                 <AddCtgry
                   open={open}

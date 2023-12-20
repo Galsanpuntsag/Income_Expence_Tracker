@@ -85,7 +85,7 @@ const AddCtgry = ({ open, handleClose }) => {
                     onChange={() => {
                       setDisplayIcon(icon);
                     }}
-                    className=" p-3 text-2xl inline flex ml-1 "
+                    className=" p-3 text-2xl flex ml-1 "
                   >
                     {icon}
                   </div>
