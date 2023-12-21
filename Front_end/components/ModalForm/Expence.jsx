@@ -11,8 +11,12 @@ const Expence = ({
   handleClose,
   handleOpen,
 }) => {
-  const { changeTransactionData, transactionData, addTransaction } =
-    useContext(TransactionContext);
+  const {
+    changeTransactionData,
+    transactionData,
+    addTransaction,
+    transactions,
+  } = useContext(TransactionContext);
   const handleChange = (e) => {};
   const [change, setChange] = useState("");
 
@@ -97,11 +101,7 @@ const Expence = ({
         </div>
       </div>
       <div className="">
-        <PayNote
-          transactionData={transactionData}
-          changeTransactionData={changeTransactionData}
-          addTransaction={addTransaction}
-        />
+        <PayNote />
       </div>
     </div>
   );
