@@ -74,7 +74,7 @@ const LeftCategory = ({ open, handleClose, handleOpen }) => {
                 })}
               </div>
 
-              <button className="btn mt-5" onClick={changeOpen}>
+              <button className="btn mt-5">
                 + Add Category
                 <AddCtgry addButtom={addButtom} changeClose={changeClose} />
               </button>

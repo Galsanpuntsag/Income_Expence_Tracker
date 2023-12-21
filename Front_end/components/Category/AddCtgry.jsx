@@ -55,7 +55,7 @@ const AddCtgry = ({ addButtom, changeClose }) => {
     setDisplayIcon(event.target.value);
   };
   return (
-    <dialog open={addButtom} className="modal">
+    <dialog className="modal">
       <div className="modal-box">
         <form method="dialog">
           <button

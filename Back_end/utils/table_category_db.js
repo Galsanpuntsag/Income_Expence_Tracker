@@ -1,6 +1,6 @@
 const { sql } = require("../config/pgDb.js");
 
-const createIconTables = async () => {
+const createCategory = async () => {
   console.log("CREATING TABLE...");
   await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"; `;
   await sql`DROP TABLE IF EXISTS users`;
@@ -16,4 +16,4 @@ const createIconTables = async () => {
     )`;
 };
 
-createIconTables();
+createCategory();
