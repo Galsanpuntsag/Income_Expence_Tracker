@@ -10,6 +10,13 @@ import AmountRange from "./AmountRange";
 import Modal from "../ModalForm/Modal";
 
 const LeftCategory = ({ open, handleClose, handleOpen }) => {
+  const [addButtom, setAddButtom] = useState(false);
+  const changeOpen = () => {
+    setAddButtom(true);
+  };
+  const changeClose = () => {
+    setAddButtom(false);
+  };
   return (
     <div open={open}>
       <div className="artboard phone-6 bg-white lg:mt-4 2xl:mt-8 rounded-xl 2xl:ml-40 flex flex-col justify-between ">
@@ -67,13 +74,9 @@ const LeftCategory = ({ open, handleClose, handleOpen }) => {
                 })}
               </div>
 
-              <button className="btn mt-5">
+              <button className="btn mt-5" onClick={changeOpen}>
                 + Add Category
-                <AddCtgry
-                  open={open}
-                  handleClose={handleClose}
-                  handleOpen={handleOpen}
-                />
+                <AddCtgry addButtom={addButtom} changeClose={changeClose} />
               </button>
 
               <div className="">

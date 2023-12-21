@@ -63,7 +63,7 @@ const SelectIcons = ({ open, handleClose, handleOpen }) => {
         </div>
         <button className="text-xl ml-1 mb-2" onClick={handleOpen}>
           Add category
-          <AddCtgry />;
+          <AddCtgry open={open} handleClose={handleClose} />
         </button>
       </div>
       <p className="flex">
