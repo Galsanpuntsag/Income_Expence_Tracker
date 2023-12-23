@@ -10,12 +10,10 @@ import AmountRange from "./AmountRange";
 import Modal from "../ModalForm/Modal";
 
 const LeftCategory = ({ open, handleClose, handleOpen }) => {
-  const [addButtom, setAddButtom] = useState(false);
-  const changeOpen = () => {
-    setAddButtom(true);
-  };
-  const changeClose = () => {
-    setAddButtom(false);
+  const [addCategory, setAddCategory] = useState(false);
+
+  const categoryClose = () => {
+    setAddCategory(false);
   };
   return (
     <div open={open}>
@@ -74,9 +72,13 @@ const LeftCategory = ({ open, handleClose, handleOpen }) => {
                 })}
               </div>
 
-              <button className="btn mt-5">
+              <button
+                className="btn mt-5"
+                onClick={() => {
+                  setAddCategory(true);
+                }}
+              >
                 + Add Category
-                <AddCtgry addButtom={addButtom} changeClose={changeClose} />
               </button>
 
               <div className="">
@@ -87,6 +89,9 @@ const LeftCategory = ({ open, handleClose, handleOpen }) => {
         </div>
         <Modal open={open} handleClose={handleClose} />
       </div>
+      {addCategory && (
+        <AddCtgry addCategory={addCategory} categoryClose={categoryClose} />
+      )}
     </div>
   );
 };

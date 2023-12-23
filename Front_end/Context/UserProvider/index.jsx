@@ -1,27 +1,16 @@
+import axios from "axios";
 import React, { createContext, useState } from "react";
 import { useRouter } from "next/router";
-import axios from "axios";
 import { toast } from "react-toastify";
-// import { loading } from "react-loading";
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const router = useRouter();
   const [user, setUser] = useState(null);
-  // const bigLoading = () => {
-  //   return (
-  //     <div className="">
-  //       <span className="loading loading-ring loading-xs"></span>
-  //       <span className="loading loading-ring loading-sm"></span>
-  //       <span className="loading loading-ring loading-md"></span>
-  //       <span className="loading loading-ring loading-lg"></span>
-  //     </div>
-  //   );
-  // };
-
   const [loading, setLoading] = useState(false);
   const [formUserData, setFormUserData] = useState({
+    name: "",
     email: "",
     password: "",
     rePassword: "",
@@ -56,9 +45,9 @@ export const UserProvider = ({ children }) => {
         userEmail: formUserData.email,
         userPassword: formUserData.password,
       });
-      console.log("DDD++++++>", data);
+      console.log("dataUSER", data.user);
       setUser(data.user);
-      router.push("/  ");
+      router.push("/");
     } catch (error) {
       console.log("Error", error);
       toast.error(`${error.message}`, { autoClose: 3000 });
@@ -98,7 +87,7 @@ export const UserProvider = ({ children }) => {
         password: formUserData.password,
         name: formUserData.name,
       });
-      console.log("UserSignUPData=>", data);
+      console.log("UserSignUPData=>", data.user);
       setUser(data.user);
       router.push("/Steps");
     } catch (error) {

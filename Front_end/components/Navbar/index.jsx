@@ -3,7 +3,7 @@ import { IoMdAdd } from "react-icons/io";
 import { FaArrowAltCircleUp } from "react-icons/fa";
 import { FaDotCircle } from "react-icons/fa";
 import Link from "next/link";
-import NestedModal from "./userPortfolio";
+import NestedModal from "./userModal";
 import LeftCategory from "../Category/LeftCategory";
 
 const Navbar = ({ handleOpen }) => {
@@ -16,7 +16,7 @@ const Navbar = ({ handleOpen }) => {
             <Link href={"/"}>
               <h className="hover:text-primary">Dashboard</h>
             </Link>
-            <Link href={"../Record"}>
+            <Link href={"/Record"}>
               <h1 className="hover:text-primary">Records</h1>
             </Link>
           </div>

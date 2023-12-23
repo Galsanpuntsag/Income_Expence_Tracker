@@ -1,6 +1,7 @@
-import React, { createContext, useContext, useState } from "react";
-import { useRouter } from "next/router";
 import axios from "axios";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { useRouter } from "next/router";
+
 import { toast } from "react-toastify";
 
 export const TransactionContext = createContext();
@@ -33,8 +34,11 @@ export const TransactionProvider = ({ children }) => {
         ...transactionData,
         user_id: "db7f3ac8-72f8-45dd-b8cc-b1a56876b545",
       });
+      console.log("dataTRANcome");
+      setReFetch(!reFetch);
       toast.success("Гүйлгээг амжилттай нэмлээ.");
     } catch (error) {
+      console.log("ERRtran", error);
       toast.error("Гүйлгээг нэмэхэд алдаа гарлаа.");
     }
   };
@@ -47,13 +51,19 @@ export const TransactionProvider = ({ children }) => {
       } = await axios.get(
         "http://localhost:8008/transactions/db7f3ac8-72f8-45dd-b8cc-b1a56876b545"
       );
-      console.log("TAR");
+      console.log("TARget");
       setTransactionData(transactions);
     } catch (error) {
       console.log("ERROR", error);
       toast.error("Гүйлгээг нэмэхэд алдаа гарлаа.");
     }
   };
+
+  useEffect(() => {
+    console.log("TTTT");
+    getTransactions();
+  }, [reFetch]);
+
   return (
     <TransactionContext.Provider
       value={{

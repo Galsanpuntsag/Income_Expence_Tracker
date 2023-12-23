@@ -3,6 +3,7 @@ const { sql } = require("../config/pgDb");
 const getAllCategory = async (req, res) => {
   try {
     const categories = await sql`SELECT * FROM categoryIcon`;
+    // console.log("CATEGORIES GET REQ", categories);
     res.status(201).json({ message: "success", categories });
   } catch (error) {
     console.log("ERRORLOgin:", error);

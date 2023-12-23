@@ -57,8 +57,8 @@ function ChildModal() {
   );
 }
 
-export default function NestedModal() {
-  const { user } = useContext(UserContext);
+export default function userModal() {
+  const { formUserData } = useContext(UserContext);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -69,9 +69,10 @@ export default function NestedModal() {
 
   return (
     <div>
-      <Button className="text-slate-300 text-sm font-mono" onClick={handleOpen}>
-        Welcome! {user}
-      </Button>
+      <button className="flex flex-col text-sm font-mono" onClick={handleOpen}>
+        Welcome!
+        <h className="font-seibold text-sm">{formUserData.name}</h>
+      </button>
       <Modal
         open={open}
         onClose={handleClose}

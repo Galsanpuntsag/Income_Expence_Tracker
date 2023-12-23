@@ -59,11 +59,6 @@ const login = async (req, res) => {
 module.exports = {
   signup,
   login,
-  categoryIcon,
-  transactions,
-  getTransaction,
-  putTransaction,
-  deleteTransaction,
 };
 
 //MVC

@@ -21,7 +21,7 @@ import { FaBitcoin } from "react-icons/fa6";
 import { FaBicycle } from "react-icons/fa6";
 import { FaDribbble } from "react-icons/fa6";
 
-const AddCtgry = ({ addButtom, changeClose }) => {
+const AddCtgry = ({ addCategory, categoryClose }) => {
   const icons = [
     <FaDribbble />,
     <FaBicycle />,
@@ -55,19 +55,19 @@ const AddCtgry = ({ addButtom, changeClose }) => {
     setDisplayIcon(event.target.value);
   };
   return (
-    <dialog className="modal">
+    <dialog open={addCategory} className="modal">
       <div className="modal-box">
         <form method="dialog">
           <button
             className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-            onClick={changeClose}
+            onClick={categoryClose}
           >
             ✕
           </button>
         </form>
-        <h3 className="flex border-b-2 border-slate-950 font-medium text-lg">
+        <h1 className="flex border-b-2 border-slate-950 font-medium text-lg">
           Add Category
-        </h3>
+        </h1>
         <div className="flex justify-between mt-5">
           <div className="dropdown w-30  ">
             <label
@@ -116,7 +116,9 @@ const AddCtgry = ({ addButtom, changeClose }) => {
             </select>
           </div>
         </div>
-        <button className="btn btn-success w-full mt-5">Add</button>
+        <button onClick={categoryClose} className="btn btn-success w-full mt-5">
+          Add
+        </button>
       </div>
     </dialog>
   );

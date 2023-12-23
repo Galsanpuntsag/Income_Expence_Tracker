@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 
 const { createContext, useState, useEffect, useContext } = require("react");
 
-export const StepContext = createContext("light");
+export const StepContext = createContext();
 
 export const StepProvider = ({ children }) => {
   const router = useRouter();
@@ -30,7 +30,7 @@ export const StepProvider = ({ children }) => {
   };
 
   const goToDashboard = async () => {
-    // console.log("USERID: ", data.user.id);
+    console.log("USERIDstep: ", user.id);
     try {
       const { data } = await axios.put(
         "http://localhost:8008/users/" + user.id,
@@ -39,7 +39,7 @@ export const StepProvider = ({ children }) => {
           balance: stepData.balance,
         }
       );
-      console.log("CurrencyData: ", data);
+      console.log("CurrencyData: ", data.user);
       setUser(data.user);
       router.push("/");
     } catch (error) {
