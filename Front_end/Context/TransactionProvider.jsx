@@ -30,9 +30,9 @@ export const TransactionProvider = ({ children }) => {
       return;
     }
     try {
-      const { data } = await axios.post("http://localhost:8008/transactions", {
+      const { data } = await axios.post("http://localhost:8008/transactions/", {
         ...transactionData,
-        user_id: "db7f3ac8-72f8-45dd-b8cc-b1a56876b545",
+        user_id: user.id,
       });
       console.log("dataTRANcome");
       setReFetch(!reFetch);
@@ -43,14 +43,13 @@ export const TransactionProvider = ({ children }) => {
     }
   };
 
-  const getTransactions = async () => {
-    console.log(WORKING);
+  const getAllTransactions = async () => {
+    console.log("WORKING");
+
     try {
       const {
         data: { transactions },
-      } = await axios.get(
-        "http://localhost:8008/transactions/db7f3ac8-72f8-45dd-b8cc-b1a56876b545"
-      );
+      } = await axios.get(`http://localhost:8008/transactions/` + user.id);
       console.log("TARget");
       setTransactionData(transactions);
     } catch (error) {
@@ -61,16 +60,20 @@ export const TransactionProvider = ({ children }) => {
 
   useEffect(() => {
     console.log("TTTT");
-    getTransactions();
+    getAllTransactions();
   }, [reFetch]);
 
   return (
     <TransactionContext.Provider
       value={{
+        transactions,
         transactionData,
         changeTransactionData,
         addTransaction,
         transactions,
+        getAllTransactions,
+        reFetch,
+        setReFetch,
       }}
     >
       {children}

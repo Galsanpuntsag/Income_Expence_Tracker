@@ -1,124 +1,18 @@
 export const array = [
-  {
-    name: "Food & Drinks",
-  },
-  {
-    name: "Shopping",
-  },
-  {
-    name: "Housing",
-  },
-  {
-    name: "Transportation",
-  },
-  {
-    name: "Life & Entertaiment",
-  },
-  {
-    name: "Communication & PC",
-  },
-  {
-    name: "Financial expencess",
-  },
-  {
-    name: "Investments",
-  },
-  {
-    name: "Income",
-  },
-  {
-    name: "Others",
-  },
+  { name: "Food & Drinks", id: 1 },
+  { name: "Shopping", id: 2 },
+  { name: "Housing", id: 3 },
+  { name: "Transportation", id: 4 },
+  { name: "Life & Entertainment", id: 5 },
+  { name: "Communication, PC", id: 6 },
+  { name: "Financial expenses", id: 7 },
+  { name: "Investments", id: 8 },
+  { name: "Income", id: 9 },
+  { name: "Others", id: 10 },
 ];
 
-export const types = [
-  {
-    name: "All",
-  },
-  {
-    name: "Income",
-  },
-  {
-    name: "Expence",
-  },
-];
-import { CiForkAndKnife } from "react-icons/ci";
-import { FaHouseChimney } from "react-icons/fa6";
-
-export const array2 = [
-  {
-    category: "Lending & Renting",
-    time: "14:00",
-    price: "-10000",
-    color: "blue-500",
-    textcolor: "text-green-500",
-    icon: <FaHouseChimney color="primary" />,
-  },
-  {
-    category: "Food & Drinks",
-    time: "20:00",
-    textcolor: "text-yellow-400",
-    price: "-20000",
-    color: "bg-green-500",
-    icon: <CiForkAndKnife color="white" />,
-  },
-  {
-    category: "Food & Drinks",
-    time: "20:00",
-    textcolor: "text-rose-700",
-    price: "-20000",
-    color: "bg-green-500",
-    icon: <CiForkAndKnife color="white" />,
-  },
-  {
-    category: "Food & Drinks",
-    time: "20:00",
-    textcolor: "text-rose-700",
-    price: "-20000",
-    color: " bg-green-500",
-    icon: <CiForkAndKnife color="white" />,
-  },
-];
-
-export const array3 = [
-  {
-    category: "Food & Drinks",
-    time: "20:00",
-    textcolor: "text-rose-500",
-    price: "-20000",
-    color: "bg-red-500",
-    icon: <CiForkAndKnife color="white" />,
-  },
-  {
-    category: "Food & Drinks",
-    time: "20:00",
-    textcolor: "text-rose-700",
-    price: "-20000",
-    color: "bg-red-500",
-    icon: <CiForkAndKnife color="white" />,
-  },
-  {
-    category: "Food & Drinks",
-    time: "20:00",
-    textcolor: "text-rose-700",
-    price: "-20000",
-    color: "bg-red-500",
-    icon: <CiForkAndKnife color="white" />,
-  },
-  {
-    category: "Food & Drinks",
-    time: "20:00",
-    price: "-20000",
-    color: "bg-red-500",
-    textcolor: "text-rose-500",
-    icon: <CiForkAndKnife color="white" />,
-  },
-  {
-    category: "Food & Drinks",
-    time: "20:00",
-    price: "-20000",
-    color: "bg-red-500",
-    textcolor: "text-rose-500",
-    icon: <CiForkAndKnife color="white" />,
-  },
+export const array1 = [
+  { name: "All", id: 1 },
+  { name: "Income", id: 2 },
+  { name: "Expense", id: 3 },
 ];

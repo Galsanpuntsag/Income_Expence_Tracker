@@ -1,15 +1,11 @@
-import React, { useContext, useState } from "react";
-import AddCtgry from "../Category/AddCtgry";
+import React, { useContext } from "react";
 import { getIcons } from "@/utils";
 import { FaPlusCircle } from "react-icons/fa";
+import { CategoryContext } from "@/Context/CategoryContext";
 
-const SelectIcons = ({
-  open,
-  handleClose,
-  handleOpen,
-  category,
-  changeTransactionData,
-}) => {
+const AddCategoryForm = ({ changeTransactionData }) => {
+  const { category } = useContext(CategoryContext);
+  console.log("CATecome", category);
   return (
     <details>
       <summary className="border-slate-500 pl-3 rounded-md mt-2 border">
@@ -17,13 +13,8 @@ const SelectIcons = ({
       </summary>
       <div className="flex gap-3 ml-1 mt-3 border-b-2 border-slate-500">
         <div className="text-primary mt-1 ">
-          {" "}
           <FaPlusCircle size={24} />
         </div>
-        {/* <button className="text-xl ml-1 mb-2">
-          Add category
-          <AddCtgry open={open} handleClose={handleClose} />
-        </button> */}
       </div>
       <div className="flex">
         {category.map((el) => (
@@ -44,4 +35,4 @@ const SelectIcons = ({
   );
 };
 
-export default SelectIcons;
+export default AddCategoryForm;

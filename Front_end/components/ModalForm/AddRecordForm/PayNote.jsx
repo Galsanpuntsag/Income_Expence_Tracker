@@ -7,15 +7,16 @@ const PayNote = () => {
   return (
     <div className="lg:mt-3 lg:ml-10">
       <div className="flex flex-col">
-        <h className="mt-3 text-lg font-semibold">Payee</h>
-        <select className="select select-bordered select-sm w-full max-w-xs mt-3">
-          <option disabled selected>
-            Write here
-          </option>
-          <option>Small Apple</option>
-          <option>Small Orange</option>
-          <option>Small Tomato</option>
-        </select>
+        <h className="mt-3 text-lg font-semibold">Name</h>
+        <input
+          type="text"
+          name="name"
+          placeholder="Name"
+          value={transactionData.name}
+          onChange={(e) => {
+            changeTransactionData(e.target.name, e.target.value);
+          }}
+        />
       </div>
       <div className="flex-col mt-10">
         <h1 className="mb-5 text-lg font-semibold">Node</h1>

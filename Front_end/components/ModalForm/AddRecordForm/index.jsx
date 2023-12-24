@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import PayNote from "./PayNote";
 import Expence from "./Expence";
 import Income from "./Income";
 
-const Modal = ({ open, handleClose, handleOpen }) => {
+const AddRecordForm = ({ open, handleClose, handleOpen }) => {
   const [showExpense, setShowExpence] = useState("");
   const [showIncome, setShowIncome] = useState("hidden");
   return (
@@ -38,4 +37,4 @@ const Modal = ({ open, handleClose, handleOpen }) => {
   );
 };
 
-export default Modal;
+export default AddRecordForm;

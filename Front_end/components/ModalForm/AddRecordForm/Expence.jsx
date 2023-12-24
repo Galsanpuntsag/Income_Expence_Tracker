@@ -1,8 +1,9 @@
-import axios from "axios";
 import React, { useState, useContext, useEffect } from "react";
-import PayNote from "./PayNote";
-import SelectIcons from "./SelectIcons";
+
 import { TransactionContext } from "@/Context/TransactionProvider";
+import { CategoryContext } from "@/Context/CategoryContext";
+import AddCategoryForm from "../AddCategoryForm";
+import PayNote from "./PayNote";
 
 const Expence = ({
   showExpense,
@@ -12,9 +13,9 @@ const Expence = ({
   handleClose,
   handleOpen,
 }) => {
-  const [category, setCategory] = useState([]);
   const { changeTransactionData, transactionData, addTransaction } =
     useContext(TransactionContext);
+  const { getCategories } = useContext(CategoryContext);
 
   const AddRecord = async () => {
     await addTransaction();
@@ -22,13 +23,6 @@ const Expence = ({
     handleClose();
   };
 
-  const getCategories = async () => {
-    const {
-      data: { categories },
-    } = await axios.get("http://localhost:8008/categories");
-    console.log("FINDcategories", categories);
-    setCategory(categories);
-  };
   useEffect(() => {
     getCategories();
   }, []);
@@ -82,12 +76,11 @@ const Expence = ({
         </div>
         <div className=" mt-5">
           <h className="text-lg font-semibold">Category</h>
-          <SelectIcons
+          <AddCategoryForm
             open={open}
             handleClose={handleClose}
             handleOpen={handleOpen}
             changeTransactionData={changeTransactionData}
-            category={category}
           />
         </div>
         <div className="flex gap-1 mt-3"> </div>
@@ -108,6 +101,9 @@ const Expence = ({
             />
           </div>
         </div>
+        <div className="">
+          <PayNote />
+        </div>
         <div className="mt-5">
           <button
             className="btn bg-primary w-full text-lg font-semibold lg:max-w-[283px] 2xl:max-w-xs "
@@ -116,9 +112,6 @@ const Expence = ({
             Add
           </button>
         </div>
-      </div>
-      <div className="">
-        <PayNote />
       </div>
     </div>
   );

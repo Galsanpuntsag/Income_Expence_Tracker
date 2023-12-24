@@ -2,7 +2,7 @@ const { sql } = require("../config/pgDb");
 
 const getAllTransaction = async (req, res) => {
   const { user_id } = req.params;
-  console.log("USERID: ", id);
+  console.log("USERID: ", user_id);
   try {
     const transactions =
       await sql`SELECT * FROM transaction tr INNER JOIN createIcon ci ON tr.category_id=ci.id WHERE tr.user_id=${user_id} ORDER BY created_at DESC`;
