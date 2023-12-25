@@ -3,9 +3,9 @@ import { getIcons } from "@/utils";
 import { FaPlusCircle } from "react-icons/fa";
 import { CategoryContext } from "@/Context/CategoryContext";
 
-const AddCategoryForm = ({ changeTransactionData }) => {
+const RecordIcons = ({ changeTransactionData }) => {
   const { category } = useContext(CategoryContext);
-  console.log("CATecome", category);
+  console.log("category", category);
   return (
     <details>
       <summary className="border-slate-500 pl-3 rounded-md mt-2 border">
@@ -35,4 +35,4 @@ const AddCategoryForm = ({ changeTransactionData }) => {
   );
 };
 
-export default AddCategoryForm;
+export default RecordIcons;

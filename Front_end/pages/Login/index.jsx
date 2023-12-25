@@ -6,14 +6,6 @@ import { UserContext } from "@/Context/UserProvider";
 const Login = () => {
   const { changeLoginUserData, login, formUserData } = useContext(UserContext);
 
-  // const handleChange = () => {
-  //   setTimeout(() => {
-  //     router.push("../Steps");
-  //   }, 4000);
-
-  //   router.push("./Louding");
-  // };
-
   const router = useRouter();
   return (
     <div className="flex ">

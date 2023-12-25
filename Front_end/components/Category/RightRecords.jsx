@@ -1,13 +1,12 @@
-import React from "react";
-
-import { FaHouseChimney } from "react-icons/fa6";
+import React, { useContext } from "react";
 
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
-import { array2 } from "@/components/Data";
-import { array3 } from "@/components/Data";
+import { TransactionContext } from "@/Context/TransactionProvider";
 
 const RightRecord = () => {
+  const { transactionList } = useContext(TransactionContext);
+
   return (
     <div className="flex flex-col justify-between w-full 2xl:mr-[200px] md:mx-10 bg-white mt-4 2xl:mt-8 rounded-xl">
       <div className="">
@@ -50,7 +49,17 @@ const RightRecord = () => {
             <div className="card w-full shadow-xl mt:5 2xl:mt-10 ">
               <div className="card-body">
                 <h1 className="font-semibold "> Today</h1>
-                {array2.map((el) => {
+                {transactionList.map((transaction, i) => {
+                  return (
+                    <div>
+                      <div> {transaction.id}</div>
+                      <div> {transaction.name}</div>
+                      <div> {transaction.amount}</div>
+                    </div>
+                  );
+                })}
+
+                {/* {array2.map((el) => {
                   return (
                     <div>
                       <div className="flex justify-between bg-slate-200 w-11/12 rounded-xl gap-10 my-3 ml-10 p-1">
@@ -78,37 +87,8 @@ const RightRecord = () => {
                       </div>
                     </div>
                   );
-                })}
+                })} */}
                 <h1 className="font-semibold "> Yesterday</h1>
-                {array3.map((el) => {
-                  return (
-                    <div>
-                      <div className="flex justify-between bg-slate-200 w-11/12 rounded-xl gap-10 my-3 ml-10 p-1">
-                        <div className="flex gap-5">
-                          <input
-                            type="checkbox"
-                            checked=""
-                            className="chechbox ml-3"
-                          />
-                          <div
-                            className={`w-10 h-10 rounded-full flex mt-1 justify-center items-center ${el.color}`}
-                          >
-                            {el.icon}
-                          </div>
-                          <div className="flex flex-col">
-                            <h className="">{el.category}</h>
-                            <div className="font-thin text-xs">{el.time}</div>
-                          </div>
-                        </div>
-                        <div
-                          className={`font-bold mr-5 flex items-center ${el.textcolor}`}
-                        >
-                          {el.price}₮
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
               </div>
             </div>
           </div>

@@ -4,9 +4,10 @@ const getAllTransaction = async (req, res) => {
   const { user_id } = req.params;
   console.log("USERID: ", user_id);
   try {
-    const transactions =
-      await sql`SELECT * FROM transaction tr INNER JOIN createIcon ci ON tr.category_id=ci.id WHERE tr.user_id=${user_id} ORDER BY created_at DESC`;
-    res.status(200).json({ message: "SUCCESS transaction JOIN", transactions });
+    const transactions = await sql`SELECT * FROM transaction`;
+    res
+      .status(200)
+      .json({ message: "SUCCESSful get transaction", transactions });
   } catch (error) {
     console.log("TransactionERRORjoin", error);
     res.status(500).json({ message: "FAILED" });
@@ -15,6 +16,7 @@ const getAllTransaction = async (req, res) => {
 
 const createTransaction = async (req, res) => {
   try {
+    console.log("TRANSACtion");
     const {
       user_id,
       category_id,
@@ -25,8 +27,21 @@ const createTransaction = async (req, res) => {
       updated_at,
     } = req.body;
 
-    await sql`INSERT INTO transaction(user_id,  category_id  transaction_name, amount, transaction_type, description, updated_at) VALUES(${user_id}, ${transaction_name}, ${amount}, ${transaction_type}, ${description}, ${category_id}, ${updated_at})`;
-    res.status(201).json({ message: "success create transaction" });
+    console.log(
+      user_id,
+      category_id,
+      transaction_name,
+      amount,
+      transaction_type,
+      description,
+      updated_at
+    );
+
+    const data =
+      await sql`INSERT INTO transaction(user_id,  category_id, name, amount, transaction_type, description, updated_at) VALUES(${user_id},  ${category_id}, ${transaction_name}, ${amount}, ${transaction_type}, ${description}, ${updated_at}) RETURNING *`;
+    res
+      .status(201)
+      .json({ message: "success create transaction", transaction: data[0] });
   } catch (error) {
     console.log("ERROR: ", error);
     res.status(500).json({ message: "failed here" });

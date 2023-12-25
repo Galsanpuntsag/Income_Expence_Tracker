@@ -4,7 +4,7 @@ import { IoMdArrowDropright } from "react-icons/io";
 import { array, array1 } from "@/components/Data/index.jsx";
 
 import AddCtgry from "./AddCtgry";
-import AddCategoryForm from "../ModalForm/AddCategoryForm";
+import AddCategoryForm from "../ModalForm/RecordIcons";
 import AddRecordForm from "../ModalForm/AddRecordForm";
 import AmountRange from "./AmountRange";
 
@@ -55,7 +55,7 @@ const LeftCategory = ({ open, handleClose, handleOpen }) => {
             <div className="mt-5 text-2xl font-bold flex flex-col justify-between">
               <div className="flex justify-around mb-5">
                 <h className="">Category</h>
-                <AddCategoryForm />
+
                 <button className="text-slate-200">Clear</button>
               </div>
             </div>

@@ -4,7 +4,8 @@ const createCategory = async (req, res) => {
   try {
     const { icon_name, description, category_img, category_color, user_id } =
       req.body;
-    await sql`INSERT INTO categoryIcon (iconName, description,  category_img, category_color, user_id) VALUES (${icon_name} , ${description}, ${category_img}, ${category_color}, ${user_id})`;
+    const data =
+      await sql`INSERT INTO categoryIcon (id, iconName, description,  category_img, category_color,) VALUES (${icon_name} , ${description}, ${category_img}, ${category_color}, ${user_id})`;
     res.status(201).json({ message: "Category added" });
     console.log("CREAETED NEW CATE");
   } catch (error) {

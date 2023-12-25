@@ -10,9 +10,10 @@ const PayNote = () => {
         <h className="mt-3 text-lg font-semibold">Name</h>
         <input
           type="text"
-          name="name"
+          name="transaction_name"
           placeholder="Name"
-          value={transactionData.name}
+          value={transactionData.transaction_name}
+          className="border rounded-lg pl-3"
           onChange={(e) => {
             changeTransactionData(e.target.name, e.target.value);
           }}
