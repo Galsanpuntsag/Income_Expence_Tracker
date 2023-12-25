@@ -20,7 +20,8 @@ export default function Home() {
 
   return (
     <main>
-      <Navbar handleOpen={handleOpen} />
+      <div>Hello</div>
+      {/* <Navbar handleOpen={handleOpen} />
       <div clasName="bg-slate-200 flex flex-col justify-center ">
         <Dashboard />
         <AddRecordForm
@@ -28,7 +29,7 @@ export default function Home() {
           handleOpen={handleOpen}
           handleClose={handleClose}
         />
-      </div>
+      </div> */}
     </main>
   );
 }

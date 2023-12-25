@@ -53,3 +53,5 @@ const CategoryProvider = ({ children }) => {
     </CategoryContext.Provider>
   );
 };
+
+export default CategoryProvider;
