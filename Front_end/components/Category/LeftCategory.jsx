@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { TiEye } from "react-icons/ti";
 import { IoMdArrowDropright } from "react-icons/io";
 import { array, array1 } from "@/components/Data/index.jsx";
 
 import AddCtgry from "./AddCtgry";
-import AddCategoryForm from "../ModalForm/RecordIcons";
 import AddRecordForm from "../ModalForm/AddRecordForm";
 import AmountRange from "./AmountRange";
+import { CategoryContext } from "@/Context/CategoryContext";
 
 const LeftCategory = ({ open, handleClose, handleOpen }) => {
-  const [addCategory, setAddCategory] = useState(false);
-
+  const { category } = useContext(CategoryContext);
+  const [openCategory, setOpenCategory] = useState(false);
+  const categoryOpen = () => {
+    setOpenCategory(true);
+  };
   const categoryClose = () => {
     setAddCategory(false);
   };
@@ -61,23 +64,18 @@ const LeftCategory = ({ open, handleClose, handleOpen }) => {
             </div>
             <div className="flex flex-col">
               <div className="flex flex-col justify-around gap-3">
-                {array.map((el) => {
+                {category.map((el) => {
                   return (
                     <div className="flex justify-between tex-2xl">
                       <TiEye />
-                      <h1 className="flex flexcol">{el.name}</h1>
+                      <h1 className="flex flexcol">{el.icon_name}</h1>
                       <IoMdArrowDropright />
                     </div>
                   );
                 })}
               </div>
 
-              <button
-                className="btn mt-5"
-                onClick={() => {
-                  setAddCategory(true);
-                }}
-              >
+              <button className="btn mt-5" onClick={categoryOpen}>
                 + Add Category
               </button>
 
@@ -88,10 +86,10 @@ const LeftCategory = ({ open, handleClose, handleOpen }) => {
           </div>
         </div>
         <AddRecordForm open={open} handleClose={handleClose} />
+        {openCategory && (
+          <AddCtgry openCategory={openCategory} categoryClose={categoryClose} />
+        )}
       </div>
-      {AddCtgry && (
-        <AddCtgry addCategory={addCategory} categoryClose={categoryClose} />
-      )}
     </div>
   );
 };

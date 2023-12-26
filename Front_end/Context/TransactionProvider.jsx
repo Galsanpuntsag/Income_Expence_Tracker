@@ -1,8 +1,6 @@
 import axios from "axios";
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import { UserContext } from "./UserProvider";
-
 import { toast } from "react-toastify";
 
 export const TransactionContext = createContext();

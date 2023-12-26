@@ -5,7 +5,7 @@ import { CategoryContext } from "@/Context/CategoryContext";
 
 const RecordIcons = ({ changeTransactionData }) => {
   const { category } = useContext(CategoryContext);
-  console.log("category", category);
+
   return (
     <details>
       <summary className="border-slate-500 pl-3 rounded-md mt-2 border">
@@ -23,7 +23,7 @@ const RecordIcons = ({ changeTransactionData }) => {
             onClick={(e) => {
               e.preventDefault();
               console.log(el.id);
-              changeTransactionData("category_id", el.id);
+              changeTransactionData("id", el.id);
             }}
           >
             {getIcons(el.iconName, el.iconColor)}
