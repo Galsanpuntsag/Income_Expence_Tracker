@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { UserProvider } from "@/Context/UserProvider";
 import { StepProvider } from "@/Context/StepContext";
 import { TransactionProvider } from "@/Context/TransactionProvider";
-import CategoryProvider, { CategoryContext } from "@/Context/CategoryContext";
+import CategoryProvider from "@/Context/CategoryContext";
 // import ReactLoading from "react-loading";
 
 export default function App({ Component, pageProps }) {

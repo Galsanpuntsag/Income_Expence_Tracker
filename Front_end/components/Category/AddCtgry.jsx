@@ -3,7 +3,7 @@ import { icons, colors } from "@/utils";
 import { IoIosArrowDown } from "react-icons/io";
 import { CategoryContext } from "@/Context/CategoryContext";
 
-const AddCtgry = ({ openCategory, categoryClose }) => {
+const AddCtgry = ({ openCategory, categoryClose, setOpenCategory }) => {
   const {
     handleIcon,
     handleColor,
@@ -12,7 +12,6 @@ const AddCtgry = ({ openCategory, categoryClose }) => {
     showIcon,
     setShowIcon,
     handleChange,
-    createCategory,
     category,
   } = useContext(CategoryContext);
 
@@ -42,25 +41,32 @@ const AddCtgry = ({ openCategory, categoryClose }) => {
               <div className="grid grid-cols-6 w-full gap-4 border-b-2 pb-2 cursor-pointer">
                 {icons.map((el) => {
                   return (
-                    <div
+                    <button
                       key={el.name}
                       className=""
-                      onClick={(setShowIcon(el.icon), handleIcon(el.name))}
+                      onClick={() => {
+                        setShowIcon(el.icon), handleIcon(el.name);
+                      }}
                     >
                       {el.icon}
-                    </div>
+                    </button>
                   );
                 })}
               </div>
+
               <ul>
                 <div className="flex">
                   {colors.map((color) => {
                     return (
-                      <div
+                      <button
                         key={color}
-                        onClick={() => handleColor(color)}
+                        onClick={() => {
+                          handleColor(color);
+                        }}
                         className={`w-7 h-7 rounded-full ${color}`}
-                      ></div>
+                      >
+                       
+                      </button>
                     );
                   })}
                 </div>

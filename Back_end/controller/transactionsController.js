@@ -15,6 +15,7 @@ const getAllTransaction = async (req, res) => {
 };
 
 const createTransaction = async (req, res) => {
+  console.log("REQ", req.body);
   try {
     console.log("TRANSACtion");
     const {
@@ -47,6 +48,14 @@ const createTransaction = async (req, res) => {
     res.status(500).json({ message: "failed here" });
   }
 };
+
+// const getAllIncome = async(req, res) => {
+//   try{
+//    const {user_id} = req.body
+
+//    const data =
+//   }
+// }
 
 module.exports = {
   createTransaction,

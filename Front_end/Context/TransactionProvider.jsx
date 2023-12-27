@@ -30,8 +30,8 @@ export const TransactionProvider = ({ children }) => {
       return;
     }
     try {
-      console.log(transactionData);
-      const { data } = await axios.post("http://localhost:8008/transactions/", {
+      console.log("transDta irle", transactionData);
+      const { data } = await axios.post("http://localhost:8008/transactions", {
         ...transactionData,
         user_id: user.id,
       });

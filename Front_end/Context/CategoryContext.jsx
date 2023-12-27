@@ -3,9 +3,7 @@ import React, { createContext, useState, useContext, useEffect } from "react";
 import { FaHome } from "react-icons/fa";
 import { toast } from "react-toastify";
 
-import { UserContext } from "./UserProvider";
-
-export const CategoryContext = createContext(null);
+export const CategoryContext = createContext();
 
 const CategoryProvider = ({ children }) => {
   const [category, setCategory] = useState([]);
@@ -35,7 +33,7 @@ const CategoryProvider = ({ children }) => {
   const createCategory = async () => {
     try {
       const { data } = await axios.post("http://localhost:8008/categories");
-
+      setRefresh(!refresh);
       toast.success("Record succesfully added");
       console.log("categoryDTirle", data);
     } catch (error) {
@@ -44,7 +42,7 @@ const CategoryProvider = ({ children }) => {
     }
   };
 
-  const getCategories = async () => {
+  const getAllCategories = async () => {
     const {
       data: { categories },
     } = await axios.get("http://localhost:8008/categories");
@@ -52,13 +50,12 @@ const CategoryProvider = ({ children }) => {
     setCategory(categories);
   };
   useEffect(() => {
-    getCategories();
+    getAllCategories();
   }, []);
 
   return (
     <CategoryContext.Provider
       value={{
-        getCategories,
         createCategory,
         handleIcon,
         handleColor,

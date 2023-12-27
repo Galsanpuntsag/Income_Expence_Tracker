@@ -15,7 +15,7 @@ const LeftCategory = ({ open, handleClose, handleOpen }) => {
     setOpenCategory(true);
   };
   const categoryClose = () => {
-    setAddCategory(false);
+    setOpenCategory(false);
   };
   return (
     <div open={open}>
@@ -75,7 +75,12 @@ const LeftCategory = ({ open, handleClose, handleOpen }) => {
                 })}
               </div>
 
-              <button className="btn mt-5" onClick={categoryOpen}>
+              <button
+                className="btn mt-5"
+                onClick={() => {
+                  setOpenCategory(true);
+                }}
+              >
                 + Add Category
               </button>
 
@@ -86,9 +91,7 @@ const LeftCategory = ({ open, handleClose, handleOpen }) => {
           </div>
         </div>
         <AddRecordForm open={open} handleClose={handleClose} />
-        {openCategory && (
-          <AddCtgry openCategory={openCategory} categoryClose={categoryClose} />
-        )}
+        <AddCtgry openCategory={openCategory} categoryClose={categoryClose} />
       </div>
     </div>
   );

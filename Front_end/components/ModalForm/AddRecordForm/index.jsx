@@ -1,39 +1,29 @@
 import React, { useState } from "react";
-import Expence from "./Expence";
-import Income from "./Income";
+import ExpIncSwitch from "./ExpIncSwitch";
+import PayNote from "./Paynote";
 
-const AddRecordForm = ({ open, handleClose, handleOpen }) => {
-  const [showExpense, setShowExpence] = useState("");
-  const [showIncome, setShowIncome] = useState("hidden");
+const AddRecordForm = ({ open, handleClose }) => {
   return (
-    <div>
-      <dialog open={open} className="modal">
-        <div className="modal-box max-w-3xl ">
-          <div className="flex justify-between border-b-2 border-slate-800">
-            <h className="font-bold text-2xl">Add Record </h>
-            <form method="dialog">
-              <button className="btn mb-1" onClick={handleClose}>
-                ✕
-              </button>
-            </form>
-          </div>
-          <Expence
-            setShowExpence={setShowExpence}
-            showIncome={showIncome}
-            showExpense={showExpense}
-            setShowIncome={setShowIncome}
-            open={open}
-            handleClose={handleClose}
-            handleOpen={handleOpen}
-          />
-          <Income
-            setShowExpence={setShowExpence}
-            showIncome={showIncome}
-            setShowIncome={setShowIncome}
-          />
+    <dialog open={open} className="modal">
+      <div className="modal-box max-w-3xl ">
+        <div className="flex justify-between border-b-2 border-slate-800">
+          <h className="font-bold text-2xl">Add Record </h>
+          <form method="dialog">
+            <button className="btn mb-1" onClick={handleClose}>
+              ✕
+            </button>
+          </form>
         </div>
-      </dialog>
-    </div>
+        <div className="flex">
+          <div className="flex-1">
+            <ExpIncSwitch handleClose={handleClose} />
+          </div>
+          <div className="flex-1">
+            <PayNote />
+          </div>
+        </div>
+      </div>
+    </dialog>
   );
 };
 
