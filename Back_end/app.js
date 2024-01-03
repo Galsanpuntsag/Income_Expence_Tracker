@@ -23,6 +23,10 @@ app.use("/users/", userRoutes);
 app.use("/transactions/", transactionsRoutes);
 app.use("/categories/", categoryRoutes);
 
+app.get("/", (req, res) => {
+  res.send("Welcome Income and Expense API.");
+});
+
 app.listen(PORT, () => {
   console.log(`run ${PORT} at the http.`);
 });
