@@ -57,6 +57,7 @@ export const TransactionProvider = ({ children }) => {
   };
 
   const [cashData, setCashData] = useState();
+  const [incData, setIncData] = useState();
 
   const getTotalExpInc = async () => {
     console.log("gettotalexpinc", getTotalExpInc);
@@ -67,10 +68,33 @@ export const TransactionProvider = ({ children }) => {
         "http://localhost:8008/transactions/total/" + user.id
       );
       setCashData(totalExp);
+      setIncData(totalInc);
       console.log("EXPincCome", totalExp);
+      console.log("INCdta", totalInc);
     } catch (error) {
       console.log("ERRexpinc", error);
     }
+    console.log("DDD", incData);
+  };
+
+  const [barChartData, setBarChartData] = useState(null);
+  const [doughnutChartData, setDoughnutData] = useState(null);
+
+  const getChartData = async () => {
+    try {
+      const {
+        data: { barChart, doughnutChart },
+      } = await axios.get(
+        "http://localhost:8008/transactions/chartdata/" + user.id
+      );
+
+      console.log("BArData", barChartData);
+      setBarChartData(barChart);
+      setDoughnutData(doughnutChart);
+    } catch (error) {
+      console.log("err", error);
+    }
+    console.log("BARrr", barChartData);
   };
 
   return (
@@ -85,6 +109,10 @@ export const TransactionProvider = ({ children }) => {
         getAllTransactions,
         cashData,
         getTotalExpInc,
+        incData,
+        getChartData,
+        barChartData,
+        doughnutChartData,
       }}
     >
       {children}

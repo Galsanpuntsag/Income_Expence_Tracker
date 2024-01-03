@@ -8,6 +8,7 @@ export const CategoryContext = createContext(null);
 export const CategoryProvider = ({ children }) => {
   const [category, setCategory] = useState([]);
   const [showIcon, setShowIcon] = useState(<FaHome size={30} />);
+  const [displayCate, setDisplayCate] = useState(<FaHome size={30} />);
   const [displayColor, setDisplayColor] = useState("bg-red-500");
   const [inputValue, setInputValue] = useState("");
   const [refresh, setRefresh] = useState(false);
@@ -64,6 +65,8 @@ export const CategoryProvider = ({ children }) => {
         handleChange,
         showIcon,
         setShowIcon,
+        displayCate,
+        setDisplayCate,
         categoryData,
         setCategoryData,
         category,

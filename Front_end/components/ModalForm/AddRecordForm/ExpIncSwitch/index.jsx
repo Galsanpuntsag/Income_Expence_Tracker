@@ -1,23 +1,19 @@
 import React, { useState, useContext, useEffect } from "react";
 import { TransactionContext } from "@/Context/TransactionProvider";
 import { CategoryContext } from "@/Context/CategoryContext";
-import RecordIcons from "../../RecordIcons";
 import { getIcons } from "@/utils";
 
 const ExpIncSwitch = ({ closeForm }) => {
   const { changeTransactionData, transactionData, addTransaction } =
     useContext(TransactionContext);
-    const [displayIcon, setDisplayIcon] = useState()
+  const { category, displayCate, setDisplayCate } = useContext(CategoryContext);
+  console.log("CATe", category);
 
   const AddRecord = async () => {
     await addTransaction();
     console.log("CLOSE");
     closeForm();
   };
-
-  // useEffect(() => {
-  //   getCategories();
-  // }, []);
 
   return (
     <div>
@@ -63,12 +59,27 @@ const ExpIncSwitch = ({ closeForm }) => {
         <h1 className="mt-4 mb-2 font-semibold">Category</h1>
         <details className="dropdown w-full">
           <summary className="m-1 flex items-center bg-[#F9FAFB] justify-between btn ">
-            <div className="flex items-center gap-2" On>
-            
+            <div className="flex items-center gap-2">
+              {/* {displayCate ? displayCate : el.category_img} */}
             </div>
           </summary>
           <ul className="shadow menu w-full dropdown-content z-[1] bg-base-100 rounded-box">
-            <RecordIcons changeTransactionData={changeTransactionData} />
+            <div>
+              {category.map((el) => (
+                <button
+                  key={el.id}
+                  className="w-full font-normal flex ml-3 items-center my-2 gap-3 hover:opacity-50"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    console.log("categoryEL.id", el.id);
+                    changeTransactionData("category_id", el.id);
+                  }}
+                >
+                  {getIcons(el.category_img, el.category_color)}
+                  {el.iconname}
+                </button>
+              ))}
+            </div>
           </ul>
         </details>
         <div className="flex">

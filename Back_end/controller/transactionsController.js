@@ -64,10 +64,80 @@ const getTotalExpInc = async (req, res) => {
   }
 };
 
+const getBarChartData = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    console.log("CharuserId", userId);
+    const barCharData = await sql`
+    SELECT
+        EXTRACT(YEAR FROM updated_at) AS year,
+        EXTRACT(MONTH FROM updated_at) AS month,
+        transaction_type,
+        SUM(amount) AS total_amount
+      FROM
+        transaction
+      GROUP BY
+        transaction_type, year, month;
+    `;
+    console.log("Bar", barCharData);
+  } catch (error) {
+    console.log("ERR", error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+const getChartData = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    //_________________________
+
+    const doughnutChart = await sql`
+    SELECT 
+      ct.iconname as category_name, 
+      SUM(amount) as total 
+    FROM transaction tr 
+    INNER JOIN 
+      categoryicon ct ON tr.category_id=ct.id
+    GROUP BY category_name;`;
+    //_________________________
+
+    const barChart = await sql`SELECT
+    EXTRACT(MONTH FROM updated_at) AS month,
+    TO_CHAR(updated_at, 'Month') AS month_name,
+    SUM(CASE WHEN transaction_type = 'INC' THEN amount ELSE 0 END) AS income,
+    SUM(CASE WHEN transaction_type = 'EXP' THEN amount ELSE 0 END) AS expence
+  FROM
+      transaction
+  GROUP BY
+      month, month_name
+  ORDER BY
+      month;`;
+    console.log("Barchar", barChart);
+    const labels = barChart.map((row) => row.month_name);
+    const incomeData = barChart.map((row) => row.income);
+    const expenceData = barChart.map((row) => row.expence);
+    console.log("ExpData", expenceData);
+
+    //doughnot data labels
+    const dlabels = doughnutChart.map((e) => e.category_name);
+    const data = doughnutChart.map((e) => e.total);
+
+    res.status(201).json({
+      message: "succes",
+      doughnutChart: { labels: dlabels, data },
+      barChart: { labels, incomeData, expenceData },
+    });
+  } catch (error) {
+    console.log("ERR", error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   createTransaction,
   getAllTransaction,
   getTotalExpInc,
+  getChartData,
   //   getTransaction,
   //   putTransaction,
   //   deleteTransaction,

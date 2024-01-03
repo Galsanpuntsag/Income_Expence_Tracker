@@ -1,10 +1,13 @@
+import React, { useContext } from "react";
 import { Doughnut } from "react-chartjs-2";
+import { TransactionContext } from "@/Context/TransactionProvider";
 
 const DoughnutChart = () => {
+  const { doughnutChartData } = useContext(TransactionContext);
   const data2 = {
     datasets: [
       {
-        data: [1000000, 5000000, 5000000, 5000000, 5000000],
+        data: doughnutChartData?.data,
 
         backgroundColor: [
           "#1C64F2",
@@ -22,7 +25,7 @@ const DoughnutChart = () => {
         ],
       },
     ],
-    labels: ["Bill", "Food ", "Shopping", "Insurance", "Clothing"],
+    labels: doughnutChartData?.labels,
   };
 
   const options2 = {
@@ -34,6 +37,7 @@ const DoughnutChart = () => {
         boxWidth: 15,
         padding: 15,
         display: false,
+        position: "right",
       },
     },
   };

@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
-import MyAxios from "@/utils/axios";
 import { TransactionContext } from "@/Context/TransactionProvider";
+import { getCurrencySymbol } from "@/utils";
+import { UserContext } from "@/Context/UserProvider";
 
 const IncomeCard = () => {
-  const { cashData } = useContext(TransactionContext);
-  console.log("DataCash", cashData);
+  const { user } = useContext(UserContext);
+  const { incData, transactionList } = useContext(TransactionContext);
+
+  // console.log("DataCash", user);
   // const [totals, setTotals] = useState({ totalIncome: 0, totalExpence: 0 });
   // console.log("Start");
   // const getTotalIncome = async () => {
@@ -32,14 +35,16 @@ const IncomeCard = () => {
               checked
             />
           </div>
-          <h className=" text-xl font-light">Your Income</h>
+          <h className=" text-xl font-semibold border-b-2 border-indigo-500 w-full mb-3">
+            Your Income
+          </h>
         </div>
-        <div className="border-b-2 border-indigo-500"></div>
         <div className="">
-          <h1 className="text-2xl font-extrabold mt-2 2xl:mt-5">
-            {cashData?.inc}
+          <h1 className="text-3xl font-extrabold mt-2 2xl:mt-5">
+            {incData}
+            {getCurrencySymbol(user?.currency_type)}
           </h1>
-          <h2 className="text-[13px] font-bold text-slate-400 2xl:mt-5">
+          <h2 className="text-lg font-bold text-slate-400 2xl:mt-5">
             Your income amount
           </h2>
           <div className="flex gap-5 2xl:mt-5">
