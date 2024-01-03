@@ -1,4 +1,4 @@
-import axios from "axios";
+import myAxios from "@/utils/axios";
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { UserContext } from "./UserProvider";
 import { toast } from "react-toastify";
@@ -30,7 +30,7 @@ export const TransactionProvider = ({ children }) => {
       return;
     }
     try {
-      const { data } = await axios.post("http://localhost:8008/transactions", {
+      const { data } = await myAxios.post("/transactions", {
         ...transactionData,
         user_id: user.id,
       });
@@ -47,7 +47,7 @@ export const TransactionProvider = ({ children }) => {
     try {
       const {
         data: { transactions },
-      } = await axios.get(`http://localhost:8008/transactions/` + user.id);
+      } = await myAxios.get("/transactions/" + user.id);
 
       setTransactionList(transactions);
     } catch (error) {
@@ -64,9 +64,7 @@ export const TransactionProvider = ({ children }) => {
     try {
       const {
         data: { totalExp, totalInc },
-      } = await axios.get(
-        "http://localhost:8008/transactions/total/" + user.id
-      );
+      } = await myAxios.get("/transactions/total/" + user.id);
       setCashData(totalExp);
       setIncData(totalInc);
       console.log("EXPincCome", totalExp);
@@ -84,9 +82,7 @@ export const TransactionProvider = ({ children }) => {
     try {
       const {
         data: { barChart, doughnutChart },
-      } = await axios.get(
-        "http://localhost:8008/transactions/chartdata/" + user.id
-      );
+      } = await myAxios.get("/transactions/chartdata/" + user.id);
 
       console.log("BArData", barChartData);
       setBarChartData(barChart);

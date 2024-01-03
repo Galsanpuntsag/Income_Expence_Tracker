@@ -1,4 +1,4 @@
-import axios from "axios";
+import myAxios from "@/utils/axios";
 import React, { createContext, useState, useEffect } from "react";
 import { FaHome } from "react-icons/fa";
 import { toast } from "react-toastify";
@@ -34,7 +34,7 @@ export const CategoryProvider = ({ children }) => {
 
   const createCategory = async () => {
     try {
-      const { data } = await axios.post("http://localhost:8008/categories", {
+      const { data } = await myAxios.post("/categories", {
         ...categoryData,
       });
       setRefresh(!refresh);
@@ -49,7 +49,7 @@ export const CategoryProvider = ({ children }) => {
   const getAllCategories = async () => {
     const {
       data: { categories },
-    } = await axios.get("http://localhost:8008/categories");
+    } = await myAxios.get("http://localhost:8008/categories");
     console.log("FINDcategories", categories);
     setCategory(categories);
   };
