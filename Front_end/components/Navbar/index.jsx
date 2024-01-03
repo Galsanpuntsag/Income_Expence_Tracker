@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-// import UserModal from "./UserModal";
+import UserModal from "./UserModal";
 import { usePathname } from "next/navigation";
 import { IoMdAdd } from "react-icons/io";
 import { UserContext } from "@/Context/UserProvider";
@@ -75,7 +75,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      {/* <AddRecordForm open={open} closeForm={closeForm} /> */}
+      <AddRecordForm open={open} closeForm={closeForm} />
     </div>
   );
 };
