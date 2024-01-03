@@ -1,10 +1,15 @@
+const { useState } = require("react");
 const { sql } = require("../config/pgDb");
 
 const getAllTransaction = async (req, res) => {
+  console.log(req.params);
   const { user_id } = req.params;
-  console.log("USERID: ", user_id);
+  console.log("USERIDtransac: ", user_id);
   try {
-    const transactions = await sql`SELECT * FROM transaction`;
+    console.log("getTrans");
+    const transactions =
+      await sql`SELECT tr.name, tr.id, tr.create_at, tr.amount, tr.transaction_type, ci.category_img, ci.category_color FROM transaction tr INNER JOIN categoryicon ci ON tr.category_id=ci.id WHERE tr.user_id=${user_id} ORDER BY create_at DESC`;
+    console.log("INNERmade", transactions);
     res
       .status(200)
       .json({ message: "SUCCESSful get transaction", transactions });
@@ -15,9 +20,7 @@ const getAllTransaction = async (req, res) => {
 };
 
 const createTransaction = async (req, res) => {
-  console.log("REQ", req.body);
   try {
-    console.log("TRANSACtion");
     const {
       user_id,
       category_id,
@@ -27,16 +30,6 @@ const createTransaction = async (req, res) => {
       description,
       updated_at,
     } = req.body;
-
-    console.log(
-      user_id,
-      category_id,
-      transaction_name,
-      amount,
-      transaction_type,
-      description,
-      updated_at
-    );
 
     const data =
       await sql`INSERT INTO transaction(user_id,  category_id, name, amount, transaction_type, description, updated_at) VALUES(${user_id},  ${category_id}, ${transaction_name}, ${amount}, ${transaction_type}, ${description}, ${updated_at}) RETURNING *`;
@@ -49,17 +42,32 @@ const createTransaction = async (req, res) => {
   }
 };
 
-// const getAllIncome = async(req, res) => {
-//   try{
-//    const {user_id} = req.body
-
-//    const data =
-//   }
-// }
+const getTotalExpInc = async (req, res) => {
+  const { user_id } = req.params;
+  console.log("FFFExpInc");
+  try {
+    const data =
+      await sql`SELECT transaction_type, SUM(amount) FROM transaction WHERE user_id=${user_id} GROUP BY transaction_type `;
+    console.log("EIdata", data);
+    const [inc] = data.filter((el) => el.transaction_type === "INC");
+    const [exp] = data.filter((el) => el.transaction_type === "EXP");
+    console.log("INC", inc);
+    console.log("EXP", exp);
+    res.status(201).json({
+      message: "successful",
+      totalInc: inc.sum,
+      totalExp: exp.sum,
+    });
+  } catch (error) {
+    console.log("EI", error);
+    res.status(500).json({ message: "Failed get income and expence" });
+  }
+};
 
 module.exports = {
   createTransaction,
   getAllTransaction,
+  getTotalExpInc,
   //   getTransaction,
   //   putTransaction,
   //   deleteTransaction,

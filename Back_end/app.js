@@ -1,9 +1,11 @@
 const express = require("express");
-const app = express();
 require("dotenv").config();
+
 const PORT = process.env.PORT;
 const path = require("path");
 const cors = require("cors");
+
+const app = express();
 
 const authRoutes = require("./routes/authRoutes");
 const imgRoutes = require("./routes/imgRoutes");

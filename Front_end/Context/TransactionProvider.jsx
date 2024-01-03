@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import { UserContext } from "./UserProvider";
 import { toast } from "react-toastify";
 
@@ -30,13 +30,12 @@ export const TransactionProvider = ({ children }) => {
       return;
     }
     try {
-      console.log("transDta irle", transactionData);
       const { data } = await axios.post("http://localhost:8008/transactions", {
         ...transactionData,
         user_id: user.id,
       });
       console.log("dataTRANcome", data);
-      // setReFetch(!reFetch);
+      setReFetch(!reFetch);
       toast.success("Гүйлгээг амжилттай нэмлээ.");
     } catch (error) {
       console.log("ERRtran", error);
@@ -46,11 +45,10 @@ export const TransactionProvider = ({ children }) => {
 
   const getAllTransactions = async () => {
     try {
-      console.log("TARget", user.id);
       const {
         data: { transactions },
       } = await axios.get(`http://localhost:8008/transactions/` + user.id);
-      console.log("RRR", transactions);
+
       setTransactionList(transactions);
     } catch (error) {
       console.log("ERROR", error);
@@ -58,10 +56,22 @@ export const TransactionProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    console.log("TTTT");
-    getAllTransactions();
-  }, [reFetch]);
+  const [cashData, setCashData] = useState();
+
+  const getTotalExpInc = async () => {
+    console.log("gettotalexpinc", getTotalExpInc);
+    try {
+      const {
+        data: { totalExp, totalInc },
+      } = await axios.get(
+        "http://localhost:8008/transactions/total/" + user.id
+      );
+      setCashData(totalExp);
+      console.log("EXPincCome", totalExp);
+    } catch (error) {
+      console.log("ERRexpinc", error);
+    }
+  };
 
   return (
     <TransactionContext.Provider
@@ -72,6 +82,9 @@ export const TransactionProvider = ({ children }) => {
         addTransaction,
         reFetch,
         setReFetch,
+        getAllTransactions,
+        cashData,
+        getTotalExpInc,
       }}
     >
       {children}

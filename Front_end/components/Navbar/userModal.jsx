@@ -6,7 +6,6 @@ import { FaHome } from "react-icons/fa";
 import { FaCommentDots } from "react-icons/fa";
 import { FaPencilAlt } from "react-icons/fa";
 import { GiProgression } from "react-icons/gi";
-import { UserContext } from "@/Context/UserProvider";
 
 const style = {
   position: "absolute",
@@ -57,8 +56,7 @@ function ChildModal() {
   );
 }
 
-export default function userModal() {
-  const { formUserData } = useContext(UserContext);
+export default function userModal({ user }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -71,7 +69,7 @@ export default function userModal() {
     <div>
       <button className="flex flex-col text-sm font-mono" onClick={handleOpen}>
         Welcome!
-        <h className="font-seibold text-sm">{formUserData.name}</h>
+        <h className="font-seibold text-sm">{user.name}</h>
       </button>
       <Modal
         open={open}

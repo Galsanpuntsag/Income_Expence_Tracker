@@ -1,22 +1,7 @@
-import React, { useState, useEffect } from "react";
-import MyAxios from "@/utils/axios";
+import React, { useContext } from "react";
+import { TransactionProvider } from "@/Context/TransactionProvider";
 
-const CardSecond = () => {
-  const [totals, setTotals] = useState({ totalIncome: 0, totalExpence: 0 });
-  console.log("Start");
-  const getTotalIncome = async () => {
-    const {
-      data: { totalIncome },
-    } = await MyAxios.get("/transactions/totalIncome");
-    setTotals({ ...totals, totalIncome });
-    console.log("END");
-  };
-
-  useEffect(() => {
-    console.log("effect_work");
-    getTotalIncome();
-  }, []);
-
+const ExpenceCard = () => {
   return (
     <div className=" lg:w-[350px] rounded-xl bg-slate-50 lg:p-5 2xl:w-[550px] 2xl:h-[280px]">
       <div className="flex flex-col ">
@@ -25,21 +10,21 @@ const CardSecond = () => {
             <input
               type="radio"
               name="radio-5"
-              className="radio radio-success w-5 h-5"
+              className="radio radio-primary w-5 h-5"
               checked
             />
           </div>
-          <h className=" text-xl font-light">Your Income</h>
+          <h className=" text-xl font-light">Total Expence</h>
         </div>
         <div className="border-b-2 border-indigo-500"></div>
         <div className="">
-          <h1 className="text-2xl font-extrabold mt-2 2xl:mt-5">1 200 000₮</h1>
+          <h1 className="text-2xl font-extrabold mt-2 2xl:mt-5"></h1>
           <h2 className="text-[13px] font-bold text-slate-400 2xl:mt-5">
             Your income amount
           </h2>
           <div className="flex gap-5 2xl:mt-5">
             <div className="w-5 mt-3 lg:w-7">
-              <img src="ArrowUp.png"></img>
+              <img src="ArrowDown.png"></img>
             </div>
             <h3 className=" mt-4 font-medium text:xl 2xl:mt-3">
               {" "}
@@ -52,4 +37,4 @@ const CardSecond = () => {
   );
 };
 
-export default CardSecond;
+export default ExpenceCard;

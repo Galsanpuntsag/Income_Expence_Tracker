@@ -2,10 +2,10 @@ const { sql } = require("../config/pgDb");
 
 const createCategory = async (req, res) => {
   try {
-    const { icon_name, description, category_img, category_color } = req.body;
-    console.log(icon_name, description, category_img, category_color);
+    const { iconname, description, category_img, category_color } = req.body;
+    console.log(iconname, description, category_img, category_color);
 
-    await sql`INSERT INTO categoryIcon (iconName, description,  category_img, category_color) VALUES(${icon_name}, ${description}, ${category_img}, ${category_color})`;
+    await sql`INSERT INTO categoryicon (iconname, description,  category_img, category_color) VALUES(${iconname}, ${description}, ${category_img}, ${category_color})`;
     res.status(201).json({ message: "Category added" });
     console.log("CREAETED NEW CATE");
   } catch (error) {

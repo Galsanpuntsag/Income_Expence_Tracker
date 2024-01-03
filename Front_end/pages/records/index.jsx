@@ -1,21 +1,28 @@
-import React, { useState } from "react";
-import Records from "@/components/Category";
+import React, { useContext, useEffect, useState } from "react";
+import Records from "@/components/Records";
 import Navbar from "@/components/Navbar";
+import AddRecordForm from "@/components/ModalForm/AddRecordForm";
+import { TransactionContext } from "@/Context/TransactionProvider";
+import { CategoryContext } from "@/Context/CategoryContext";
 
 const Record = () => {
-  const [open, setOpen] = useState(false);
+  const { getAllTransactions, reFetch } = useContext(TransactionContext);
+  const { getAllCategories, refresh } = useContext(CategoryContext);
 
-  const handleClose = () => {
-    setOpen(false);
-  };
-  const handleOpen = () => {
-    setOpen(true);
-  };
+  useEffect(() => {
+    console.log("TransacEffect");
+    getAllTransactions();
+  }, [reFetch]);
+
+  useEffect(() => {
+    console.log("CateEffect");
+    getAllCategories();
+  }, [refresh]);
 
   return (
     <div className="flex flex-col">
-      <Navbar handleOpen={handleOpen} />
-      <Records open={open} handleClose={handleClose} handleOpen={handleOpen} />
+      <Navbar />
+      <Records />
     </div>
   );
 };

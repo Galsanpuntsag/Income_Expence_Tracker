@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { getIcons } from "@/utils";
 import { CategoryContext } from "@/Context/CategoryContext";
+import { FaCalendar } from "react-icons/fa";
 
 const RecordIcons = ({ changeTransactionData }) => {
   const { category } = useContext(CategoryContext);
@@ -17,7 +18,7 @@ const RecordIcons = ({ changeTransactionData }) => {
             changeTransactionData("category_id", el.id);
           }}
         >
-          {getIcons(el.iconname, el.category_color)}
+          {getIcons(el.category_img, el.category_color)}
           {el.iconname}
         </button>
       ))}

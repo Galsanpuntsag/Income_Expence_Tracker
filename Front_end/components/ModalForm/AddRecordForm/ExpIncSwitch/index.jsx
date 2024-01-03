@@ -4,14 +4,15 @@ import { CategoryContext } from "@/Context/CategoryContext";
 import RecordIcons from "../../RecordIcons";
 import { getIcons } from "@/utils";
 
-const ExpIncSwitch = ({ handleClose }) => {
+const ExpIncSwitch = ({ closeForm }) => {
   const { changeTransactionData, transactionData, addTransaction } =
     useContext(TransactionContext);
+    const [displayIcon, setDisplayIcon] = useState()
 
   const AddRecord = async () => {
     await addTransaction();
     console.log("CLOSE");
-    handleClose();
+    closeForm();
   };
 
   // useEffect(() => {
@@ -62,9 +63,8 @@ const ExpIncSwitch = ({ handleClose }) => {
         <h1 className="mt-4 mb-2 font-semibold">Category</h1>
         <details className="dropdown w-full">
           <summary className="m-1 flex items-center bg-[#F9FAFB] justify-between btn ">
-            <div className="flex items-center gap-2">
-              {getIcons("home", "green")}
-              {"HOME"}
+            <div className="flex items-center gap-2" On>
+            
             </div>
           </summary>
           <ul className="shadow menu w-full dropdown-content z-[1] bg-base-100 rounded-box">

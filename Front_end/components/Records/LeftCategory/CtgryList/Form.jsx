@@ -3,7 +3,7 @@ import { icons, colors } from "@/utils";
 import { IoIosArrowDown } from "react-icons/io";
 import { CategoryContext } from "@/Context/CategoryContext";
 
-const AddCtgry = ({ openCategory, categoryClose, setOpenCategory }) => {
+const Form = ({ openCategory, categoryClose }) => {
   const {
     handleIcon,
     handleColor,
@@ -12,7 +12,9 @@ const AddCtgry = ({ openCategory, categoryClose, setOpenCategory }) => {
     showIcon,
     setShowIcon,
     handleChange,
-    category,
+    categoryData,
+    createCategory,
+    setDisplayColor,
   } = useContext(CategoryContext);
 
   return (
@@ -29,53 +31,52 @@ const AddCtgry = ({ openCategory, categoryClose, setOpenCategory }) => {
         <h1 className="flex border-b-2 border-slate-950 font-medium text-lg">
           Add Category
         </h1>
-        <div className="flex mt-5">
-          <details className="dropdown flex">
-            <summary className="flex">
-              <div className="flex items-center gap-7 border rounded-md border-slate-200 p-1 py-2">
+        <div className="flex mt-5 justify-center">
+          <details className="dropdown ">
+            <summary className="m-1 btn">
+              <div className="flex items-center gap-7">
                 <span> {showIcon ? showIcon : icons[0].icon} </span>
                 <IoIosArrowDown />
               </div>
             </summary>
-            <ul className="shadow p-2 menu dropdown-content z-[1] bg-base-100 rounded-box w-96">
-              <div className="grid grid-cols-6 w-full gap-4 border-b-2 pb-2 cursor-pointer">
-                {icons.map((el) => {
+            <div
+              tabIndex={0}
+              className="dropdown-content menu p-2 shadow-3xl bg-base-100 rounded-box w-96 justify-center z-50 flex-row"
+            >
+              {icons.map((icon) => {
+                return (
+                  <div
+                    key={icon.name}
+                    onClick={() => {
+                      setShowIcon(icon.icon);
+                      handleIcon(icon.name);
+                      console.log("CATEIcon", icon.name);
+                    }}
+                    className="p-3 text-3xl cursor-pointer inline hover:opacity-50 "
+                  >
+                    {icon.icon}
+                  </div>
+                );
+              })}
+              <div className="p-3 flex gap-3 border-t-[1px] w-full">
+                {colors.map((color) => {
                   return (
-                    <button
-                      key={el.name}
-                      className=""
+                    <div
+                      key={color}
                       onClick={() => {
-                        setShowIcon(el.icon), handleIcon(el.name);
+                        handleColor(color);
+                        console.log("handleColor", color);
                       }}
-                    >
-                      {el.icon}
-                    </button>
+                      className={`w-8 h-8 rounded-full ${color} hover:opacity-50`}
+                    ></div>
                   );
                 })}
               </div>
-
-              <ul>
-                <div className="flex">
-                  {colors.map((color) => {
-                    return (
-                      <button
-                        key={color}
-                        onClick={() => {
-                          handleColor(color);
-                        }}
-                        className={`w-7 h-7 rounded-full ${color}`}
-                      >
-                       
-                      </button>
-                    );
-                  })}
-                </div>
-              </ul>
-            </ul>
+            </div>
           </details>
           <div className="py-3 px-3 ml-4 bg-base-200 rounded-lg hover:border-purple-500 hover:border-2 w-full ">
             <input
-              name="name"
+              name="iconname"
               type="text"
               value={inputValue}
               placeholder="Name"
@@ -89,8 +90,9 @@ const AddCtgry = ({ openCategory, categoryClose, setOpenCategory }) => {
             createCategory();
             setInputValue("");
             categoryClose();
+            console.log("DDDDDD", categoryData);
           }}
-          className="btn btn-success w-full mt-5"
+          className="btn btn-success w-full mt-5  "
         >
           Add
         </button>
@@ -99,4 +101,4 @@ const AddCtgry = ({ openCategory, categoryClose, setOpenCategory }) => {
   );
 };
 
-export default AddCtgry;
+export default Form;

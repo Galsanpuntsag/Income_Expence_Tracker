@@ -1,12 +1,13 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import UserModal from "./UserModal";
 import { usePathname } from "next/navigation";
 import { IoMdAdd } from "react-icons/io";
 import { UserContext } from "@/Context/UserProvider";
+import AddRecordForm from "../ModalForm/AddRecordForm";
 
-const Navbar = ({ handleOpen }) => {
+const Navbar = () => {
   const navigations = [
     {
       name: "Dashboard",
@@ -27,8 +28,14 @@ const Navbar = ({ handleOpen }) => {
     return null;
   }
 
+  const [open, setOpen] = useState(false);
+
+  const closeForm = () => {
+    setOpen(false);
+  };
+
   return (
-    <div className="">
+    <div>
       <div className="flex justify-between bg-slate-50">
         <div className="flex ml-20 p-2">
           <img src="Vector.png"></img>
@@ -51,7 +58,9 @@ const Navbar = ({ handleOpen }) => {
         <div className="flex gap-5 items-center mr-20">
           <button
             className="btn btn-active btn-primary font-mono text-sm"
-            onClick={handleOpen}
+            onClick={() => {
+              setOpen(true);
+            }}
           >
             <IoMdAdd />
             Add Record
@@ -62,10 +71,11 @@ const Navbar = ({ handleOpen }) => {
                 <img src="https://media.istockphoto.com/id/845452938/photo/businessman-standing-with-umbrella-under-the-money-rain.jpg?s=1024x1024&w=is&k=20&c=jx2IJwWuk41smIjvBuLSJYFAwgEEdptqVITXyGsxUzA=" />
               </div>
             </div>
-            <UserModal />
+            <UserModal user={user} />
           </div>
         </div>
       </div>
+      <AddRecordForm open={open} closeForm={closeForm} />
     </div>
   );
 };

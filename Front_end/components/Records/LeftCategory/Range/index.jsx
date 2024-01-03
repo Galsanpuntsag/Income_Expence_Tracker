@@ -1,7 +1,7 @@
 import React from "react";
 import RangeSlider from "./RangeSlider";
 
-const AmountRange = () => {
+const Range = () => {
   return (
     <div className="card bg-white mt5">
       <div className="flex  flex-col gap-5 mt-5">
@@ -25,4 +25,4 @@ const AmountRange = () => {
   );
 };
 
-export default AmountRange;
+export default Range;
