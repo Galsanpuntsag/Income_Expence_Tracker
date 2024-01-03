@@ -56,7 +56,7 @@ function ChildModal() {
   );
 }
 
-export default function userModal({ user }) {
+export default function UserModal({ user }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
