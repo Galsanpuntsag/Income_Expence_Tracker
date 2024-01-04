@@ -72,7 +72,7 @@ export const TransactionProvider = ({ children }) => {
     } catch (error) {
       console.log("ERRexpinc", error);
     }
-    console.log("DDD", incData);
+    console.log("DDD", cashData);
   };
 
   const [barChartData, setBarChartData] = useState(null);

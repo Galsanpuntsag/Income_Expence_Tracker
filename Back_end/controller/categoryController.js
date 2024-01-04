@@ -2,10 +2,11 @@ const { sql } = require("../config/pgDb");
 
 const createCategory = async (req, res) => {
   try {
-    const { iconname, description, category_img, category_color } = req.body;
+    const { user_id, iconname, description, category_img, category_color } =
+      req.body;
     console.log(iconname, description, category_img, category_color);
 
-    await sql`INSERT INTO categoryicon (iconname, description,  category_img, category_color) VALUES(${iconname}, ${description}, ${category_img}, ${category_color})`;
+    await sql`INSERT INTO categoryicon (user_id, iconname, description,  category_img, category_color) VALUES(${user_id}, ${iconname}, ${description}, ${category_img}, ${category_color}) RETURNING *`;
     res.status(201).json({ message: "Category added" });
     console.log("CREAETED NEW CATE");
   } catch (error) {
@@ -14,9 +15,12 @@ const createCategory = async (req, res) => {
   }
 };
 
-const getAllCategory = async (req, res) => {
+const getAllCategories = async (req, res) => {
   try {
-    const categories = await sql`SELECT * FROM categoryIcon`;
+    const { user_id } = req.params;
+    console.log("CAtegetUserId", user_id);
+    const categories =
+      await sql`SELECT * FROM categoryIcon WHERE id=${user_id}`;
     // console.log("CATEGORIES GET REQ", categories);
     res.status(201).json({ message: "success", categories });
   } catch (error) {
@@ -26,4 +30,4 @@ const getAllCategory = async (req, res) => {
   ``;
 };
 
-module.exports = { getAllCategory, createCategory };
+module.exports = { getAllCategories, createCategory };

@@ -1,12 +1,12 @@
 const { Router } = require("express");
 
 const {
-  getAllCategory,
+  getAllCategories,
   createCategory,
 } = require("../controller/categoryController");
 
 const router = Router();
 router.route("/").post(createCategory);
-router.route("/").get(getAllCategory);
+router.route("/:user_id").get(getAllCategories);
 
 module.exports = router;

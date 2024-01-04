@@ -1,11 +1,14 @@
 import myAxios from "@/utils/axios";
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
+import { UserContext } from "./UserProvider";
 import { FaHome } from "react-icons/fa";
 import { toast } from "react-toastify";
 
 export const CategoryContext = createContext(null);
 
 export const CategoryProvider = ({ children }) => {
+  const { user } = useContext(UserContext);
+  console.log("Uss", user);
   const [category, setCategory] = useState([]);
   const [showIcon, setShowIcon] = useState(<FaHome size={30} />);
   const [displayCate, setDisplayCate] = useState(<FaHome size={30} />);
@@ -36,6 +39,7 @@ export const CategoryProvider = ({ children }) => {
     try {
       const { data } = await myAxios.post("/categories", {
         ...categoryData,
+        user_id: user.id,
       });
       setRefresh(!refresh);
       toast.success("Record succesfully added");
@@ -49,7 +53,7 @@ export const CategoryProvider = ({ children }) => {
   const getAllCategories = async () => {
     const {
       data: { categories },
-    } = await myAxios.get("http://localhost:8008/categories");
+    } = await myAxios.get("/categories/" + user.id);
     console.log("FINDcategories", categories);
     setCategory(categories);
   };
