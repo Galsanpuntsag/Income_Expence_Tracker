@@ -8,7 +8,6 @@ export const CategoryContext = createContext(null);
 
 export const CategoryProvider = ({ children }) => {
   const { user } = useContext(UserContext);
-  console.log("Uss", user);
   const [category, setCategory] = useState([]);
   const [showIcon, setShowIcon] = useState(<FaHome size={30} />);
   const [displayCate, setDisplayCate] = useState(<FaHome size={30} />);
@@ -43,7 +42,7 @@ export const CategoryProvider = ({ children }) => {
       });
       setRefresh(!refresh);
       toast.success("Record succesfully added");
-      console.log("categoryData", data);
+      console.log("CreatecategoryData", data);
     } catch (error) {
       console.log(`ERRaddCtgry ${error}`);
       toast.error(`add Record failed because of ${error}`);
@@ -51,11 +50,16 @@ export const CategoryProvider = ({ children }) => {
   };
 
   const getAllCategories = async () => {
-    const {
-      data: { categories },
-    } = await myAxios.get("/categories/" + user.id);
-    console.log("FINDcategories", categories);
-    setCategory(categories);
+    try {
+      const {
+        data: { categories },
+      } = await myAxios.get("/categories/" + user.id);
+      console.log("FINDcategories", categories);
+      setCategory(categories);
+    } catch (error) {
+      console.log("RRer", error);
+      toast.error(`get all Record failed because of ${error}`);
+    }
   };
 
   return (

@@ -30,7 +30,6 @@ export const StepProvider = ({ children }) => {
   };
 
   const goToDashboard = async () => {
-    console.log("USERIDstep: ", user.id);
     try {
       const { data } = await myAxios.put("/users/" + user.id, {
         currency_type: stepData.currency_type,

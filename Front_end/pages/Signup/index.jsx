@@ -75,7 +75,7 @@ const Signup = () => {
               <div className="flex gap-4">
                 <h3 className="text-[#334155]">Already have account?</h3>
                 <button
-                  onClick={() => router.push("/Login")}
+                  onClick={() => router.push("/login")}
                   className="text-blue-400 hover:text-blue-600"
                 >
                   {" "}

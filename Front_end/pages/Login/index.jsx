@@ -54,7 +54,7 @@ const Login = () => {
           <div className="flex gap-4">
             <h3>Don't have account?</h3>
             <button
-              onClick={() => router.push("/Signup")}
+              onClick={() => router.push("/signup")}
               className="text-blue-600"
             >
               Sign Up

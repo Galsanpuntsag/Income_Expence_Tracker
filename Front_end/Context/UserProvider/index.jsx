@@ -41,7 +41,7 @@ export const UserProvider = ({ children }) => {
     try {
       setLoading(true);
 
-      const { data } = await myAxios.post("/auth/login", {
+      const { data } = await myAxios.post("/login", {
         userEmail: formUserData.email,
         userPassword: formUserData.password,
       });
@@ -56,9 +56,9 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  const logOut = () => {
-    setUser(null);
-  };
+  // const logOut = () => {
+  //   setUser(null);
+  // };
   //signup_________________=>
   const signup = async () => {
     console.log("Name", formUserData.name);
@@ -82,13 +82,14 @@ export const UserProvider = ({ children }) => {
     }
     try {
       setLoading(true);
-      const { data } = await myAxios.post("auth/signup", {
+      const { data } = await myAxios.post("/signup", {
         email: formUserData.email,
         password: formUserData.password,
         name: formUserData.name,
       });
       console.log("UserSignUPData=>", data.user);
       setUser(data.user);
+
       router.push("/Steps");
     } catch (error) {
       console.log("Error", error);
@@ -108,7 +109,6 @@ export const UserProvider = ({ children }) => {
         formUserData,
         changeLoginUserData,
         login,
-        logOut,
         signup,
       }}
     >

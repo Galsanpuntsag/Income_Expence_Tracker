@@ -7,7 +7,8 @@ const cors = require("cors");
 
 const app = express();
 
-const authRoutes = require("./routes/authRoutes");
+const signupRoutes = require("./routes/signupRoutes");
+const loginRoutes = require("./routes/loginRoutes");
 const imgRoutes = require("./routes/imgRoutes");
 const userRoutes = require("./routes/userRoutes");
 const transactionsRoutes = require("./routes/transactionRoutes");
@@ -17,7 +18,8 @@ app.use(cors());
 app.use(express.json());
 app.use("/images", express.static(path.join(__dirname, "images/")));
 
-app.use("/auth", authRoutes);
+app.use("/signup", signupRoutes);
+app.use("/login", loginRoutes);
 app.use("/api/image", imgRoutes);
 app.use("/users/", userRoutes);
 app.use("/transactions/", transactionsRoutes);
