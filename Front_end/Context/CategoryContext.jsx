@@ -45,7 +45,7 @@ export const CategoryProvider = ({ children }) => {
       console.log("CreatecategoryData", data);
     } catch (error) {
       console.log(`ERRaddCtgry ${error}`);
-      toast.error(`add Record failed because of ${error}`);
+      // toast.error(`add Record failed because of ${error}`);
     }
   };
 
@@ -58,7 +58,7 @@ export const CategoryProvider = ({ children }) => {
       setCategory(categories);
     } catch (error) {
       console.log("RRer", error);
-      toast.error(`get all Record failed because of ${error}`);
+      // toast.error(`get all Record failed because of ${error}`);
     }
   };
 

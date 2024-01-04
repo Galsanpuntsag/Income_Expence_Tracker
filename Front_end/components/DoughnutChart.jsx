@@ -7,7 +7,7 @@ const DoughnutChart = () => {
   const data2 = {
     datasets: [
       {
-        data: doughnutChartData?.data,
+        data: [12, 13],
 
         backgroundColor: [
           "#1C64F2",
@@ -25,7 +25,7 @@ const DoughnutChart = () => {
         ],
       },
     ],
-    labels: doughnutChartData?.labels,
+    labels: ["jan", "feb"],
   };
 
   const options2 = {

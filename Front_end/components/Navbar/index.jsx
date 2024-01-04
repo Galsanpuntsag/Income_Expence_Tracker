@@ -19,14 +19,14 @@ const Navbar = () => {
   const router = useRouter();
   const { user } = useContext(UserContext);
 
-  useEffect(() => {
-    if (!user) {
-      router.push("/login");
-    }
-  }, [user]);
-  if (!user) {
-    return null;
-  }
+  // useEffect(() => {
+  //   if (!user) {
+  //     router.push("/login");
+  //   }
+  // }, [user]);
+  // if (!user) {
+  //   return null;
+  // }
 
   const [open, setOpen] = useState(false);
 
@@ -71,7 +71,7 @@ const Navbar = () => {
                 <img src="https://media.istockphoto.com/id/845452938/photo/businessman-standing-with-umbrella-under-the-money-rain.jpg?s=1024x1024&w=is&k=20&c=jx2IJwWuk41smIjvBuLSJYFAwgEEdptqVITXyGsxUzA=" />
               </div>
             </div>
-            <UserModal user={user} />
+            {/* <UserModal user={user} /> */}
           </div>
         </div>
       </div>

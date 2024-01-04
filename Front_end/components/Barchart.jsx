@@ -5,7 +5,7 @@ import { Bar } from "react-chartjs-2";
 
 const BarChart = () => {
   const { barChartData, getChartData } = useContext(TransactionContext);
-  console.log("Bardata", barChartData);
+
   const data1 = {
     labels: barChartData?.labels,
     datasets: [

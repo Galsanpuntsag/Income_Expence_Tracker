@@ -52,7 +52,7 @@ export const TransactionProvider = ({ children }) => {
       setTransactionList(transactions);
     } catch (error) {
       console.log("ERROR", error);
-      toast.error("Гүйлгээг нэмэхэд алдаа гарлаа.");
+      // toast.error("Гүйлгээг нэмэхэд алдаа гарлаа.");
     }
   };
 

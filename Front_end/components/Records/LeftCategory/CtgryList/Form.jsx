@@ -67,7 +67,8 @@ const Form = ({ openCategory, categoryClose }) => {
                         handleColor(color);
                         console.log("handleColor", color);
                       }}
-                      className={`w-8 h-8 rounded-full ${color} hover:opacity-50`}
+                      className={`w-8 h-8 rounded-full hover:opacity-50`}
+                      style={{ backgroundColor: transa }}
                     ></div>
                   );
                 })}

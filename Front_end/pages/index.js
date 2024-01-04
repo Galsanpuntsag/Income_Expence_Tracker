@@ -8,20 +8,20 @@ import { TransactionContext } from "@/Context/TransactionProvider";
 import { CategoryContext } from "@/Context/CategoryContext";
 
 export default function Home() {
-  const { getAllTransactions, reFetch, getTotalExpInc, getChartData } =
-    useContext(TransactionContext);
-  const { getAllCategories, refresh } = useContext(CategoryContext);
+  // const { getAllTransactions, reFetch, getTotalExpInc, getChartData } =
+  //   useContext(TransactionContext);
+  // const { getAllCategories, refresh } = useContext(CategoryContext);
 
-  useEffect(() => {
-    console.log("TTTT");
-    getAllTransactions();
-    getChartData();
-  }, [reFetch]);
+  // useEffect(() => {
+  //   console.log("TTTT");
+  //   getAllTransactions();
+  //   getChartData();
+  // }, [reFetch]);
 
-  useEffect(() => {
-    getAllCategories();
-    getTotalExpInc();
-  }, [refresh]);
+  // useEffect(() => {
+  //   getAllCategories();
+  //   getTotalExpInc();
+  // }, [refresh]);
 
   return (
     <main>
