@@ -7,7 +7,7 @@ const ExpIncSwitch = ({ closeForm }) => {
   const { changeTransactionData, transactionData, addTransaction } =
     useContext(TransactionContext);
   const { category, displayCate, setDisplayCate } = useContext(CategoryContext);
-  console.log("CATe", category);
+  console.log("CATeRRR", category);
 
   const AddRecord = async () => {
     await addTransaction();

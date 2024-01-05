@@ -8,10 +8,10 @@ export const CategoryContext = createContext(null);
 
 export const CategoryProvider = ({ children }) => {
   const { user } = useContext(UserContext);
+  console.log("USERR", user);
   const [category, setCategory] = useState([]);
   const [showIcon, setShowIcon] = useState(<FaHome size={30} />);
-  const [displayCate, setDisplayCate] = useState(<FaHome size={30} />);
-  const [displayColor, setDisplayColor] = useState("bg-red-500");
+  const [displayColor, setDisplayColor] = useState("Black");
   const [inputValue, setInputValue] = useState("");
   const [refresh, setRefresh] = useState(false);
   const [categoryData, setCategoryData] = useState({
@@ -34,6 +34,19 @@ export const CategoryProvider = ({ children }) => {
     setCategoryData({ ...categoryData, [e.target.name]: e.target.value });
   };
 
+  const [selectedCategories, setSelectedCategories] = useState([]);
+
+  const onSelectCategory = (name) => {
+    console.log(name);
+
+    if (selectedCategories.includes(name)) {
+      const newCat = selectedCategories.filter((s) => s !== name);
+      setSelectedCategories(newCat);
+    } else {
+      setSelectedCategories([...selectedCategories, name]);
+    }
+  };
+
   const createCategory = async () => {
     try {
       const { data } = await myAxios.post("/categories", {
@@ -53,8 +66,8 @@ export const CategoryProvider = ({ children }) => {
     try {
       const {
         data: { categories },
-      } = await myAxios.get("/categories/" + user.id);
-      console.log("FINDcategories", categories);
+      } = await myAxios.get("/categories");
+
       setCategory(categories);
     } catch (error) {
       console.log("RRer", error);
@@ -73,13 +86,13 @@ export const CategoryProvider = ({ children }) => {
         handleChange,
         showIcon,
         setShowIcon,
-        displayCate,
-        setDisplayCate,
         categoryData,
         setCategoryData,
         category,
         getAllCategories,
         setDisplayColor,
+        selectedCategories,
+        onSelectCategory,
       }}
     >
       {children}

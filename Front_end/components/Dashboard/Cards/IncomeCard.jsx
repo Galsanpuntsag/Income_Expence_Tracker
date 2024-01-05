@@ -6,6 +6,8 @@ import { UserContext } from "@/Context/UserProvider";
 const IncomeCard = () => {
   const { user } = useContext(UserContext);
   const { incData, transactionList } = useContext(TransactionContext);
+  console.log("Tranlist", transactionList);
+  console.log("IncDAta", incData);
 
   // console.log("DataCash", user);
   // const [totals, setTotals] = useState({ totalIncome: 0, totalExpence: 0 });

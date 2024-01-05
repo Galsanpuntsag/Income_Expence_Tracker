@@ -64,10 +64,12 @@ const Form = ({ openCategory, categoryClose }) => {
                     <div
                       key={color}
                       onClick={() => {
+                        setDisplayColor(color);
                         handleColor(color);
                         console.log("handleColor", color);
                       }}
                       className={`w-8 h-8 rounded-full hover:opacity-50 ${color} `}
+                      style={{ backgroundColor: color }}
                     ></div>
                   );
                 })}
@@ -102,3 +104,5 @@ const Form = ({ openCategory, categoryClose }) => {
 };
 
 export default Form;
+
+// ,  bg-blue-500, bg-red-500, bg-green-500, bg-yellow-500 , bg-orange-500
