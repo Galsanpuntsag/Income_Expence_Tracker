@@ -11,14 +11,13 @@ export const CategoryProvider = ({ children }) => {
   console.log("USERR", user);
   const [category, setCategory] = useState([]);
   const [showIcon, setShowIcon] = useState(<FaHome size={30} />);
-  const [displayColor, setDisplayColor] = useState("Black");
   const [inputValue, setInputValue] = useState("");
   const [refresh, setRefresh] = useState(false);
   const [categoryData, setCategoryData] = useState({
     iconname: "",
     description: "",
     category_img: "",
-    category_color: displayColor,
+    category_color: "",
   });
 
   const handleIcon = (icon) => {
@@ -37,8 +36,6 @@ export const CategoryProvider = ({ children }) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
 
   const onSelectCategory = (name) => {
-    console.log(name);
-
     if (selectedCategories.includes(name)) {
       const newCat = selectedCategories.filter((s) => s !== name);
       setSelectedCategories(newCat);
@@ -67,7 +64,7 @@ export const CategoryProvider = ({ children }) => {
       const {
         data: { categories },
       } = await myAxios.get("/categories");
-
+      console.log("CAetegory", categories);
       setCategory(categories);
     } catch (error) {
       console.log("RRer", error);
@@ -90,7 +87,7 @@ export const CategoryProvider = ({ children }) => {
         setCategoryData,
         category,
         getAllCategories,
-        setDisplayColor,
+
         selectedCategories,
         onSelectCategory,
       }}

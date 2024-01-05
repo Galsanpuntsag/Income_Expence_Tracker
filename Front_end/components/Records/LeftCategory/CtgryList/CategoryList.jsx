@@ -2,6 +2,7 @@ import React from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
 const CategoryList = ({ name, onSelectCategory, selectedCategories }) => {
+  console.log("NAme", name);
   return (
     <div className="flex my-3 items-center justify-between">
       <div className="flex items-center gap-3">
@@ -18,7 +19,6 @@ const CategoryList = ({ name, onSelectCategory, selectedCategories }) => {
 
         <h2>{name}</h2>
       </div>
-      <Arrow />
     </div>
   );
 };

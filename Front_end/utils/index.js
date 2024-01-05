@@ -35,6 +35,8 @@ import {
 import { BiPencil } from "react-icons/bi";
 import { BsGlobe, BsMenuAppFill } from "react-icons/bs";
 import { GiDeliveryDrone } from "react-icons/gi";
+import { useContext } from "react";
+import { CategoryContext } from "@/Context/CategoryContext";
 
 export const getIcons = (iconname = "home", iconcolor) => {
   const icons = {
@@ -113,15 +115,6 @@ export const icons = [
   { icon: <MdHourglassTop size={30} />, name: "hourglass" },
   { icon: <BiPencil size={30} />, name: "pencil" },
   { icon: <BsGlobe size={30} />, name: "globe" },
-];
-
-export const colors = [
-  "bg-blue-500",
-  "bg-red-500",
-  "bg-green-500",
-  "bg-purple-500",
-  "bg-yellow-500",
-  "bg-orange-500",
 ];
 
 export const formatDate = (dateStr) => {

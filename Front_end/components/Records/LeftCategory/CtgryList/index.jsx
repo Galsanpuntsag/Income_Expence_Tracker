@@ -25,10 +25,11 @@ const CtgryList = () => {
             <CategoryList
               onSelectCategory={onSelectCategory}
               selectedCategories={selectedCategories}
-              name={category.name}
-              key={category.id}
+              name={el.iconname}
+              key={el.id}
             />
           ))}
+          {console.log("categoryAss", category)}
         </div>
 
         <button

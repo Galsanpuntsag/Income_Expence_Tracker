@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { icons, colors } from "@/utils";
+import { getIcons, icons } from "@/utils";
 import { IoIosArrowDown } from "react-icons/io";
 import { CategoryContext } from "@/Context/CategoryContext";
 
@@ -14,9 +14,17 @@ const Form = ({ openCategory, categoryClose }) => {
     handleChange,
     categoryData,
     createCategory,
-    setDisplayColor,
   } = useContext(CategoryContext);
 
+  const colors = [
+    "bg-blue-500",
+    "bg-red-500",
+    "bg-green-500",
+    "bg-purple-500",
+    "bg-yellow-500",
+    "bg-orange-500",
+  ];
+  const [displayColor, setDisplayColor] = useState("Black");
   return (
     <dialog open={openCategory} className="modal">
       <div className="modal-box">
@@ -33,9 +41,9 @@ const Form = ({ openCategory, categoryClose }) => {
         </h1>
         <div className="flex mt-5 justify-center">
           <details className="dropdown ">
-            <summary className="m-1 btn">
+            <summary className={`${displayColor} m-1 btn`}>
               <div className="flex items-center gap-7">
-                <span> {showIcon ? showIcon : icons[0].icon} </span>
+                <span>{showIcon ? showIcon : icons[0].icon} </span>
                 <IoIosArrowDown />
               </div>
             </summary>
@@ -52,7 +60,7 @@ const Form = ({ openCategory, categoryClose }) => {
                       handleIcon(icon.name);
                       console.log("CATEIcon", icon.name);
                     }}
-                    className="p-3 text-3xl cursor-pointer inline hover:opacity-50 "
+                    className={`p-3 text-3xl cursor-pointer inline hover:opacity-50`}
                   >
                     {icon.icon}
                   </div>
