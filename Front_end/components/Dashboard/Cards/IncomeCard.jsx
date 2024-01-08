@@ -42,18 +42,19 @@ const IncomeCard = () => {
           </h>
         </div>
         <div className="">
-          <h1 className="text-3xl font-extrabold mt-2 2xl:mt-5">
-            {incData}
-            {getCurrencySymbol(user?.currency_type)}
+          <h1 className="text-4xl font-extrabold mt-2 2xl:mt-5 text-green-500">
+            {incData && incData}
+            {incData && getCurrencySymbol(user?.currency_type)}
+            {!incData && <div className="skeleton h-14 w-full"></div>}
           </h1>
-          <h2 className="text-lg font-bold text-slate-400 2xl:mt-5">
+          <h2 className="text-xl font-bold text-green-500 mt-4 2xl:mt-5">
             Your income amount
           </h2>
           <div className="flex gap-5 2xl:mt-5">
             <div className="w-5 mt-3 lg:w-7">
               <img src="ArrowUp.png"></img>
             </div>
-            <h3 className=" mt-4 font-medium text:xl 2xl:mt-3">
+            <h3 className=" mt-4 font-medium text-green-500 2xl:mt-3">
               {" "}
               32% from last month
             </h3>

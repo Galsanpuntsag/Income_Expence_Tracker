@@ -6,6 +6,8 @@ import { toast } from "react-toastify";
 export const TransactionContext = createContext();
 
 export const TransactionProvider = ({ children }) => {
+  const [expData, setExpData] = useState();
+  const [incData, setIncData] = useState();
   const [transactionData, setTransactionData] = useState({
     transaction_name: "Food",
     amount: "",
@@ -56,23 +58,19 @@ export const TransactionProvider = ({ children }) => {
     }
   };
 
-  const [cashData, setCashData] = useState();
-  const [incData, setIncData] = useState();
-
   const getTotalExpInc = async () => {
-    console.log("gettotalexpinc", getTotalExpInc);
+    console.log("gettotalexpinc");
     try {
       const {
         data: { totalExp, totalInc },
       } = await myAxios.get("/transactions/total/" + user.id);
-      setCashData(totalExp);
+      setExpData(totalExp);
       setIncData(totalInc);
       console.log("EXPincCome", totalExp);
       console.log("INCdta", totalInc);
     } catch (error) {
       console.log("ERRexpinc", error);
     }
-    console.log("DDD", cashData);
   };
 
   const [barChartData, setBarChartData] = useState(null);
@@ -93,6 +91,12 @@ export const TransactionProvider = ({ children }) => {
     console.log("BARrr", barChartData);
   };
 
+  useEffect(() => {
+    getTotalExpInc();
+    // getChartData();
+    getAllTransactions();
+  }, [reFetch]);
+
   return (
     <TransactionContext.Provider
       value={{
@@ -103,7 +107,7 @@ export const TransactionProvider = ({ children }) => {
         reFetch,
         setReFetch,
         getAllTransactions,
-        cashData,
+        expData,
         getTotalExpInc,
         incData,
         getChartData,

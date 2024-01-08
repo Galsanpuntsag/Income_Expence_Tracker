@@ -72,6 +72,11 @@ export const CategoryProvider = ({ children }) => {
     }
   };
 
+  useEffect(() => {
+    getAllCategories();
+  }, [refresh]);
+
+
   return (
     <CategoryContext.Provider
       value={{

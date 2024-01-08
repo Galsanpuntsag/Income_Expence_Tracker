@@ -44,19 +44,19 @@ const createTransaction = async (req, res) => {
 
 const getTotalExpInc = async (req, res) => {
   const { user_id } = req.params;
-  console.log("FFFExpInc");
+  console.log("FFFExpInc", user_id);
   try {
     const data =
-      await sql`SELECT transaction_type, SUM(amount) FROM transaction WHERE user_id=${user_id} GROUP BY transaction_type `;
+      await sql`SELECT tr.transaction_type, SUM(amount) as total FROM transaction tr WHERE tr.user_id=${user_id} GROUP BY transaction_type `;
     console.log("EIdata", data);
     const [inc] = data.filter((el) => el.transaction_type === "INC");
     const [exp] = data.filter((el) => el.transaction_type === "EXP");
-    console.log("INC", inc);
-    console.log("EXP", exp);
+    // console.log("INC", inc);
+    // console.log("EXP", exp);
     res.status(201).json({
       message: "successful",
-      totalInc: inc.sum,
-      totalExp: exp.sum,
+      totalInc: inc.total,
+      totalExp: exp.total,
     });
   } catch (error) {
     console.log("EI", error);
