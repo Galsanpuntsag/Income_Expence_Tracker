@@ -6,8 +6,6 @@ import { toast } from "react-toastify";
 export const TransactionContext = createContext();
 
 export const TransactionProvider = ({ children }) => {
-  const [expData, setExpData] = useState();
-  const [incData, setIncData] = useState();
   const [transactionData, setTransactionData] = useState({
     transaction_name: "Food",
     amount: "",
@@ -25,6 +23,10 @@ export const TransactionProvider = ({ children }) => {
   const [transactionList, setTransactionList] = useState([]);
   const [reFetch, setReFetch] = useState(false);
   const { user } = useContext(UserContext);
+
+  //Exp_Inc statiig zarlav
+  const [expData, setExpData] = useState();
+  const [incData, setIncData] = useState();
 
   const addTransaction = async () => {
     if (!transactionData.amount || !transactionData.transaction_type) {
@@ -50,26 +52,11 @@ export const TransactionProvider = ({ children }) => {
       const {
         data: { transactions },
       } = await myAxios.get("/transactions/" + user.id);
-
+      console.log("TRTRTR", transactions);
       setTransactionList(transactions);
     } catch (error) {
       console.log("ERROR", error);
       // toast.error("Гүйлгээг нэмэхэд алдаа гарлаа.");
-    }
-  };
-
-  const getTotalExpInc = async () => {
-    console.log("gettotalexpinc");
-    try {
-      const {
-        data: { totalExp, totalInc },
-      } = await myAxios.get("/transactions/total/" + user.id);
-      setExpData(totalExp);
-      setIncData(totalInc);
-      console.log("EXPincCome", totalExp);
-      console.log("INCdta", totalInc);
-    } catch (error) {
-      console.log("ERRexpinc", error);
     }
   };
 
@@ -81,20 +68,34 @@ export const TransactionProvider = ({ children }) => {
       const {
         data: { barChart, doughnutChart },
       } = await myAxios.get("/transactions/chartdata/" + user.id);
-
+      console.log("DougData", doughnutChart);
       console.log("BArData", barChartData);
       setBarChartData(barChart);
       setDoughnutData(doughnutChart);
     } catch (error) {
       console.log("err", error);
     }
-    console.log("BARrr", barChartData);
+  };
+
+  const getTotalExpInc = async () => {
+    console.log("gettotalexpinc_working");
+    try {
+      const {
+        data: { totalExp, totalInc },
+      } = await myAxios.get("/transactions/total/" + user.id);
+      console.log("EXPincComeeeeww", totalExp);
+      console.log("INCdtaaaaaww", totalInc);
+      setExpData(totalExp);
+      setIncData(totalInc);
+    } catch (error) {
+      console.log("ERRexpinc", error);
+    }
   };
 
   useEffect(() => {
-    getTotalExpInc();
-    // getChartData();
+    getChartData();
     getAllTransactions();
+    getTotalExpInc();
   }, [reFetch]);
 
   return (
@@ -107,12 +108,12 @@ export const TransactionProvider = ({ children }) => {
         reFetch,
         setReFetch,
         getAllTransactions,
-        expData,
-        getTotalExpInc,
-        incData,
         getChartData,
-        barChartData,
         doughnutChartData,
+        barChartData,
+        getTotalExpInc,
+        expData,
+        incData,
       }}
     >
       {children}

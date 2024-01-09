@@ -67,10 +67,10 @@ export default function UserModal({ user }) {
 
   return (
     <div>
-      <button className="flex flex-col text-sm font-mono" onClick={handleOpen}>
-        Welcome!
-        <h className="font-seibold text-sm">{user.name}</h>
-      </button>
+      <button
+        className="flex flex-col text-sm font-mono"
+        onClick={handleOpen}
+      ></button>
       <Modal
         open={open}
         onClose={handleClose}

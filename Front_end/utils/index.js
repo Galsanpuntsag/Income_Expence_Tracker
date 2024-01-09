@@ -121,3 +121,8 @@ export const formatDate = (dateStr) => {
   const dt = moment(dateStr).startOf("day").fromNow();
   return dt;
 };
+
+export const thousandify = (num) => {
+  console.log("what'sNum", num);
+  return num.toLocaleString(undefined, { maximumFractionDigits: 2 });
+};

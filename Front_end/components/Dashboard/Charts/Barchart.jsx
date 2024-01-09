@@ -1,11 +1,7 @@
 import React, { useContext } from "react";
-import { TransactionContext } from "@/Context/TransactionProvider";
-
 import { Bar } from "react-chartjs-2";
 
-const BarChart = () => {
-  const { barChartData, getChartData } = useContext(TransactionContext);
-
+const BarChart = ({ barChartData }) => {
   const data1 = {
     labels: barChartData?.labels,
     datasets: [
@@ -31,10 +27,10 @@ const BarChart = () => {
     },
   };
   return (
-    <div className="card bg-white flex justify-center items-center p-4">
+    <div className="card bg-white flex justify-center items-center p-4 w-11/12">
       {barChartData && <Bar data={data1} options={options1} />}
       {!barChartData && (
-        <div className="flex justify-center items-end   gap-4 w-full ">
+        <div className="flex justify-center items-end gap-6 w-full ">
           <div className="skeleton h-14 w-4"></div>
           <div className="skeleton h-16 w-4"></div>
           <div className="skeleton h-24 w-4"></div>

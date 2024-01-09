@@ -51,8 +51,8 @@ const getTotalExpInc = async (req, res) => {
     console.log("EIdata", data);
     const [inc] = data.filter((el) => el.transaction_type === "INC");
     const [exp] = data.filter((el) => el.transaction_type === "EXP");
-    // console.log("INC", inc);
-    // console.log("EXP", exp);
+    console.log("INC", inc);
+    console.log("EXP", exp);
     res.status(201).json({
       message: "successful",
       totalInc: inc.total,
@@ -64,33 +64,10 @@ const getTotalExpInc = async (req, res) => {
   }
 };
 
-const getBarChartData = async (req, res) => {
-  try {
-    const { userId } = req.params;
-    console.log("CharuserId", userId);
-    const barCharData = await sql`
-    SELECT
-        EXTRACT(YEAR FROM updated_at) AS year,
-        EXTRACT(MONTH FROM updated_at) AS month,
-        transaction_type,
-        SUM(amount) AS total_amount
-      FROM
-        transaction
-      GROUP BY
-        transaction_type, year, month;
-    `;
-    console.log("Bar", barCharData);
-  } catch (error) {
-    console.log("ERR", error);
-    res.status(500).json({ message: error.message });
-  }
-};
-
 const getChartData = async (req, res) => {
   try {
-    const { userId } = req.params;
+    const { user_id } = req.params;
     //_________________________
-
     const doughnutChart = await sql`
     SELECT 
       ct.iconname as category_name, 

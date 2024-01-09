@@ -37,15 +37,15 @@ const Navbar = () => {
   return (
     <div>
       <div className="flex justify-between bg-slate-50">
-        <div className="flex ml-20 p-2">
-          <img src="Vector.png"></img>
-          <div className="text-center items-center  flex gap-10 ml-10">
+        <div className="flex lg:flex-row p-2 gap-2">
+          <img className="w-7 h-7" src="Vector.png"></img>
+          <div className="text-center items-center  flex gap-3 lg:gap-10 ">
             {navigations.map((navigation, i) => (
               <Link
-                className={`transaction_all duration-75 ${
+                className={`transaction duration-75 text-sm ${
                   isActive === navigation.path
-                    ? "font-semibold"
-                    : "hover:font-semibold"
+                    ? "font-bold"
+                    : "hover:font-black"
                 }`}
                 key={i}
                 href={navigation.path}
@@ -55,25 +55,50 @@ const Navbar = () => {
             ))}
           </div>
         </div>
-        <div className="flex gap-5 items-center mr-20">
-          <button
-            className="btn btn-active btn-primary font-mono text-sm"
-            onClick={() => {
-              setOpen(true);
-            }}
-          >
-            <IoMdAdd />
-            Add Record
-          </button>
-          <div className="btn btn-active btn-primary">
-            <div className="avatar">
-              <div className="w-7 h-7 mt-[2px] rounded-full ring-1 lg:ring-2 ring-success ring-offset-1">
-                <img src="https://media.istockphoto.com/id/845452938/photo/businessman-standing-with-umbrella-under-the-money-rain.jpg?s=1024x1024&w=is&k=20&c=jx2IJwWuk41smIjvBuLSJYFAwgEEdptqVITXyGsxUzA=" />
+        <details className="dropdown">
+          <summary className="btn bg-transparent border-none p-1 mr-2">
+            <div className="avatar flex justify-between  gap-2">
+              <div className="mt-2 w-6 h-6 rounded-full ring-2 ring-success ring-offset-1">
+                {user.avatar_img}
+                {!user.avatar_img && (
+                  <div className="skeleton w-7 h-7 rounded-full shrink-0"></div>
+                )}
+              </div>
+              <div className="flex flex-col mt-2">
+                <div className="font-light text-[12px] text-current">
+                  {" "}
+                  Welcome
+                </div>
+                <div className="font-medium text-sm text-current">
+                  {user.name}
+                </div>
               </div>
             </div>
-            <UserModal user={user} />
-          </div>
-        </div>
+          </summary>
+          <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+            <li>
+              <a>
+                {" "}
+                <UserModal user={user} />
+              </a>
+            </li>
+            <li>
+              <a>
+                <div className="flex flex-col lg:flex-row gap-5 items-center mr-20">
+                  <button
+                    className="btn btn-active btn-primary font-mono text-sm"
+                    onClick={() => {
+                      setOpen(true);
+                    }}
+                  >
+                    <IoMdAdd />
+                    Add Record
+                  </button>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </details>
       </div>
       <AddRecordForm open={open} closeForm={closeForm} />
     </div>

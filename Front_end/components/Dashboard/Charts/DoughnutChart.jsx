@@ -4,10 +4,23 @@ import { TransactionContext } from "@/Context/TransactionProvider";
 
 const DoughnutChart = () => {
   const { doughnutChartData } = useContext(TransactionContext);
+  console.log("DoughNote_Data", doughnutChartData);
   const data2 = {
     datasets: [
       {
-        data: [12, 13],
+        data: [
+          {
+            label: "Income",
+            backgroundColor: "#85CC16",
+            data: doughnutChartData?.incomeData,
+            borderWidth: 2,
+          },
+          {
+            label: "Expence",
+            backgroundColor: "#F97316",
+            data: doughnutChartData?.expenceData,
+          },
+        ],
 
         backgroundColor: [
           "#1C64F2",

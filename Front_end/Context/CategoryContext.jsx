@@ -76,7 +76,6 @@ export const CategoryProvider = ({ children }) => {
     getAllCategories();
   }, [refresh]);
 
-
   return (
     <CategoryContext.Provider
       value={{

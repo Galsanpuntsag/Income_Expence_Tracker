@@ -5,7 +5,6 @@ import { getIcons, getCurrencySymbol } from "@/utils";
 
 const ListData = ({ transactionList }) => {
   const { user } = useContext(UserContext);
-  console.log("record", user);
   return (
     <div className="">
       <div className=" w-full shadow-xl mt:5 2xl:mt-10 ">
