@@ -5,7 +5,7 @@ import ExpenceCard from "./ExpenceCard";
 import { UserContext } from "@/Context/UserProvider";
 import { TransactionContext } from "@/Context/TransactionProvider";
 
-const ContainCards = () => {
+const Cards = () => {
   const { user } = useContext(UserContext);
   const { incData, expData, getTotalExpInc } = useContext(TransactionContext);
   useEffect(() => {
@@ -31,4 +31,4 @@ const ContainCards = () => {
   );
 };
 
-export default ContainCards;
+export default Cards;

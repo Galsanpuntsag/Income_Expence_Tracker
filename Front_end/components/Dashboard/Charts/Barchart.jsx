@@ -26,11 +26,12 @@ const BarChart = ({ barChartData }) => {
       },
     },
   };
+
   return (
     <div className="card bg-white flex justify-center items-center p-4 w-11/12">
       {barChartData && <Bar data={data1} options={options1} />}
       {!barChartData && (
-        <div className="flex justify-center items-end gap-6 w-full ">
+        <div className="flex justify-center items-end gap-6 w-full py-5 ">
           <div className="skeleton h-14 w-4"></div>
           <div className="skeleton h-16 w-4"></div>
           <div className="skeleton h-24 w-4"></div>

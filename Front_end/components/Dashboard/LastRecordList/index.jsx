@@ -17,8 +17,8 @@ const LastRecordList = () => {
     <div className="flex flex-col gap-5 w-10/12 rounded-xl bg-white 2xl:mx-20">
       <div className="flex justify-center">
         <div className="flex flex-col justify-center w-full ">
-          <div className="">
-            <h1 className="font-bold text-xl border-b-2 border-slate-950 mt-2 ml-2">
+          <div className="p-2">
+            <h1 className="font-bold text-xl border-b-2 border-slate-950 mt-2 ml-2 mb-3">
               Last Records
             </h1>
             {transactionList.map((transaction) => {

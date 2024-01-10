@@ -8,27 +8,17 @@ const DoughnutChart = () => {
   const data2 = {
     datasets: [
       {
-        data: [
-          {
-            label: "Income",
-            backgroundColor: "#85CC16",
-            data: doughnutChartData?.incomeData,
-            borderWidth: 2,
-          },
-          {
-            label: "Expence",
-            backgroundColor: "#F97316",
-            data: doughnutChartData?.expenceData,
-          },
-        ],
+        data: doughnutChartData?.data,
 
         backgroundColor: [
-          "#1C64F2",
-          "#E74694",
-          "#FDBA8C",
-          "#16BDCA",
-          "#F2901C",
+          "rgba(75, 192, 192, 1)",
+          "rgba(153, 102, 255, 1)",
+          "rgba(255, 159, 64, 1)",
+          "rgba(255, 99, 132, 1)",
+          "rgba(54, 162, 235, 1)",
+          "rgba(255, 206, 86, 1)",
         ],
+        borderColor: [],
         hoverBackgroundColor: [
           "#1C64F2",
           "#E74694",
@@ -38,7 +28,7 @@ const DoughnutChart = () => {
         ],
       },
     ],
-    labels: ["jan", "feb"],
+    labels: [doughnutChartData?.labels],
   };
 
   const options2 = {
@@ -47,8 +37,8 @@ const DoughnutChart = () => {
       position: "right",
 
       labels: {
-        boxWidth: 15,
-        padding: 15,
+        boxWidth: 10,
+        padding: 10,
         display: false,
         position: "right",
       },
@@ -56,15 +46,19 @@ const DoughnutChart = () => {
   };
 
   return (
-    <div className="flex justify-center gap-20 w-1/2">
-      <div className="flex-1 p-3 bg-white ml-5 lg:h-[360px] rounded-lg 2xl:h-[500px] 2xl:w-1/2">
-        <h1 className="border-b-2 lg:mb-5  border-slate-950 font-semibold mb-1">
-          Income - Expense
-        </h1>
-        <div className="lg:w-[200px] ml-10 2xl:w-[270px]  ">
-          <Doughnut data={data2} options={options2} />
+    <div className="flex bg-white justify-center rounded-2xl p-4 items-center w-11/12 h-60">
+      {doughnutChartData && <Doughnut data={data2} options={options2} />}
+      {!doughnutChartData && (
+        <div className="flex justify-center items-end gap-6 w-full py-5 ">
+          <div className="skeleton h-14 w-4"></div>
+          <div className="skeleton h-16 w-4"></div>
+          <div className="skeleton h-24 w-4"></div>
+          <div className="skeleton h-24 w-4"></div>
+          <div className="skeleton h-24 w-4"></div>
+          <div className="skeleton h-16 w-4"></div>
+          <div className="skeleton h-14 w-4"></div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
