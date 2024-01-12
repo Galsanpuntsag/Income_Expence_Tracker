@@ -70,12 +70,13 @@ const getChartData = async (req, res) => {
     //_________________________
     const doughnutChart = await sql`
     SELECT 
-      ct.iconname as category_name, 
-      SUM(amount) as total 
-    FROM transaction tr 
-    INNER JOIN 
-      categoryicon ct ON tr.category_id=ct.id
-    GROUP BY category_name;`;
+    ct.iconname as category_name, 
+    SUM(amount) as total 
+  FROM transaction tr 
+  INNER JOIN 
+    categoryicon ct ON tr.category_id=ct.id
+    WHERE ct.user_id=tr.user_id
+  GROUP BY category_name;`;
     //_________________________
 
     const barChart = await sql`SELECT
@@ -85,6 +86,8 @@ const getChartData = async (req, res) => {
     SUM(CASE WHEN transaction_type = 'EXP' THEN amount ELSE 0 END) AS expence
   FROM
       transaction
+      WHERE 
+      user_id=${user_id}
   GROUP BY
       month, month_name
   ORDER BY

@@ -7,6 +7,6 @@ const {
 
 const router = Router();
 router.route("/").post(createCategory);
-router.route("/").get(getAllCategories);
+router.route("/:user_id").get(getAllCategories);
 
 module.exports = router;

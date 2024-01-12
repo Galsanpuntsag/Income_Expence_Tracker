@@ -63,7 +63,7 @@ export const CategoryProvider = ({ children }) => {
     try {
       const {
         data: { categories },
-      } = await myAxios.get("/categories");
+      } = await myAxios.get("/categories/" + user.id);
       console.log("CAetegory", categories);
       setCategory(categories);
     } catch (error) {

@@ -8,7 +8,7 @@ const LastRecordList = () => {
   const { transactionList, getAllTransactions } =
     useContext(TransactionContext);
   const { user } = useContext(UserContext);
-  console.log("TarList", transactionList);
+  console.log("TarListasxas", transactionList);
 
   useEffect(() => {
     getAllTransactions();
@@ -21,7 +21,10 @@ const LastRecordList = () => {
             <h1 className="font-bold text-xl border-b-2 border-slate-950 mt-2 ml-2 mb-3">
               Last Records
             </h1>
-            {transactionList.map((transaction) => {
+            {/* {!transactionList && (
+              <div className="skelton w-11/12 h-10">dfsd</div>
+            )} */}
+            {transactionList?.map((transaction) => {
               return (
                 <div className="flex justify-between">
                   <div className="flex gap-5">

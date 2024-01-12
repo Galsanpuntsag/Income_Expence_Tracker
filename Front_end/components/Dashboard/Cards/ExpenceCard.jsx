@@ -3,8 +3,8 @@ import { getCurrencySymbol } from "@/utils";
 
 const ExpenceCard = ({ expData, user }) => {
   return (
-    <div className=" lg:w-[350px] rounded-xl bg-slate-50 lg:p-5 2xl:w-[550px] 2xl:h-[280px]">
-      <div className="flex flex-col p-3 ">
+    <div className=" lg:w-[350px] rounded-xl bg-slate-50 lg:p-4 2xl:w-[550px] 2xl:h-[280px]">
+      <div className="flex flex-col p-2 lg:p-0">
         <div className="flex gap-2 ">
           <div className=" mt-1">
             <input
@@ -19,7 +19,7 @@ const ExpenceCard = ({ expData, user }) => {
           </h>
         </div>
         <div className="">
-          <h1 className="text-3xl text-center font-bold 2xl:text-4xl 2xl:font-extrabold text-red-500 mt-2 2xl:mt-5">
+          <h1 className="text-3xl text-center font-bold 2xl:text-4xl 2xl:font-extrabold text-red-500 mt-2 2xl:mt-5 lg:mt-5">
             {expData && expData}
             {expData && getCurrencySymbol(user?.currency_type)}
             {!expData && <div className="skeleton h-14 w-full"></div>}

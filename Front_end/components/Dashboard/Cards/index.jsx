@@ -14,10 +14,13 @@ const Cards = () => {
   }, []);
   return (
     <div className="flex mx-auto 2xl:w-11/12">
-      <div className="flex flex-col justify-center 2xl:justify-around gap-3 lg:gap-20 2xl:gap-10 mt-2 p-5">
-        <UserCard />
-        <div className="flex  gap-4 mt-2">
-          <div className="flex-1">
+      <div className="flex flex-col justify-center 2xl:justify-around gap-3 2xl:gap-10 lg:flex-row lg:gap-7 mt-2 p-5">
+        <div className="">
+          {" "}
+          <UserCard />
+        </div>
+        <div className="flex  gap-4 mt-2 lg:gap-7">
+          <div className="flex-1 ">
             {" "}
             <IncomeCard incData={incData} user={user} />
           </div>

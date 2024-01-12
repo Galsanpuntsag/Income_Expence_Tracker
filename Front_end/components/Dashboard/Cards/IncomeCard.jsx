@@ -21,9 +21,9 @@ const IncomeCard = ({ incData, user }) => {
   // }, [!refresh]);
 
   return (
-    <div className="lg:w-[350px] rounded-xl bg-slate-50 lg:p-5 2xl:w-[550px] 2xl:h-[280px]">
-      <div className="flex flex-col p-3 ">
-        <div className="flex gap-2 ">
+    <div className="lg:w-[350px] rounded-xl bg-slate-50 lg:p-4 2xl:w-[550px] 2xl:h-[280px]">
+      <div className="flex flex-col p-2 lg:p-0 ">
+        <div className="flex gap-2">
           <div className=" mt-1">
             <input
               type="radio"
@@ -32,12 +32,12 @@ const IncomeCard = ({ incData, user }) => {
               checked
             />
           </div>
-          <h className=" text-xl font-semibold border-b-2 border-indigo-500 w-full ">
+          <h className=" text-xl font-semibold border-b-2 border-indigo-500 w-full  ">
             Income
           </h>
         </div>
         <div className="">
-          <h1 className="text-3xl text-center font-bold 2xl:text-4xl 2xl:font-extrabold mt-2 2xl:mt-5 text-green-500">
+          <h1 className="text-3xl text-center font-bold 2xl:text-4xl 2xl:font-extrabold mt-2 2xl:mt-5 text-green-500 lg:mt-5">
             {incData && incData}
             {incData && getCurrencySymbol(user?.currency_type)}
             {!incData && <div className="skeleton h-14 w-full"></div>}
