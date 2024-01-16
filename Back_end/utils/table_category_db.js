@@ -7,6 +7,7 @@ const createCategory = async () => {
 
   await sql` CREATE TABLE IF NOT EXISTS categoryIcon(
     id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+    user_id uuid REFERENCES users(id),
     iconName VARCHAR(100)  NOT NULL, 
     description TEXT,
     category_img TEXT,

@@ -64,7 +64,7 @@ export const CategoryProvider = ({ children }) => {
       const {
         data: { categories },
       } = await myAxios.get("/categories/" + user.id);
-      console.log("CAetegory", categories);
+      console.log("CAetegoryRRR", categories);
       setCategory(categories);
     } catch (error) {
       console.log("RRer", error);
