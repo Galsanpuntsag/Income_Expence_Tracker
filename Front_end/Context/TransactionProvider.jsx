@@ -7,10 +7,10 @@ export const TransactionContext = createContext();
 
 export const TransactionProvider = ({ children }) => {
   const [transactionData, setTransactionData] = useState({
-    transaction_name: "Food",
+    transaction_name: "",
     amount: "",
-    transaction_type: "EXP",
-    description: "tsuivan idlee",
+    transaction_type: "INC",
+    description: "",
     category_id: "",
     updated_at: "",
   });
@@ -51,29 +51,12 @@ export const TransactionProvider = ({ children }) => {
     try {
       const {
         data: { transactions },
-      } = await myAxios.get("/transactions/" + user.id);
+      } = await myAxios.get("/transactions/" + user.id); // user.id
       console.log("TRTRTR", transactions);
       setTransactionList(transactions);
     } catch (error) {
       console.log("ERROR", error);
       // toast.error("Гүйлгээг нэмэхэд алдаа гарлаа.");
-    }
-  };
-
-  const [barChartData, setBarChartData] = useState(null);
-  const [doughnutChartData, setDoughnutData] = useState(null);
-
-  const getChartData = async () => {
-    try {
-      const {
-        data: { barChart, doughnutChart },
-      } = await myAxios.get("/transactions/chartdata/" + user.id);
-      console.log("DougData", doughnutChart);
-      console.log("BArData", barChartData);
-      setBarChartData(barChart);
-      setDoughnutData(doughnutChart);
-    } catch (error) {
-      console.log("err", error);
     }
   };
 
@@ -93,7 +76,6 @@ export const TransactionProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getChartData();
     getAllTransactions();
     getTotalExpInc();
   }, [reFetch]);
@@ -108,9 +90,6 @@ export const TransactionProvider = ({ children }) => {
         reFetch,
         setReFetch,
         getAllTransactions,
-        getChartData,
-        doughnutChartData,
-        barChartData,
         getTotalExpInc,
         expData,
         incData,

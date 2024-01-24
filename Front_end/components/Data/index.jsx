@@ -12,7 +12,7 @@ export const array = [
 ];
 
 export const array1 = [
-  { name: "All", id: 1 },
-  { name: "Income", id: 2 },
-  { name: "Expense", id: 3 },
+  { name: "All", id: 1, type: "All" },
+  { name: "Income", id: 2, type: "INC" },
+  { name: "Expense", id: 3, type: "EXP" },
 ];

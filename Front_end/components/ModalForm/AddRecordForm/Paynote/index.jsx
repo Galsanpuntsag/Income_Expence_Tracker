@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { TransactionContext } from "@/Context/TransactionProvider";
+import { CategoryContext } from "@/Context/CategoryContext";
 
 const PayNote = () => {
   const { transactionData, changeTransactionData } =
     useContext(TransactionContext);
+
   return (
     <div className="lg:mt-3 lg:ml-10">
       <div className="flex flex-col">

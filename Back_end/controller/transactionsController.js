@@ -43,9 +43,9 @@ const createTransaction = async (req, res) => {
 };
 
 const getTotalExpInc = async (req, res) => {
-  const { user_id } = req.params;
-  console.log("FFFExpInc", user_id);
   try {
+    const { user_id } = req.params;
+    console.log("FFFExpInc", user_id);
     const data =
       await sql`SELECT tr.transaction_type, SUM(amount) as total FROM transaction tr WHERE tr.user_id=${user_id} GROUP BY transaction_type `;
     console.log("EIdata", data);
@@ -64,47 +64,31 @@ const getTotalExpInc = async (req, res) => {
   }
 };
 
-const getChartData = async (req, res) => {
+const BarData = async (req, res) => {
+  console.log(req.params);
   try {
     const { user_id } = req.params;
-    //_________________________
-    const doughnutChart = await sql`
-    SELECT 
-    ct.iconname as category_name, 
-    SUM(amount) as total 
-  FROM transaction tr 
-  INNER JOIN 
-    categoryicon ct ON tr.category_id=ct.id
-    WHERE ct.user_id=tr.user_id
-  GROUP BY category_name;`;
-    //_________________________
-
-    const barChart = await sql`SELECT
-    EXTRACT(MONTH FROM updated_at) AS month,
-    TO_CHAR(updated_at, 'Month') AS month_name,
-    SUM(CASE WHEN transaction_type = 'INC' THEN amount ELSE 0 END) AS income,
-    SUM(CASE WHEN transaction_type = 'EXP' THEN amount ELSE 0 END) AS expence
-  FROM
-      transaction
-      WHERE 
-      user_id=${user_id}
-  GROUP BY
-      month, month_name
-  ORDER BY
-      month;`;
-    console.log("Barchar", barChart);
+    console.log("user_id", user_id);
+    const barChart = await sql`
+      SELECT
+      EXTRACT(MONTH FROM updated_at) AS month,
+      TO_CHAR(updated_at, 'Month') AS month_name,
+      SUM(CASE WHEN transaction_type = 'INC' THEN amount ELSE 0 END) AS income,
+      SUM(CASE WHEN transaction_type = 'EXP' THEN amount ELSE 0 END) AS expence
+    FROM
+        transaction
+        WHERE
+       user_id=${user_id}
+    GROUP BY
+        month, month_name
+    ORDER BY
+        month;
+        `;
     const labels = barChart.map((row) => row.month_name);
     const incomeData = barChart.map((row) => row.income);
     const expenceData = barChart.map((row) => row.expence);
-    console.log("ExpData", expenceData);
-
-    //doughnot data labels
-    const dlabels = doughnutChart.map((e) => e.category_name);
-    const data = doughnutChart.map((e) => e.total);
-
     res.status(201).json({
-      message: "succes",
-      doughnutChart: { labels: dlabels, data },
+      message: "success",
       barChart: { labels, incomeData, expenceData },
     });
   } catch (error) {
@@ -113,11 +97,36 @@ const getChartData = async (req, res) => {
   }
 };
 
+const DoughnutData = async (req, res) => {
+  try {
+    const { user_id } = req.params;
+    console.log("user_id", user_id);
+    const doughnutChart = await sql`
+  SELECT 
+  ct.iconname as category_name, 
+  SUM(amount) as total 
+FROM transaction tr 
+INNER JOIN 
+  categoryicon ct ON tr.category_id=ct.id
+  WHERE tr.user_id= ${user_id}
+GROUP BY category_name;`;
+    const dlabels = doughnutChart.map((e) => e.category_name);
+    const data = doughnutChart.map((e) => e.total);
+    res.status(200).json({
+      message: "success",
+      doughnutChart: { labels: dlabels, data },
+    });
+  } catch (error) {
+    console.log("ERRDOUGh", error);
+  }
+};
 module.exports = {
   createTransaction,
   getAllTransaction,
   getTotalExpInc,
-  getChartData,
+  BarData,
+  DoughnutData,
+
   //   getTransaction,
   //   putTransaction,
   //   deleteTransaction,

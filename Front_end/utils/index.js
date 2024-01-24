@@ -124,5 +124,5 @@ export const formatDate = (dateStr) => {
 
 export const thousandify = (num) => {
   console.log("what'sNum", num);
-  return num.toLocaleString(undefined, { maximumFractionDigits: 2 });
+  return num?.toLocaleString(undefined, { maximumFractionDigits: 2 });
 };

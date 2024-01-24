@@ -7,11 +7,7 @@ import { TransactionContext } from "@/Context/TransactionProvider";
 import { thousandify } from "@/utils";
 import { getCurrencySymbol } from "@/utils";
 
-const UserCard = () => {
-  const { user } = useContext(UserContext);
-  console.log("userBalancaGet", user);
-  const { expData, incData } = useContext(TransactionContext);
-
+const UserCard = ({ user, expData, incData }) => {
   return (
     <div className="flex justify-between bg-blue-600 w-full rounded-lg lg:w-[350px] lg:h-[230px] lg:mt-2">
       <div className="flex flex-col ml-5 justify-around items-center">
@@ -20,7 +16,8 @@ const UserCard = () => {
           <h className="text-slate-100 text-lg">Geld</h>
         </div>
         <div className="flex text-3xl font-bold text-yellow-400 w-20 h-5">
-          {user?.balance}
+          {thousandify(user?.balance)}
+
           {getCurrencySymbol(user?.currency_type)}
         </div>
       </div>

@@ -25,7 +25,6 @@ export const UserProvider = ({ children }) => {
     // console.log("VAL", key);
   };
 
- 
   const login = async () => {
     console.log("Email", formUserData.email);
     console.log("Password", formUserData.password);

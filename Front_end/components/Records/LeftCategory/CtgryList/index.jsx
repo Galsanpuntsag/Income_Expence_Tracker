@@ -12,7 +12,7 @@ const CtgryList = () => {
   };
   const { category, onSelectCategory, selectedCategories } =
     useContext(CategoryContext);
-  console.log("cateColor", category);
+  console.log("SELECTEDCATE", selectedCategories);
   return (
     <div className="mt-5 text-2xl font-bold flex flex-col justify-between">
       <div className="flex justify-around mb-5">

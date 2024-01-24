@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { array1 } from "@/components/Data/index.jsx";
 import AddRecordForm from "@/components/ModalForm/AddRecordForm";
+import { TransactionContext } from "@/Context/TransactionProvider";
 
 const CtgryTop = () => {
+  const { transactionList } = useContext(TransactionContext);
+  console.log("FILTERING_Trans", transactionList);
   const [open, setOpen] = useState(false);
 
   const closeForm = () => {
@@ -37,8 +40,11 @@ const CtgryTop = () => {
               <div className="flex text-center gap-5 my-1">
                 <input
                   type="checkbox"
-                  checked="checked"
+                  checked={false}
                   className="checkbox mb-1 2xl:mb-4"
+                  onChange={() => {
+                    console.log("CHANGED", el.type);
+                  }}
                 ></input>
                 <h className=" font-bold ">{el.name}</h>
               </div>

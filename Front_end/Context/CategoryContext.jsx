@@ -36,8 +36,10 @@ export const CategoryProvider = ({ children }) => {
   const [selectedCategories, setSelectedCategories] = useState([]);
 
   const onSelectCategory = (name) => {
+    console.log(name);
     if (selectedCategories.includes(name)) {
       const newCat = selectedCategories.filter((s) => s !== name);
+      console.log("nEWCATTT", newCat);
       setSelectedCategories(newCat);
     } else {
       setSelectedCategories([...selectedCategories, name]);
@@ -60,11 +62,12 @@ export const CategoryProvider = ({ children }) => {
   };
 
   const getAllCategories = async () => {
+    console.log("GEtgatcryWorking", getAllCategories);
     try {
       const {
         data: { categories },
       } = await myAxios.get("/categories/" + user.id);
-      console.log("CAetegoryRRR", categories);
+      console.log("CAetegoryRRRIrlee", categories);
       setCategory(categories);
     } catch (error) {
       console.log("RRer", error);

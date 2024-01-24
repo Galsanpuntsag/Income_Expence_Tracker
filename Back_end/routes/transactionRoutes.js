@@ -3,7 +3,8 @@ const {
   createTransaction,
   getAllTransaction,
   getTotalExpInc,
-  getChartData,
+  DoughnutData,
+  BarData,
   // getAllIncome,
   //   getTransaction,
   //   putTransaction,
@@ -13,7 +14,8 @@ const {
 const router = Router();
 
 //-----------
-router.route("/chartdata/:userId").get(getChartData);
+router.route("/bar/:user_id").get(BarData);
+router.route("/doughnut/:user_id").get(DoughnutData);
 router.route("/total/:user_id").get(getTotalExpInc);
 router.route("/:user_id").get(getAllTransaction);
 router.route("/").post(createTransaction);
