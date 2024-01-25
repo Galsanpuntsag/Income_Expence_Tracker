@@ -7,6 +7,7 @@ const CtgryTop = () => {
   const { transactionList } = useContext(TransactionContext);
   console.log("FILTERING_Trans", transactionList);
   const [open, setOpen] = useState(false);
+  const [displayCate, setDisplayCate] = useState();
 
   const filterInc = () => {
     transactionList.filter((transaction) => {

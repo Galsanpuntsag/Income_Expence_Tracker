@@ -44,6 +44,7 @@ const Form = ({ openCategory, categoryClose }) => {
             <summary className={`${displayColor} m-1 btn`}>
               <div className="flex items-center gap-7">
                 <span>{showIcon ? showIcon : icons[0].icon} </span>
+                Choose
                 <IoIosArrowDown />
               </div>
             </summary>

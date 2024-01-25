@@ -43,7 +43,7 @@ const DoughnutChart = ({ doughnutChartData }) => {
   };
 
   return (
-    <div className=" bg-slate-50 rounded-2xl p-4 w-full  ">
+    <div className=" bg-slate-50 rounded-2xl p-4 w-full lg:h-[300px]  ">
       {doughnutChartData && (
         <Doughnut
           style={{ width: "50%", height: "30%" }}
