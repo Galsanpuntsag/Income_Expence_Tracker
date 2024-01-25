@@ -1,23 +1,23 @@
 import React from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 
-const CategoryList = ({ name, onSelectCategory, selectedCategories }) => {
-  console.log("NAme", name);
+const CategoryList = ({ data, name, onSelectCategory, selectedCategories }) => {
+  console.log("NAme", data);
   return (
-    <div className="flex my-3 items-center justify-between">
+    <div className="flex items-center justify-between">
       <div className="flex items-center gap-3">
         {
           <button
             onClick={() => {
-              onSelectCategory(name);
+              onSelectCategory(data);
             }}
           >
-            {!selectedCategories.includes(name) && <FiEye />}
-            {selectedCategories.includes(name) && <FiEyeOff />}
+            {!selectedCategories.includes(data) && <FiEye />}
+            {selectedCategories.includes(data) && <FiEyeOff />}
           </button>
         }
 
-        <h2>{name}</h2>
+        <h2 className="text-xl font-semibold">{name}</h2>
       </div>
     </div>
   );

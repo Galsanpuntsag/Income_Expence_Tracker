@@ -2,8 +2,7 @@ import React, { useContext } from "react";
 import { Doughnut } from "react-chartjs-2";
 import { TransactionContext } from "@/Context/TransactionProvider";
 
-const DoughnutChart = () => {
-  const { doughnutChartData } = useContext(TransactionContext);
+const DoughnutChart = ({ doughnutChartData }) => {
   console.log("DoughNote_Data", doughnutChartData);
   const data2 = {
     datasets: [
@@ -37,8 +36,6 @@ const DoughnutChart = () => {
       position: "right",
 
       labels: {
-        boxWidth: 10,
-        padding: 10,
         display: false,
         position: "right",
       },
@@ -46,11 +43,17 @@ const DoughnutChart = () => {
   };
 
   return (
-    <div className="flex bg-white justify-center rounded-2xl p-4 items-center w-11/12 h-60">
-      {doughnutChartData && <Doughnut data={data2} options={options2} />}
+    <div className=" bg-slate-50 rounded-2xl p-4 w-full  ">
+      {doughnutChartData && (
+        <Doughnut
+          style={{ width: "50%", height: "30%" }}
+          options={options2}
+          data={data2}
+        />
+      )}
       {!doughnutChartData && (
         <div className="flex justify-center items-end gap-6 w-full py-5 ">
-          <div className="skeleton h-14 w-4"></div>
+          <div className="skeleton h-14 w-4 "></div>
           <div className="skeleton h-16 w-4"></div>
           <div className="skeleton h-24 w-4"></div>
           <div className="skeleton h-24 w-4"></div>

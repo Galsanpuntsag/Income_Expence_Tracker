@@ -35,14 +35,13 @@ export const CategoryProvider = ({ children }) => {
 
   const [selectedCategories, setSelectedCategories] = useState([]);
 
-  const onSelectCategory = (name) => {
-    console.log(name);
-    if (selectedCategories.includes(name)) {
-      const newCat = selectedCategories.filter((s) => s !== name);
+  const onSelectCategory = (category_img) => {
+    if (selectedCategories.includes(category_img)) {
+      const newCat = selectedCategories.filter((s) => s !== category_img);
       console.log("nEWCATTT", newCat);
       setSelectedCategories(newCat);
     } else {
-      setSelectedCategories([...selectedCategories, name]);
+      setSelectedCategories([...selectedCategories, category_img]);
     }
   };
 

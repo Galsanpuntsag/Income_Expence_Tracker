@@ -9,7 +9,7 @@ const ListData = ({ transactionList }) => {
   const filteredTransactions =
     selectedCategories.length !== 0
       ? transactionList.filter((transaction) =>
-          selectedCategories.includes(transaction.name)
+          selectedCategories.includes(transaction.category_img)
         )
       : transactionList;
   return (

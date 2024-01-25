@@ -12,9 +12,9 @@ const CtgryList = () => {
   };
   const { category, onSelectCategory, selectedCategories } =
     useContext(CategoryContext);
-  console.log("SELECTEDCATE", selectedCategories);
+  console.log("SELECTEDCATECAtteggeg", category);
   return (
-    <div className="mt-5 text-2xl font-bold flex flex-col justify-between">
+    <div className="mt-5 text-2xl font-bold flex flex-col mb-3 justify-between">
       <div className="flex justify-around mb-5">
         <h className="">Category</h>
         <button className="text-slate-200">Clear</button>
@@ -25,8 +25,9 @@ const CtgryList = () => {
             <CategoryList
               onSelectCategory={onSelectCategory}
               selectedCategories={selectedCategories}
+              data={el.category_img}
               name={el.iconname}
-              key={el.id}
+              id={el.id}
             />
           ))}
           {console.log("categoryAss", category)}

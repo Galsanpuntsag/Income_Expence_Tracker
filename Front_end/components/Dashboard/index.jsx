@@ -5,7 +5,7 @@ import LastRecordList from "./LastRecordList";
 
 const Dashboard = () => {
   return (
-    <div className="flex flex-col justify-center items-center gap-2">
+    <div className="flex flex-col justify-center items-center gap-2 ">
       <Cards />
       <Charts />
       <LastRecordList />

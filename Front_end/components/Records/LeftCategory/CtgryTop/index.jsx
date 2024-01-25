@@ -8,6 +8,18 @@ const CtgryTop = () => {
   console.log("FILTERING_Trans", transactionList);
   const [open, setOpen] = useState(false);
 
+  const filterInc = () => {
+    transactionList.filter((transaction) => {
+      transaction.transaction_type === "INC";
+    });
+  };
+
+  const filterExp = () => {
+    transactionList.filter((transaction) => {
+      transaction.transaction_type === "Exp";
+    });
+  };
+
   const closeForm = () => {
     console.log("CloseFrm");
     setOpen(false);

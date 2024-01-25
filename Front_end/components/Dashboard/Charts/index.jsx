@@ -59,9 +59,14 @@ const Charts = () => {
   }, []);
   return (
     <>
-      <div className="flex flex-col justify-center items-center w-full lg:w-5/6 2xl:w-10/12 mb-5 gap-5">
-        <BarChart barChartData={barData} />
-        <DoughnutChart doughnutChartData={doughnutData} />
+      <div className="flex flex-col justify-center items-center w-full lg:flex-row lg:w-4/5 2xl:w-10/12 mb-5 gap-5 ">
+        <div className="flex-1 justify-center ">
+          {" "}
+          <BarChart barChartData={barData} />
+        </div>
+        <div className="flex-1 justify-center">
+          <DoughnutChart doughnutChartData={doughnutData} />
+        </div>
       </div>
     </>
   );
